@@ -6,7 +6,7 @@
 #    By: piow00 <piow00@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/06 20:37:09 by piow00            #+#    #+#              #
-#    Updated: 2022/09/07 01:25:11 by piow00           ###   ########.fr        #
+#    Updated: 2022/09/07 01:29:24 by piow00           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -78,6 +78,7 @@ start :
 minishell:	${OBJS}
 			${MLIBFT} all
 			${CC} ${CFLAGS} -o ${NAME} ${OBJS} ${LIBFT} ${LIBS}
+			@$(END_COMP)
 
 l :			${OBJS}
 			${MLIBFT} all
@@ -86,10 +87,12 @@ l :			${OBJS}
 #***** Clean *****#
 
 clean:
+			@$(S_OBJS)
 			${RM} ${OBJS}
 			${MAKELIB} clean
 
 fclean:		clean
+			@$(S_NAME)
 			${RM} ${NAME}
 			${MAKELIB} fclean
 
