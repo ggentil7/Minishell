@@ -1,24 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell.h                                        :+:      :+:    :+:   */
+/*   prompt.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aboymond <aboymond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/07 14:09:08 by aboymond          #+#    #+#             */
-/*   Updated: 2022/09/07 14:45:49 by aboymond         ###   ########.fr       */
+/*   Created: 2022/09/07 14:05:53 by aboymond          #+#    #+#             */
+/*   Updated: 2022/09/07 14:52:09 by aboymond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINISHELL_H
-# define MINISHELL_H
+#include "minishell.h"
 
-# include <stdlib.h>
-# include <unistd.h>
-# include <readline/readline.h>
-# include <readline/history.h>
-# include "./libft/libft.h"
+char	*path(void)
+{
+	char	*pwd;
 
-int	prompt(void);
-char *path(void);
-#endif
+	pwd = getcwd(NULL, 0);
+	pwd = ft_strjoin(pwd, " : ");
+	return (pwd);
+}
+
+int	prompt()
+{
+	char	*buffer;
+
+	buffer = readline(path());
+	if (buffer)
+	{
+		printf("You entered: %s\n", buffer);
+		free(buffer);
+	}
+	return (0);
+}
