@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: piow00 <piow00@student.42.fr>              +#+  +:+       +#+         #
+#    By: aboymond <aboymond@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/06 20:37:09 by piow00            #+#    #+#              #
-#    Updated: 2022/09/07 01:29:24 by piow00           ###   ########.fr        #
+#    Updated: 2022/09/07 12:28:33 by aboymond         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -53,13 +53,13 @@ CC				=		gcc
 CFLAGS			=		-Wall -Wextra -Werror
 L				=		$(CFLAGS) -g -fsanitize=address -fno-omit-frame-pointer
 RM				=		rm -f
-HEADS			= 		-I. -I${LIBFT} -I./readline/include/
-LIBS			= 		-L./readline/lib/ -lreadline -lhistory
+LIBS			= 		-I$(HOME)/.brew/Cellar/readline/8.1.2/include
+HEADER			=		-I./includes -lreadline #-lhistory
+# LIBS			= 		-L./readline/lib/ -lreadline -lhistory
 
 ifeq ($(shell uname), Linux)
 
 CC				=		gcc
-HEADS			= 		-I. -I${LIBFT} -I/home/linuxbrew/.linuxbrew/include/
 LIBS			= 		-L/home/linuxbrew/.linuxbrew/lib/ -lreadline -lhistory
 endif
 
@@ -77,7 +77,7 @@ start :
 
 minishell:	${OBJS}
 			${MLIBFT} all
-			${CC} ${CFLAGS} -o ${NAME} ${OBJS} ${LIBFT} ${LIBS}
+			${CC} ${CFLAGS} -o ${NAME} ${OBJS} ${LIBFT} ${LIBS} ${HEADER}
 			@$(END_COMP)
 
 l :			${OBJS}
