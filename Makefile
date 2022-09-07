@@ -6,7 +6,7 @@
 #    By: aboymond <aboymond@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/06 20:37:09 by piow00            #+#    #+#              #
-#    Updated: 2022/09/07 12:28:33 by aboymond         ###   ########.fr        #
+#    Updated: 2022/09/07 14:10:01 by aboymond         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ NAME			=		minishell
 
 #***** Sources / Objs *****#
 
-SRC				=		main.c
+SRC				=		main.c prompt.c
 OBJS			=		$(SRC:.c=.o)
 
 #***** Libft *****#
@@ -82,19 +82,19 @@ minishell:	${OBJS}
 
 l :			${OBJS}
 			${MLIBFT} all
-			${CC} ${L} -o ${NAME} ${OBJS} ${LIBFT} ${LIBS}
+			${CC} ${L} -o ${NAME} ${OBJS} ${LIBFT} ${LIBS} ${HEADER}
 
 #***** Clean *****#
 
 clean:
 			@$(S_OBJS)
 			${RM} ${OBJS}
-			${MAKELIB} clean
+			${MLIBFT} clean
 
 fclean:		clean
 			@$(S_NAME)
 			${RM} ${NAME}
-			${MAKELIB} fclean
+			${MLIBFT} fclean
 
 re:			fclean all
 
