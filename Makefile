@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: aboymond <aboymond@student.42.fr>          +#+  +:+       +#+         #
+#    By: piow00 <piow00@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/06 20:37:09 by piow00            #+#    #+#              #
-#    Updated: 2022/09/07 14:10:01 by aboymond         ###   ########.fr        #
+#    Updated: 2022/09/08 11:34:19 by piow00           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,7 @@ OBJS			=		$(SRC:.c=.o)
 
 #***** Libft *****#
 
-LIBFT			=		libft/libft.a
+LIBFT			=		./libft/libft.a
 MLIBFT			=		$(MAKE) -C libft
 
 #***** Couleurs *****#
@@ -54,13 +54,11 @@ CFLAGS			=		-Wall -Wextra -Werror
 L				=		$(CFLAGS) -g -fsanitize=address -fno-omit-frame-pointer
 RM				=		rm -f
 LIBS			= 		-I$(HOME)/.brew/Cellar/readline/8.1.2/include
-HEADER			=		-I./includes -lreadline #-lhistory
-# LIBS			= 		-L./readline/lib/ -lreadline -lhistory
-
+HEADER			=		-I./includes -lreadline
 ifeq ($(shell uname), Linux)
 
 CC				=		gcc
-LIBS			= 		-L/home/linuxbrew/.linuxbrew/lib/ -lreadline -lhistory
+LIBS			= 		-L/usr/local/lib -I/usr/local/include -lreadline
 endif
 
 #***** Compilation *****#
@@ -83,6 +81,7 @@ minishell:	${OBJS}
 l :			${OBJS}
 			${MLIBFT} all
 			${CC} ${L} -o ${NAME} ${OBJS} ${LIBFT} ${LIBS} ${HEADER}
+			@$(END_COMP)
 
 #***** Clean *****#
 
