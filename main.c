@@ -6,14 +6,16 @@
 /*   By: piow00 <piow00@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 00:26:37 by piow00            #+#    #+#             */
-/*   Updated: 2022/09/08 11:45:39 by piow00           ###   ########.fr       */
+/*   Updated: 2022/09/13 09:39:18 by piow00           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	main(void)
+int	main(int argc, char **argv, char **env)
 {
+	(void)argc;
+	(void)argv;
 	while (1)
 		prompt();
 	return (0);

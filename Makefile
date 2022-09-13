@@ -6,7 +6,7 @@
 #    By: piow00 <piow00@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/06 20:37:09 by piow00            #+#    #+#              #
-#    Updated: 2022/09/08 11:50:28 by piow00           ###   ########.fr        #
+#    Updated: 2022/09/10 12:38:58 by piow00           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ NAME			=		minishell
 
 #***** Sources / Objs *****#
 
-SRC				=		main.c prompt.c
+SRC				=		main.c prompt.c lst_chaine.c
 OBJS			=		$(SRC:.c=.o)
 
 #***** Libft *****#
@@ -25,6 +25,7 @@ LIBFT			=		./libft/libft.a
 MLIBFT			=		$(MAKE) -C libft
 
 #***** Couleurs *****#
+
 GREEN			=		\033[1;32m
 RED				=		\033[1;31m
 ENDCOLOR		=		\033[0m
