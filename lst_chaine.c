@@ -6,25 +6,25 @@
 /*   By: aboymond <aboymond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/10 11:59:58 by piow00            #+#    #+#             */
-/*   Updated: 2022/09/13 15:59:29 by aboymond         ###   ########.fr       */
+/*   Updated: 2022/09/13 17:08:56 by aboymond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-list	*empty_lst(void)
+t_node	*empty_lst(void)
 {
 	return (0);
 }
 
-int	isempty(list *L)
+int	isempty(t_node *L)
 {
 	return (L == NULL);
 }
 
-cell	*create_cell(int data)
+t_node	*create_cell(int data)
 {
-	cell	*cell;
+	t_node	*cell;
 
 	cell = malloc(sizeof(cell));
 	if (!cell)
@@ -34,12 +34,12 @@ cell	*create_cell(int data)
 	return (cell);
 }
 
-list	*add_list(list *L, int data, int pos)
+t_node	*add_list(t_node *L, int data, int pos)
 {
-	list	*prec;
-	list	*cur;
+	t_node	*prec;
+	t_node	*cur;
 	int		i;
-	cell	*cell;
+	t_node	*cell;
 
 	prec = L;
 	cur = L;

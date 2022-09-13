@@ -6,7 +6,7 @@
 /*   By: aboymond <aboymond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/08 11:46:29 by piow00            #+#    #+#             */
-/*   Updated: 2022/09/13 16:08:15 by aboymond         ###   ########.fr       */
+/*   Updated: 2022/09/13 18:31:18 by aboymond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,20 +21,30 @@
 
 // struct list chained
 
-typedef struct cell_t
+typedef struct s_node
 {
-    int data;
-    struct cell_t *next;
-}list,cell;
+	int				data;
+	struct s_node	*next;
+}	t_node;
 
-int	prompt(char **envp);
-char *path(void);
+// typedef struct s_envi
+// {
+// 	char **
+// }
+
+int		prompt(char **envp);
+char	*path(void);
+char	*username(char **envp);
+
+// Env
+
+char	**env_cpy(char **envp);
 
 // list chained
 
-list *empty_lst();
-int isempty(list *L);
-cell *create_cell(int data);
-list *add_list(list *L, int data, int pos);
+t_node	*empty_lst(void);
+int		isempty(t_node *L);
+t_node	*create_cell(int data);
+t_node	*add_list(t_node *L, int data, int pos);
 
 #endif

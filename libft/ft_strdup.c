@@ -6,31 +6,31 @@
 /*   By: aboymond <aboymond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/05 17:08:21 by aboymond          #+#    #+#             */
-/*   Updated: 2022/04/19 11:09:58 by aboymond         ###   ########.fr       */
+/*   Updated: 2022/09/13 19:21:33 by aboymond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strdup(const char *s1)
-{
-	char	*aloc;
-	int		i;
+// char	*ft_strdup(const char *s1)
+// {
+// 	char	*aloc;
+// 	int		i;
 
-	aloc = (char *)malloc(sizeof(*aloc) * (ft_strlen(s1) + 1));
-	i = 0;
-	if (!aloc)
-		return (0);
-	while (*s1)
-	{
-		aloc[i] = *s1;
-		i++;
-		s1++;
-	}
-	aloc[i] = '\0';
-	return (aloc);
-}
-/*
+// 	aloc = (char *)malloc(sizeof(*aloc) * (ft_strlen(s1) + 1));
+// 	i = 0;
+// 	if (!aloc)
+// 		return (0);
+// 	while (*s1)
+// 	{
+// 		aloc[i] = *s1;
+// 		i++;
+// 		s1++;
+// 	}
+// 	aloc[i] = '\0';
+// 	return (aloc);
+// }
+
 char	*ft_strdup(const char *s1)
 {
 	char	*str;
@@ -50,7 +50,7 @@ char	*ft_strdup(const char *s1)
 	str[index] = '\0';
 	return (str);
 }
-*/
+
 /*
 static char	*ft_strcpy(char *dest, char *src)
 {

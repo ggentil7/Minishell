@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: piow00 <piow00@student.42.fr>              +#+  +:+       +#+         #
+#    By: aboymond <aboymond@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/06 20:37:09 by piow00            #+#    #+#              #
-#    Updated: 2022/09/10 12:38:58 by piow00           ###   ########.fr        #
+#    Updated: 2022/09/13 18:26:39 by aboymond         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ NAME			=		minishell
 
 #***** Sources / Objs *****#
 
-SRC				=		main.c prompt.c lst_chaine.c
+SRC				=		main.c prompt.c lst_chaine.c env.c
 OBJS			=		$(SRC:.c=.o)
 
 #***** Libft *****#
