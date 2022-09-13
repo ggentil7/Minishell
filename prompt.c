@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   prompt.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: piow00 <piow00@student.42.fr>              +#+  +:+       +#+        */
+/*   By: aboymond <aboymond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 14:05:53 by aboymond          #+#    #+#             */
-/*   Updated: 2022/09/08 11:47:09 by piow00           ###   ########.fr       */
+/*   Updated: 2022/09/13 16:22:26 by aboymond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,13 @@ char	*path(void)
 	return (pwd);
 }
 
-int	prompt()
+int	prompt(char **envp)
 {
 	char	*buffer;
 
 	buffer = readline(path());
+	while (*envp++)
+		printf("%s\n", *envp);
 	if (buffer)
 	{
 		printf("You entered: %s\n", buffer);

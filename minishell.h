@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: piow00 <piow00@student.42.fr>              +#+  +:+       +#+        */
+/*   By: aboymond <aboymond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/08 11:46:29 by piow00            #+#    #+#             */
-/*   Updated: 2022/09/12 08:34:58 by piow00           ###   ########.fr       */
+/*   Updated: 2022/09/13 16:08:15 by aboymond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ typedef struct cell_t
     struct cell_t *next;
 }list,cell;
 
-int	prompt(void);
+int	prompt(char **envp);
 char *path(void);
 
 // list chained
