@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: piow00 <piow00@student.42.fr>              +#+  +:+       +#+         #
+#    By: aboymond <aboymond@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/06 20:37:09 by piow00            #+#    #+#              #
-#    Updated: 2022/09/08 11:34:19 by piow00           ###   ########.fr        #
+#    Updated: 2022/09/14 15:14:42 by aboymond         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ NAME			=		minishell
 
 #***** Sources / Objs *****#
 
-SRC				=		main.c prompt.c
+SRC				=		main.c prompt.c lst_chaine.c env.c utils.c
 OBJS			=		$(SRC:.c=.o)
 
 #***** Libft *****#
@@ -25,6 +25,7 @@ LIBFT			=		./libft/libft.a
 MLIBFT			=		$(MAKE) -C libft
 
 #***** Couleurs *****#
+
 GREEN			=		\033[1;32m
 RED				=		\033[1;31m
 ENDCOLOR		=		\033[0m
@@ -53,8 +54,8 @@ CC				=		gcc
 CFLAGS			=		-Wall -Wextra -Werror
 L				=		$(CFLAGS) -g -fsanitize=address -fno-omit-frame-pointer
 RM				=		rm -f
-LIBS			= 		-I$(HOME)/.brew/Cellar/readline/8.1.2/include
-HEADER			=		-I./includes -lreadline
+LIBS			= 		-I$(HOME)/.brew/Cellar/readline/8.1.2/include -lreadline
+HEADER			=		-I./includes 
 ifeq ($(shell uname), Linux)
 
 CC				=		gcc
@@ -72,6 +73,9 @@ logo :
 
 start : 
 			@$(START)
+
+%.o:		%.c minishell.h
+			$(CC) $(CFLAGS) -g $(HEADER) -c $< -o $@
 
 minishell:	${OBJS}
 			${MLIBFT} all
@@ -98,7 +102,3 @@ fclean:		clean
 re:			fclean all
 
 .PHONY:		all bonus clean fclean re
-
-
-
-                                                                     
