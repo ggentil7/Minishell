@@ -6,7 +6,7 @@
 /*   By: aboymond <aboymond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/10 11:59:58 by piow00            #+#    #+#             */
-/*   Updated: 2022/09/14 14:21:07 by aboymond         ###   ########.fr       */
+/*   Updated: 2022/09/14 14:48:22 by aboymond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ t_node	*create_cell(char *data)
 	if (!cell)
 		return (0);
 	cell->data = data;
-	// cell->data = 0;÷
+	// cell->data = 0;
 	return (cell);
 }
 
