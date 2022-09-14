@@ -6,7 +6,7 @@
 #    By: aboymond <aboymond@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/06 20:37:09 by piow00            #+#    #+#              #
-#    Updated: 2022/09/13 18:26:39 by aboymond         ###   ########.fr        #
+#    Updated: 2022/09/14 14:19:09 by aboymond         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ NAME			=		minishell
 
 #***** Sources / Objs *****#
 
-SRC				=		main.c prompt.c lst_chaine.c env.c
+SRC				=		main.c prompt.c lst_chaine.c env.c utils.c
 OBJS			=		$(SRC:.c=.o)
 
 #***** Libft *****#
@@ -54,8 +54,8 @@ CC				=		gcc
 CFLAGS			=		-Wall -Wextra -Werror
 L				=		$(CFLAGS) -g -fsanitize=address -fno-omit-frame-pointer
 RM				=		rm -f
-LIBS			= 		-I$(HOME)/.brew/Cellar/readline/8.1.2/include
-HEADER			=		-I./includes -lreadline
+LIBS			= 		-I$(HOME)/.brew/Cellar/readline/8.1.2/include -lreadline
+HEADER			=		-I./includes 
 ifeq ($(shell uname), Linux)
 
 CC				=		gcc
@@ -73,6 +73,9 @@ logo :
 
 start : 
 			@$(START)
+
+%.o:		%.c minishell.h
+			$(CC) $(CFLAGS) -g $(HEADER) -c $< -o $@
 
 minishell:	${OBJS}
 			${MLIBFT} all

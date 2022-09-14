@@ -1,0 +1,11 @@
+
+
+
+
+fonction au bol (t_node *head)       /* ne modifie pas la liste node */
+
+		tmp = head;
+		while (tmp)
+		{
+		tmp = tmp->next;
+		}

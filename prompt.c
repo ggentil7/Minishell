@@ -6,7 +6,7 @@
 /*   By: aboymond <aboymond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 14:05:53 by aboymond          #+#    #+#             */
-/*   Updated: 2022/09/13 19:31:16 by aboymond         ###   ########.fr       */
+/*   Updated: 2022/09/14 14:44:17 by aboymond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,20 +31,34 @@ char	*path(void)
 // 	return (user);
 // }
 
-int	prompt(char **envp)
+int	prompt(t_node *head)
 {
 	char	*buffer;
-	int		i;
+	t_node	*tmp;
+	int i;
 
-	i = -1;
+	i = 0;
 	buffer = readline(path());
-	if (ft_strncmp(buffer, "env", 3) == 0)
+	if (buffer)
 	{
-		while (envp[++i])
+		//printf("a %p\n", node);
+		tmp = head;
+		while (tmp)
 		{
-			printf("%s\n", envp[i]);
+			
+			printf("%d %s\n", i, tmp->data/*(node, 0)*/);
+			tmp = tmp->next;
+			i++;
 		}
-		free(buffer);
+		// tmp = head;
+		// while (tmp)
+		// {
+			
+		// 	printf("b %s\n", getat(node, 0));
+		// 	tmp = tmp->next;
+		// 	//i++;
+		// }
 	}
+		free(buffer);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: aboymond <aboymond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/10 11:59:58 by piow00            #+#    #+#             */
-/*   Updated: 2022/09/13 17:08:56 by aboymond         ###   ########.fr       */
+/*   Updated: 2022/09/14 14:21:07 by aboymond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	isempty(t_node *L)
 	return (L == NULL);
 }
 
-t_node	*create_cell(int data)
+t_node	*create_cell(char *data)
 {
 	t_node	*cell;
 
@@ -30,35 +30,58 @@ t_node	*create_cell(int data)
 	if (!cell)
 		return (0);
 	cell->data = data;
-	cell->data = 0;
+	// cell->data = 0;÷
 	return (cell);
 }
 
-t_node	*add_list(t_node *L, int data, int pos)
+t_node	*add_list(t_node *L, char *data/*, int pos*/)
 {
-	t_node	*prec;
+	//t_node	*prec;
 	t_node	*cur;
-	int		i;
+	// int		i;
 	t_node	*cell;
 
-	prec = L;
+	//prec = L;
 	cur = L;
-	i = 0;
+	// i = 0;
 	cell = create_cell(data);
-	if (!isempty(L))
+	if (isempty(L))
 		return (cell);
-	if (pos == 0)
+	while (cur->next != NULL)
+		cur = cur->next;
+	// if (pos == 0)
+	// {
+	// 	cell->next = L;
+	// 	return (cell);
+	// }
+	// while (i < pos)
+	// {
+	// 	i++;
+	// 	prec = cur;
+	// 	cur = cur->next;
+	// }
+	//prec->next = cell;
+	cur->next = cell;
+	//cell->next = cur;
+	return (L);
+}
+
+char	*getat(t_node *L, int pos)
+{
+	int	i;
+
+	i = 0;
+	if (isempty(L))
 	{
-		cell->next = L;
-		return (cell);
+		printf("liste vide\n");
+		return (NULL);
 	}
 	while (i < pos)
 	{
 		i++;
-		prec = cur;
-		cur = cur->next;
+		L = L->next;
+		if (L == NULL)
+			return (NULL);
 	}
-	prec->next = cell;
-	cell->next = cur;
-	return (L);
+	return (L->data);
 }

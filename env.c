@@ -1,24 +1,20 @@
 
 #include "minishell.h"
 
-char	**env_cpy(char **envp)
+void	env_cpy(/*t_envi *envi,*/ t_node **node, char **envp)
 {
 	int		i;
-	int		tmp;
-	char	**env;
+	char	*tmp = NULL;
 
+	(void)node;
 	i = 0;
-	tmp = 0;
-	while (envp[tmp])
-	{
-		tmp++;
-	}
-	env = malloc(sizeof(char *) * tmp + 1);
+	tmp = NULL;
 	while (envp[i])
 	{
-		env[i] = ft_strdup(envp[i]);
-		//printf("%s\n", env[i]);
+		// printf("test\n");
+		// conv_to_char(i, envp);
+		*node = add_list(*node, envp[i]);
+		//printf("%s\n", getat(node, i));
 		i++;
 	}
-	return (env);
 }
