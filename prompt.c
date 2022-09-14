@@ -1,14 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   prompt.c                                           :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: aboymond <aboymond@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/07 14:05:53 by aboymond          #+#    #+#             */
-/*   Updated: 2022/09/14 16:47:52 by aboymond         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
 
 #include "minishell.h"
 
@@ -21,14 +10,17 @@ char	*path(void)
 	return (pwd);
 }
 
-char	*username(char **envp)
+char	*username(t_node *head)
 {
 	char	*user;
+	char	*user1;
 
-	user = envp[0];
-	user = ft_split(user, '=');
-	user = ft_strjoin(user, "@minishell :");
-	return (user);
+	user = search_env(head, "USER");
+	user1 = reste(user);
+	user1 = ft_strjoin("\033[1;34m", user1);
+	user1 = ft_strjoin(user1, "\033[1;33m@\033[1;34mminishell $ \033[0m");
+
+	return (user1);
 }
 
 int	prompt(t_node *head)
@@ -39,16 +31,16 @@ int	prompt(t_node *head)
 
 	i = 0;
 	tmp = head;
-	buffer = readline(path());
-	if (buffer)
-	{
-		while (tmp)
-		{
-			printf("%d %s\n", i, tmp->data);
-			tmp = tmp->next;
-			i++;
-		}
-	}
+	buffer = readline(username(head));
+	// if (buffer)
+	// {
+	// 	while (tmp)
+	// 	{
+	// 		printf("%d %s\n", i, tmp->data);
+	// 		tmp = tmp->next;
+	// 		i++;
+	// 	}
+	// }
 	free(buffer);
 	return (0);
 }
