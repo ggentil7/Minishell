@@ -6,7 +6,7 @@
 /*   By: aboymond <aboymond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/08 11:46:29 by piow00            #+#    #+#             */
-/*   Updated: 2022/09/14 15:13:36 by aboymond         ###   ########.fr       */
+/*   Updated: 2022/09/14 15:21:32 by aboymond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ char	*getat(t_node *L, int pos);
 t_node	*empty_lst(void);
 int		isempty(t_node *L);
 t_node	*create_cell(char *data);
-t_node	*add_list(t_node *L, char *data/*, int pos*/);
+t_node	*add_list(t_node *L, char *data);
 
 
 #endif
