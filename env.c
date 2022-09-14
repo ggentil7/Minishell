@@ -18,3 +18,4 @@ void	env_cpy(/*t_envi *envi,*/ t_node **node, char **envp)
 		i++;
 	}
 }
+
