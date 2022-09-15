@@ -14,12 +14,22 @@ char	*username(t_node *head)
 {
 	char	*user;
 	char	*user1;
+	char	*at;
+	char	*mini;
+	char	*dol;
 
+	dol = "\033[1;35m $ \033[0m";
+	mini = "\033[1;34mMinishell\033[0m";
+	at = "\033[0m\033[1;35m@\033[0m";
 	user = search_env(head, "USER");
 	user1 = reste(user);
 	user = ft_strjoin("\033[1;34m", user1);
-	free(user1);
-	user1 = ft_strjoin(user, "\033[1;35m@\033[1;34mMinishell $ \033[0m");
+	free (user1);
+	user1 = ft_strjoin(user, at);
+	free (user);
+	user = ft_strjoin(user1, mini);
+	free (user1);
+	user1 = ft_strjoin(user, dol);
 	free (user);
 	return (user1);
 }
