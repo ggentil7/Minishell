@@ -19,7 +19,7 @@ char	*username(t_node *head)
 	user1 = reste(user);
 	user = ft_strjoin("\033[1;34m", user1);
 	free(user1);
-	user1 = ft_strjoin(user, "\033[1;33m@\033[1;34mminishell $ \033[0m");
+	user1 = ft_strjoin(user, "\033[1;35m@\033[1;34mMinishell $ \033[0m");
 	free (user);
 	return (user1);
 }
@@ -32,21 +32,13 @@ int	prompt(t_node *head, t_pars *pars)
 	int		i;
 
 	i = 0;
+	(void)pars;
 	user = username(head);
 	//tmp = pars;
-	//(void)pars;
 	buffer = readline(user);
+	add_history(buffer);
+	//rl_clear_history();
+	free (buffer);
 	free (user);
-	if (buffer)
-	{
-		tk_data(&pars, buffer);
-		while (pars)
-		{
-			printf("%d %s\n", i, pars->p_data);
-			pars = pars->next;
-			i++;
-		}
-	}
-	free(buffer);
 	return (0);
 }
