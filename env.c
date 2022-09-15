@@ -13,7 +13,7 @@ void	env_cpy(t_node **node, char **envp)
 	}
 }
 
-char	*search_env(t_node *head, char *search)
+char	*search_env(t_node *head, char *search) /* trouver la bonne ligne dans envp */
 {
 	t_node	*tmp;
 	char	*sea;
@@ -32,7 +32,7 @@ char	*search_env(t_node *head, char *search)
 	return (NULL);
 }
 
-int		check_env(char *env, char *vari)
+int	check_env(char *env, char *vari)  /* validerr la bonne ligne */
 {
 	int		i;
 
@@ -48,7 +48,7 @@ int		check_env(char *env, char *vari)
 	return (0);
 }
 
-char	*reste(char *str)
+char	*reste(char *str)  /* fonction pour recuperer le reste apres le  = */
 {
 	char	*res;
 	int		i;
@@ -61,7 +61,7 @@ char	*reste(char *str)
 		i++;
 	i++;
 	y = ft_strlen(str) - i;
-	res = malloc(sizeof(char *) * y);
+	res = ft_calloc(sizeof(char), y + 1);
 	y = 0;
 	while (str[i])
 	{

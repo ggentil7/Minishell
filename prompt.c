@@ -17,9 +17,10 @@ char	*username(t_node *head)
 
 	user = search_env(head, "USER");
 	user1 = reste(user);
-	user1 = ft_strjoin("\033[1;34m", user1);
-	user1 = ft_strjoin(user1, "\033[1;33m@\033[1;34mminishell $ \033[0m");
-
+	user = ft_strjoin("\033[1;34m", user1);
+	free(user1);
+	user1 = ft_strjoin(user, "\033[1;33m@\033[1;34mminishell $ \033[0m");
+	free (user);
 	return (user1);
 }
 
@@ -27,11 +28,15 @@ int	prompt(t_node *head, t_pars *pars)
 {
 	//t_pars	*tmp;
 	char	*buffer;
+	char	*user;
 	int		i;
 
 	i = 0;
+	user = username(head);
 	//tmp = pars;
-	buffer = readline(username(head));
+	//(void)pars;
+	buffer = readline(user);
+	free (user);
 	if (buffer)
 	{
 		tk_data(&pars, buffer);
