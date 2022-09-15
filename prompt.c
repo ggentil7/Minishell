@@ -1,14 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   prompt.c                                           :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: aboymond <aboymond@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/07 14:05:53 by aboymond          #+#    #+#             */
-/*   Updated: 2022/09/14 15:13:16 by aboymond         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
 
 #include "minishell.h"
 
@@ -21,44 +10,43 @@ char	*path(void)
 	return (pwd);
 }
 
-// char	*username(char **envp)
-// {
-// 	char	*user;
-
-// 	user = envp[0];
-// 	user = ft_split(user, '=');
-// 	user = ft_strjoin(user, "@minishell :");
-// 	return (user);
-// }
-
-int	prompt(t_node *head)
+char	*username(t_node *head)
 {
+	char	*user;
+	char	*user1;
+
+	user = search_env(head, "USER");
+	user1 = reste(user);
+	user = ft_strjoin("\033[1;34m", user1);
+	free(user1);
+	user1 = ft_strjoin(user, "\033[1;33m@\033[1;34mminishell $ \033[0m");
+	free (user);
+	return (user1);
+}
+
+int	prompt(t_node *head, t_pars *pars)
+{
+	//t_pars	*tmp;
 	char	*buffer;
-	t_node	*tmp;
-	int i;
+	char	*user;
+	int		i;
 
 	i = 0;
-	buffer = readline(path());
+	user = username(head);
+	//tmp = pars;
+	//(void)pars;
+	buffer = readline(user);
+	free (user);
 	if (buffer)
 	{
-		//printf("a %p\n", node);
-		tmp = head;
-		while (tmp)
+		tk_data(&pars, buffer);
+		while (pars)
 		{
-			
-			printf("%d %s\n", i, tmp->data/*(node, 0)*/);
-			tmp = tmp->next;
+			printf("%d %s\n", i, pars->p_data);
+			pars = pars->next;
 			i++;
 		}
-		// tmp = head;
-		// while (tmp)
-		// {
-			
-		// 	printf("b %s\n", getat(node, 0));
-		// 	tmp = tmp->next;
-		// 	//i++;
-		// }
 	}
-		free(buffer);
+	free(buffer);
 	return (0);
 }

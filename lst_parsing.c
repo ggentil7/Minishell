@@ -1,35 +1,35 @@
 
 #include "minishell.h"
 
-t_node	*empty_lst(void)
+t_pars	*p_empty_lst(void)
 {
 	return (0);
 }
 
-int	isempty(t_node *L)
+int	p_isempty(t_pars *L)
 {
 	return (L == NULL);
 }
 
-t_node	*create_cell(char *data)
+t_pars	*p_create_cell(char *data)
 {
-	t_node	*cell;
+	t_pars	*cell;
 
 	cell = malloc(sizeof(cell));
 	if (!cell)
 		return (0);
-	cell->data = data;
+	cell->p_data = data;
 	return (cell);
 }
 
-t_node	*add_list(t_node *L, char *data)
+t_pars	*p_add_list(t_pars *L, char *data)
 {
-	t_node	*cur;
-	t_node	*cell;
+	t_pars	*cur;
+	t_pars	*cell;
 
 	cur = L;
-	cell = create_cell(data);
-	if (isempty(L))
+	cell = p_create_cell(data);
+	if (p_isempty(L))
 		return (cell);
 	while (cur->next != NULL)
 		cur = cur->next;
@@ -37,12 +37,12 @@ t_node	*add_list(t_node *L, char *data)
 	return (L);
 }
 
-char	*getat(t_node *L, int pos)
+char	*p_getat(t_pars *L, int pos)
 {
 	int	i;
 
 	i = 0;
-	if (isempty(L))
+	if (p_isempty(L))
 	{
 		printf("liste vide\n");
 		return (NULL);
@@ -54,5 +54,5 @@ char	*getat(t_node *L, int pos)
 		if (L == NULL)
 			return (NULL);
 	}
-	return (L->data);
+	return (L->p_data);
 }

@@ -1,27 +1,18 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: aboymond <aboymond@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/07 00:26:37 by piow00            #+#    #+#             */
-/*   Updated: 2022/09/14 15:13:48 by aboymond         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
 
 #include "minishell.h"
 
-<<<<<<< HEAD
-int	main(void)
+int	main(int argc, char **argv, char **envp)
 {
-	while (1)
-	node = NULL;
+	t_node	*node;
+	t_pars	*pars;
+	
 	(void)argc;
 	(void)argv;
+	pars = NULL;
+	node = NULL;
 	env_cpy(&node, envp);
 	while (1)
-		prompt(node); // copie de la liste 
->>>>>>> alex
+		prompt(node, pars); // copie de la liste 
 	return (0);
 }
+ 
