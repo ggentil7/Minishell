@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aboymond <aboymond@student.42.fr>          +#+  +:+       +#+        */
+/*   By: piow00 <piow00@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/26 22:40:18 by aboymond          #+#    #+#             */
-/*   Updated: 2022/04/19 11:17:59 by aboymond         ###   ########.fr       */
+/*   Updated: 2022/09/15 01:29:44 by piow00           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@ int			ft_printnbr(int nb);
 int			ft_uprint(unsigned int nb);
 int			ft_putnbrhexa(unsigned int nb, int t);
 int			ft_putnbrhexa_p(unsigned long long int n);
+int			ft_istrlen(const char *str);
 
 void		*ft_memset(void *b, int c, size_t len);
 void		ft_bzero(void *s, size_t n);

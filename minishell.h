@@ -16,18 +16,24 @@ typedef struct s_node
 	struct s_node	*next;
 }	t_node;
 
-typedef struct s_envi
+typedef struct s_pars
 {
-	char	**envi;
-}	t_envi;
+	char			*p_data;
+	struct s_pars	*next;
+}	t_pars;
 
-int		prompt(t_node *node);
+int		prompt(t_node *node, t_pars *pars);
 char	*path(void);								/* recupere le path */
-char	*username(t_node *head);						/* user pour prompt */
+char	*username(t_node *head);					/* user pour prompt */
 
-// Conv
+// Parsing
 
-//char	conv_to_char(int i, char **conv);
+void    tk_data(t_pars **pars, char *data);		/* prend les donnees de la ligne de cmd */
+t_pars	*p_empty_lst(void);
+int		p_isempty(t_pars *L);
+t_pars	*p_create_cell(char *data);
+t_pars	*p_add_list(t_pars *L, char *data);
+char	*p_getat(t_pars *L, int pos);
 
 // Env
 

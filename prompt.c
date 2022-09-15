@@ -23,24 +23,25 @@ char	*username(t_node *head)
 	return (user1);
 }
 
-int	prompt(t_node *head)
+int	prompt(t_node *head, t_pars *pars)
 {
+	//t_pars	*tmp;
 	char	*buffer;
-	t_node	*tmp;
 	int		i;
 
 	i = 0;
-	tmp = head;
+	//tmp = pars;
 	buffer = readline(username(head));
-	// if (buffer)
-	// {
-	// 	while (tmp)
-	// 	{
-	// 		printf("%d %s\n", i, tmp->data);
-	// 		tmp = tmp->next;
-	// 		i++;
-	// 	}
-	// }
+	if (buffer)
+	{
+		tk_data(&pars, buffer);
+		while (pars)
+		{
+			printf("%d %s\n", i, pars->p_data);
+			pars = pars->next;
+			i++;
+		}
+	}
 	free(buffer);
 	return (0);
 }

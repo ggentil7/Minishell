@@ -25,7 +25,7 @@ char	*search_env(t_node *head, char *search)
 		if (check_env(tmp->data, search) == 1)
 		{
 			sea = tmp->data;
-			return (tmp->data);
+			return (sea);
 		}
 		tmp = tmp->next;
 	}
@@ -35,10 +35,8 @@ char	*search_env(t_node *head, char *search)
 int		check_env(char *env, char *vari)
 {
 	int		i;
-	char	*tmp;
 
 	i = 0;
-	tmp = NULL;
 	while (env[i] && vari[i] == env[i])
 	{
 		if (env[i + 1] == '=')
