@@ -37,6 +37,8 @@ int		p_isempty(t_pars *L);
 t_pars	*p_create_cell(char *data);
 t_pars	*p_add_list(t_pars *L, char *data);
 char	*p_getat(t_pars *L, int pos);
+void	p_lstclear(t_pars **lst, void (*del)(void *));
+void	p_lstdelone(t_pars *lst, void (*del)(void *));
 
 // Env
 

@@ -5,29 +5,25 @@ void	tk_data(t_pars **pars, char *data)
 {
 	int		i;
 	int		j;
-   // t_pars  *tmp;
-	char	*temp;
+	char	*tmp;
 
 	i = -1;
 	j = 0;
-   // tmp = pars;
-	temp = NULL;
-	while (data[i])
+	tmp = NULL;
+	while (data[++i])
 	{
-		// printf("i = %d, j = %d\n", i, j);
-		// if (i == ft_istrlen(data))
-		// {
-		// 	temp = ft_substr(data, j, i);
-		// 	printf("temp data = %s\n", temp);
-		// 	*pars = p_add_list(*pars, temp);
-		// }
-		if (data[i] == ' ' || data[i])
+		if (data[i] == '|')
 		{
-			temp = ft_substr(data, j, i - j);
-			printf("temp = %s\n", temp);
-			*pars = p_add_list(*pars, temp);
-			j = i;
+			tmp = ft_substr(data, j, i - j);
+			//printf("tmp 1 = %s\n", tmp);
+			*pars = p_add_list(*pars, tmp);
+			j = i + 1;
 		}
-		temp = NULL;
+		if (data[i + 1] == '\0')
+		{
+			tmp = ft_substr(data, j, i - j + 1);
+			//printf("tmp 2 = %s\n", tmp);
+			*pars = p_add_list(*pars, tmp);
+		}
 	}
 }

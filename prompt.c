@@ -36,7 +36,7 @@ char	*username(t_node *head)
 
 int	prompt(t_node *head, t_pars *pars)
 {
-	//t_pars	*tmp;
+	t_pars	*tmp;
 	char	*buffer;
 	char	*user;
 	int		i;
@@ -44,10 +44,17 @@ int	prompt(t_node *head, t_pars *pars)
 	i = 0;
 	(void)pars;
 	user = username(head);
-	//tmp = pars;
+	tmp = pars;
 	buffer = readline(user);
 	add_history(buffer);
+	tk_data(&tmp, buffer);
+	while (tmp)
+	{
+		printf("%s\n", tmp->p_data);
+		tmp = tmp->next;
+	}
 	//rl_clear_history();
+	p_lstclear(&pars, NULL);
 	free (buffer);
 	free (user);
 	return (0);

@@ -56,3 +56,23 @@ char	*p_getat(t_pars *L, int pos)
 	}
 	return (L->p_data);
 }
+
+void	p_lstclear(t_pars **lst, void (*del)(void *))
+{
+	t_pars	*tmp;
+
+	if (!lst || !del)
+		return ;
+	while (*lst)
+	{
+		tmp = (*lst)->next;
+		p_lstdelone(*lst, del);
+		*lst = tmp;
+	}
+}
+
+void	p_lstdelone(t_pars *lst, void (*del)(void *))
+{
+	del(lst->p_data);
+	free(lst);
+}
