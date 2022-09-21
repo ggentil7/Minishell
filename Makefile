@@ -5,7 +5,8 @@ NAME			=		minishell
 
 #***** Sources / Objs *****#
 
-SRC				=		main.c prompt.c lst_chaine.c env.c utils.c parsing.c lst_parsing.c
+SRC				=		main.c prompt.c lst_chaine.c env.c utils.c parsing.c lst_parsing.c \
+						signal.c 
 OBJS			=		$(SRC:.c=.o)
 
 #***** Libft *****#
@@ -43,7 +44,8 @@ CC				=		gcc
 CFLAGS			=		-Wall -Wextra -Werror
 L				=		$(CFLAGS) -g -fsanitize=address -fno-omit-frame-pointer
 RM				=		rm -f
-LIBS			= 		-I$(HOME)/.brew/Cellar/readline/8.1.2/include -lreadline
+LIBS			= 		-I$(HOME)/.brew/Cellar/readline/8.1.2/include -lreadline \
+						-L$(HOME)/.brew/Cellar/readline/8.1.2/lib
 HEADER			=		-I./includes 
 ifeq ($(shell uname), Linux)
 

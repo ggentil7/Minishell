@@ -1,13 +1,16 @@
-
 #include "minishell.h"
 
 void	data_to_lst(t_pars **pars, char *data)
 {
 	int		i;
 	int		j;
+
+
 	char	*tmp;
 
-	i = -1;
+
+
+   	i = -1;
 	j = 0;
 	tmp = NULL;
 	while (data[++i])

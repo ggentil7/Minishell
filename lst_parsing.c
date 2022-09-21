@@ -1,4 +1,3 @@
-
 #include "minishell.h"
 
 t_pars	*p_empty_lst(void)

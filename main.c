@@ -12,7 +12,13 @@ int	main(int argc, char **argv, char **envp)
 	node = NULL;
 	env_cpy(&node, envp);
 	while (1)
+	{
+
+		signal(SIGINT, &handle_sigint);
+		signal(SIGQUIT, SIG_IGN);
+
 		prompt(node, pars); // copie de la liste 
+	}
 	return (0);
 }
  

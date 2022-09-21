@@ -1,4 +1,3 @@
-
 #include "minishell.h"
 
 void	env_cpy(t_node **node, char **envp)
@@ -34,7 +33,7 @@ char	*search_env(t_node *head, char *search) /* trouver la bonne ligne dans envp
 
 int	check_env(char *env, char *vari)  /* validerr la bonne ligne */
 {
-	int		i;
+	int	i;
 
 	i = 0;
 	while (env[i] && vari[i] == env[i])
