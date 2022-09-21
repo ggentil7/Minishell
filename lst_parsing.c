@@ -19,6 +19,7 @@ t_pars	*p_create_cell(char *data)
 	if (!cell)
 		return (0);
 	cell->p_data = data;
+	cell->next = NULL;
 	return (cell);
 }
 

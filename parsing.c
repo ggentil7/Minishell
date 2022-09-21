@@ -1,7 +1,7 @@
 
 #include "minishell.h"
 
-void	tk_data(t_pars **pars, char *data)
+void	data_to_lst(t_pars **pars, char *data)
 {
 	int		i;
 	int		j;
@@ -15,14 +15,17 @@ void	tk_data(t_pars **pars, char *data)
 		if (data[i] == '|')
 		{
 			tmp = ft_substr(data, j, i - j);
-			//printf("tmp 1 = %s\n", tmp);
 			*pars = p_add_list(*pars, tmp);
-			j = i + 1;
+			if (data[i + 1] == ' ')
+			{
+				while (data[i + 1] == ' ')
+					i++;
+			}
+				j = i + 1;
 		}
 		if (data[i + 1] == '\0')
 		{
 			tmp = ft_substr(data, j, i - j + 1);
-			//printf("tmp 2 = %s\n", tmp);
 			*pars = p_add_list(*pars, tmp);
 		}
 	}

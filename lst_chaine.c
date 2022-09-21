@@ -19,6 +19,7 @@ t_node	*create_cell(char *data)
 	if (!cell)
 		return (0);
 	cell->data = data;
+	cell->next = NULL;
 	return (cell);
 }
 

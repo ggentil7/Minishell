@@ -28,7 +28,7 @@ char	*username(t_node *head);					/* user pour prompt */
 
 // Parsing
 
-void    tk_data(t_pars **pars, char *data);		/* prend les donnees de la ligne de cmd */
+void	data_to_lst(t_pars **pars, char *data);		/* prend les donnees de la ligne de cmd */
 
 // List chained parsing
 

@@ -47,7 +47,7 @@ int	prompt(t_node *head, t_pars *pars)
 	tmp = pars;
 	buffer = readline(user);
 	add_history(buffer);
-	tk_data(&tmp, buffer);
+	data_to_lst(&tmp, buffer);
 	while (tmp)
 	{
 		printf("%s\n", tmp->p_data);
