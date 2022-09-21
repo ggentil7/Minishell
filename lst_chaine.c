@@ -19,6 +19,7 @@ t_node	*create_cell(char *data)
 	if (!cell)
 		return (0);
 	cell->data = data;
+	cell->next = NULL;
 	return (cell);
 }
 
@@ -56,3 +57,23 @@ char	*getat(t_node *L, int pos)
 	}
 	return (L->data);
 }
+
+// void	ft_lstclear(t_node **lst, void (*del)(void *))
+// {
+// 	t_node	*tmp;
+
+// 	if (!lst || !del)
+// 		return ;
+// 	while (*lst)
+// 	{
+// 		tmp = (*lst)->next;
+// 		ft_lstdelone(*lst, del);
+// 		*lst = tmp;
+// 	}
+// }
+
+// void	ft_lstdelone(t_node *lst, void (*del)(void *))
+// {
+// 	del(lst->content);
+// 	free(lst);
+// }
