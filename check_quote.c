@@ -2,13 +2,14 @@
 
 int	is_quote(char *data, int i)
 {
-	if (data[i] == '\"')
+	if (data[i] == '\"' && check_d_c(data) == 0)
 	{
+		//printf("d quote = %d\n", check_d_c(data));
 		i++;
 		while (data[i] != '\"')
 			i++;
 	}
-	if (data[i] == '\'')
+	if (data[i] == '\'' && check_s_c(data) == 0)
 	{
 		i++;
 		while (data[i] != '\'')

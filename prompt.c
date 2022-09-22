@@ -39,9 +39,7 @@ int	prompt(t_node *head, t_pars *pars)
 	t_pars	*tmp;
 	char	*buffer;
 	char	*user;
-	int		i;
 
-	i = 0;
 	user = username(head);
 	tmp = pars;
 	buffer = readline(user);

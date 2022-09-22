@@ -13,6 +13,11 @@ void	data_to_lst(t_pars **pars, char *data)
 		i = is_quote(data, i);
 		if (data[i] == '|')
 		{
+			if (data[i + 1] == '|')
+			{
+				is_pipe(pars, data, i, j);
+				break ;
+			}
 			is_pipe(pars, data, i, j);
 			if (data[i + 1] == ' ')
 			{
@@ -31,7 +36,9 @@ void	data_to_lst(t_pars **pars, char *data)
 void	is_pipe(t_pars **pars, char *data, int i, int j)
 {
 	char	*tmp;
+	int		y;
 
+	y = 0;
 	tmp = ft_substr(data, j, i - j);
 	*pars = p_add_list(*pars, tmp);
 }
