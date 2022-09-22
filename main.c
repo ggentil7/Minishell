@@ -19,6 +19,7 @@ int	main(int argc, char **argv, char **envp)
 
 		prompt(node, pars); // copie de la liste 
 	}
+	rl_clear_history();
 	return (0);
 }
  

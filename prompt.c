@@ -1,3 +1,4 @@
+
 #include "minishell.h"
 
 char	*path(void)
@@ -35,33 +36,25 @@ char	*username(t_node *head)
 
 int	prompt(t_node *head, t_pars *pars)
 {
-
 	t_pars	*tmp;
-
-
 	char	*buffer;
 	char	*user;
 	int		i;
-	//t_pars	*tmp;
 
 	i = 0;
-	(void)pars;
 	user = username(head);
 	tmp = pars;
 	buffer = readline(user);
 	add_history(buffer);
 
 	data_to_lst(&tmp, buffer);
-	while (tmp)
+	while (tmp != NULL)
 	{
 		printf("%s\n", tmp->p_data);
 		tmp = tmp->next;
 	}
 	//rl_clear_history();
 	p_lstclear(&pars, NULL);
-	free (buffer);
-
-
 	free (user);
 	free(buffer);
 	return (0);

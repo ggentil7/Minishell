@@ -1,3 +1,4 @@
+
 #include "minishell.h"
 
 void	data_to_lst(t_pars **pars, char *data)
@@ -5,20 +6,14 @@ void	data_to_lst(t_pars **pars, char *data)
 	int		i;
 	int		j;
 
-
-	char	*tmp;
-
-
-
-   	i = -1;
+	i = -1;
 	j = 0;
-	tmp = NULL;
 	while (data[++i])
 	{
+		i = is_quote(data, i);
 		if (data[i] == '|')
 		{
-			tmp = ft_substr(data, j, i - j);
-			*pars = p_add_list(*pars, tmp);
+			is_pipe(pars, data, i, j);
 			if (data[i + 1] == ' ')
 			{
 				while (data[i + 1] == ' ')
@@ -28,8 +23,25 @@ void	data_to_lst(t_pars **pars, char *data)
 		}
 		if (data[i + 1] == '\0')
 		{
-			tmp = ft_substr(data, j, i - j + 1);
-			*pars = p_add_list(*pars, tmp);
+			is_zero(pars, data, i, j);
 		}
 	}
 }
+
+void	is_pipe(t_pars **pars, char *data, int i, int j)
+{
+	char	*tmp;
+
+	tmp = ft_substr(data, j, i - j);
+	*pars = p_add_list(*pars, tmp);
+}
+
+void	is_zero(t_pars **pars, char *data, int i, int j)
+{
+	char	*tmp;
+
+	tmp = ft_substr(data, j, i - j + 1);
+	*pars = p_add_list(*pars, tmp);
+}
+
+

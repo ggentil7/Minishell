@@ -6,7 +6,7 @@ NAME			=		minishell
 #***** Sources / Objs *****#
 
 SRC				=		main.c prompt.c lst_chaine.c env.c utils.c parsing.c lst_parsing.c \
-						signal.c 
+						signal.c check_quote.c
 OBJS			=		$(SRC:.c=.o)
 
 #***** Libft *****#

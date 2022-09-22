@@ -31,11 +31,16 @@ char	*path(void);								/* recupere le path */
 char	*username(t_node *head);					/* user pour prompt */
 
 // Parsing
-
 void	data_to_lst(t_pars **pars, char *data);		/* prend les donnees de la ligne de cmd */
+void	is_pipe(t_pars **pars, char *data, int i, int j);
+void	is_zero(t_pars **pars, char *data, int i, int j);
+
+// Check quote
+int		is_quote(char *data, int i);
+int		check_s_c(char *line);
+int		check_d_c(char *line);
 
 // List chained parsing
-
 t_pars	*p_empty_lst(void);
 t_pars	*p_create_cell(char *data);
 t_pars	*p_add_list(t_pars *L, char *data);
@@ -45,14 +50,12 @@ void	p_lstclear(t_pars **lst, void (*del)(void *));
 void	p_lstdelone(t_pars *lst, void (*del)(void *));
 
 // Env
-
 void	env_cpy(t_node **node, char **envp);		/* copie envp dans liste chainee */
 int		check_env(char *env, char *vari);			/* compare variable d'env */
 char	*search_env(t_node *head, char *search);	/* cherche la variable d'env */
 char	*reste(char *str);
 
 // list chained
-
 t_node	*empty_lst(void);
 int		isempty(t_node *L);
 t_node	*create_cell(char *data);
@@ -64,5 +67,6 @@ void	handle_sigint(int sig);
 
 void	rl_replace_line(const char *text, int clear_undo);
 
+void	rl_clear_history(void);
 
 #endif
