@@ -45,15 +45,13 @@ int	prompt(t_node *head, t_pars *pars)
 	buffer = readline(user);
 	if (buffer[0] != '\0')
 		add_history(buffer);
-
 	data_to_lst(&tmp, buffer);
 	while (tmp != NULL)
 	{
 		printf("%s\n", tmp->p_data);
 		tmp = tmp->next;
 	}
-	//rl_clear_history();
-	p_lstclear(&pars, NULL);
+	p_lstclear(&tmp, NULL);
 	free (user);
 	free(buffer);
 	return (0);
