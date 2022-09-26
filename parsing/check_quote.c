@@ -1,19 +1,31 @@
-#include "minishell.h"
+#include "../minishell.h"
 
 int	is_quote(char *data, int i)
 {
-	if (data[i] == '\"' && check_d_c(data) == 0)
+	int	y;
+
+	y = 0;
+	if (data[i] == '\"' /*&& check_d_c(data) == 0*/)
 	{
-		//printf("d quote = %d\n", check_d_c(data));
 		i++;
+		y = i;
 		while (data[i] != '\"')
+		{
+			if (data[i] == '\0')
+				return (y);
 			i++;
+		}
 	}
-	if (data[i] == '\'' && check_s_c(data) == 0)
+	if (data[i] == '\'' /*&& check_s_c(data) == 0*/)
 	{
 		i++;
+		y = i;
 		while (data[i] != '\'')
+		{
+			if (data[i] == '\0')
+				return (y);
 			i++;
+		}
 	}
 	return (i);
 }

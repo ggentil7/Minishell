@@ -34,6 +34,9 @@ char	*username(t_node *head);					/* user pour prompt */
 void	data_to_lst(t_pars **pars, char *data);		/* prend les donnees de la ligne de cmd */
 void	is_pipe(t_pars **pars, char *data, int i, int j);
 void	is_zero(t_pars **pars, char *data, int i, int j);
+int		is_space_pipe(char *data, int i);
+int		is_double_pipe(char *data, int i);
+int		check_pipe(char *data);
 
 // Check quote
 int		is_quote(char *data, int i);

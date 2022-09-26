@@ -1,4 +1,4 @@
-#include "minishell.h"
+#include "../minishell.h"
 
 void	env_cpy(t_node **node, char **envp)
 {
