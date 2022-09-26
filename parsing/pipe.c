@@ -7,14 +7,21 @@ int	check_pipe(char *data)
 	i = 0;
 	while (data[i])
 	{
-		i = is_quote(data, i);
-		if (data[i] != '|')
+		if (data[0] == '|')
 		{
-			i++;
+			printf("Error parsing '|' !\n");
+			return (0);
 		}
-		else
+		//printf("i 1 = %d\n", i);
+		i = is_quote(data, i);
+		//printf("i 2 = %d\n", i);
+		// while (data[i] != '|')
+		// {
+		// 	i++;
+		// }
+		if (data[i] == '|')
 		{
-			if (is_double_pipe(data, i) == 0)
+			if (is_double_pipe(data, i) == 0 || is_space_pipe(data, i) == 0 || is_bs_pipe(data, i) == 0)
 				return (0);
 		}
 		i++;
@@ -42,6 +49,16 @@ int	is_double_pipe(char *data, int i)
 	return (1);
 }
 
+int	is_bs_pipe(char *data, int i)
+{
+	if (data[i + 1] == '\0')
+	{
+		printf("Error parsing '|' !\n");
+		return (0);
+	}
+	return (1);
+}
+
 int	is_space_pipe(char *data, int i)
 {
 	if (data[i + 1] == ' ')
@@ -49,7 +66,7 @@ int	is_space_pipe(char *data, int i)
 		i++;
 		while (data[i] == ' ')
 		{
-			if (data[i + 1] == '|')
+			if (data[i + 1] == '|' || data[i + 1] == '\0')
 			{
 				printf("syntax error near unexpected token `|'\n");
 				return (0);

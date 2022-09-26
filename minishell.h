@@ -37,6 +37,7 @@ void	is_zero(t_pars **pars, char *data, int i, int j);
 int		is_space_pipe(char *data, int i);
 int		is_double_pipe(char *data, int i);
 int		check_pipe(char *data);
+int		is_bs_pipe(char *data, int i);
 
 // Check quote
 int		is_quote(char *data, int i);

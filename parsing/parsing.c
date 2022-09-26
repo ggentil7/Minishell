@@ -8,12 +8,13 @@ void	data_to_lst(t_pars **pars, char *data)
 
 	i = -1;
 	j = 0;
-	while (data[++i] && check_pipe(data) == 1)
+	while (data[++i])
 	{
+		//printf("pipe = %d\n", check_pipe(data));
 		i = is_quote(data, i);
 		if (data[i] == '|')
 		{
-			if (is_double_pipe(data, i) != 1 || check_pipe(data) != 1)
+			if (is_double_pipe(data, i) != 1 || check_pipe(data) != 1 || is_space_pipe(data, i) != 1)
 			{
 				break ;
 			}
