@@ -5,7 +5,9 @@ NAME			=		minishell
 
 #***** Sources / Objs *****#
 
-SRC				=		main.c prompt.c lst_chaine.c env.c utils.c parsing.c lst_parsing.c \
+SRC				=		main.c prompt.c utils.c \
+						$(addprefix ./env/, env.c lst_chaine.c)\
+						$(addprefix ./parsing/, parsing.c lst_parsing.c check_quote.c pipe.c)\
 						signal.c 
 OBJS			=		$(SRC:.c=.o)
 
