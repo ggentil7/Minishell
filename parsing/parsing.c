@@ -10,7 +10,6 @@ void	data_to_lst(t_pars **pars, char *data)
 	j = 0;
 	while (data[++i])
 	{
-		//printf("pipe = %d\n", check_pipe(data));
 		i = is_quote(data, i);
 		if (data[i] == '|')
 		{

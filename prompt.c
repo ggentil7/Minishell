@@ -43,7 +43,8 @@ int	prompt(t_node *head, t_pars *pars)
 	user = username(head);
 	tmp = pars;
 	buffer = readline(user);
-	add_history(buffer);
+	if (buffer[0] != '\0')
+		add_history(buffer);
 
 	data_to_lst(&tmp, buffer);
 	while (tmp != NULL)
