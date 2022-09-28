@@ -13,7 +13,10 @@ int	check_pipe(char *data)
 			return (0);
 		}
 		//printf("i 1 = %d\n", i);
-		i = is_quote(data, i);
+		if (is_quote(data, i) == -1)
+			return (-1);
+		else
+			i = is_quote(data, i);
 		//printf("i 2 = %d\n", i);
 		// while (data[i] != '|')
 		// {
@@ -26,7 +29,7 @@ int	check_pipe(char *data)
 		}
 		i++;
 	}
-	return (1);
+	return (-1);
 }
 
 void	is_pipe(t_pars **pars, char *data, int i, int j)

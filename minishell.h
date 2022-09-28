@@ -31,7 +31,8 @@ char	*path(void);								/* recupere le path */
 char	*username(t_node *head);					/* user pour prompt */
 
 // Parsing
-void	data_to_lst(t_pars **pars, char *data);		/* prend les donnees de la ligne de cmd */
+int		check_data_to_lst(char *data);
+int		data_to_lst(t_pars **pars, char *data);		/* prend les donnees de la ligne de cmd */
 void	is_pipe(t_pars **pars, char *data, int i, int j);
 void	is_zero(t_pars **pars, char *data, int i, int j);
 int		is_space_pipe(char *data, int i);
@@ -40,9 +41,11 @@ int		check_pipe(char *data);
 int		is_bs_pipe(char *data, int i);
 
 // Check quote
+int		is_s_quote(char *data, int i);
+int		is_d_quote(char *data, int i);
 int		is_quote(char *data, int i);
-int		check_s_c(char *line);
-int		check_d_c(char *line);
+int		check_s_q(char *line);
+int		check_d_q(char *line);
 
 // List chained parsing
 t_pars	*p_empty_lst(void);
