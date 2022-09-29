@@ -7,7 +7,7 @@ NAME			=		minishell
 
 SRC				=		main.c prompt.c utils.c \
 						$(addprefix ./env/, env.c lst_chaine.c)\
-						$(addprefix ./parsing/, parsing.c lst_parsing.c check_quote.c pipe.c)\
+						$(addprefix ./parsing/, parsing.c lst_parsing.c check_quote.c pipe.c l2_parsing.c)\
 						signal.c 
 OBJS			=		$(SRC:.c=.o)
 

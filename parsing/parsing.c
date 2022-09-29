@@ -17,10 +17,6 @@ int	data_to_lst(t_pars **pars, char *data)
 			i = is_quote(data, i);
 			if (data[i] == '|')
 			{
-				if (is_double_pipe(data, i) != -1 || check_pipe(data) != -1 || is_space_pipe(data, i) != -1)
-				{
-					return (-1);
-				}
 				is_pipe(pars, data, i, j);
 				if (data[i + 1] == ' ')
 					while (data[i + 1] == ' ')
@@ -37,29 +33,28 @@ int	data_to_lst(t_pars **pars, char *data)
 int	check_data_to_lst(char *data)
 {
 	int	i;
+	int j;
 
+	j = 0;
 	i = -1;
 	while (data[++i])
 	{
-		if (is_quote(data, i) == -1)
+		j = i;
+		i = is_quote(data, i);
+		if (j != i)
+			i++;
+		if (after_is_quote(data, i) == -1)
 		{
-			//printf("normalement le retour du i = -1 mais i = %d\n", i);
+			printf("Error parsing quotes !\n");
 			return (-1);
 		}
-		else
-			i = is_quote(data, i);
-		//return (-1);
-		//printf("la pute si i passe par la ... i = %d\n", i);
-		//printf("i dans check = %d\n", i);
-		//printf("bloque la data[%c], i = [%d]\n", data[i], i);
 		if (data[i] == '|')
 		{
-			if (is_double_pipe(data, i) != -1 || check_pipe(data) != -1 || is_space_pipe(data, i) != -1)
-			{
+			if (is_double_pipe(data, i) == -1 || check_pipe(data) == -1 || is_space_pipe(data, i) == -1)
 				return (-1);
-			}
 		}
-		//return (0);
+		if (data[i] == '\0')
+			return (0);
 	}
 	return (0);
 }

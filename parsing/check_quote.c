@@ -2,36 +2,34 @@
 
 int	is_quote(char *data, int i)
 {
+	int	j;
+
+	j = 0;
 	if (data[i] == '\'')
 	{
+		j = i;
 		i++;
-		//printf("i = %d\n", i);
 		i = is_s_quote(data, i);
-		//printf(" normalement -1 mais i = %d\n", i);
 		if (i == -1)
-			return (-1);
+			return (j);
 	}
-	//usleep(200);
 	if (data[i] == '\"')
 	{
+		j = i;
 		i++;
 		i = is_d_quote(data, i);
-		//printf("i 2 = %d\n", i);
 		if (i == -1)
-			return (-1);
+			return (j);
 	}
 	return (i);
 }
 
 int	is_s_quote(char *data, int i)
 {
-	//printf("i s_q = %d\n", i);
 	while (data[i] != '\'')
 	{
-		//printf("ou la data[%c], i = [%d]\n", data[i], i);
 		if (data[i] == '\0')
 		{
-			printf("Error [\']!\n");
 			return (-1);
 		}
 		i++;
@@ -43,15 +41,38 @@ int	is_d_quote(char *data, int i)
 {
 	while (data[i] != '\"')
 	{
-		//printf("data[%c], i = %d\n", data[i], i);
 		if (data[i] == '\0')
 		{
-			printf("Error [\"] !\n");
 			return (-1);
 		}
 		i++;
 	}
 	return (i);
+}
+
+int	after_is_quote(char *data, int i)
+{
+	if (data[i] == '\'')
+	{
+		i++;
+		while (data[i] != '\'')
+		{
+			if (data[i] == '\0' || data[i] == '|')
+				return (-1);
+			i++;
+		}
+	}
+	if (data[i] == '\"')
+	{
+		i++;
+		while (data[i] != '\'')
+		{
+			if (data[i] == '\0' || data[i] == '|')
+				return (-1);
+			i++;
+		}
+	}
+	return (0);
 }
 
 // int	check_s_q(char *line)
