@@ -9,7 +9,7 @@ int	lst_to_tab(t_pars *pars)
 	tmp = pars;
 	while (tmp)
 	{
-		printf("tmp = %s\n", tmp->p_data);
+		// printf("cellule [%d]\t\n", i);
 		tmp->args = ft_split_pipe(tmp->p_data, ' ');
 		tmp = tmp->next;
 		i++;

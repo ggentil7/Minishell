@@ -28,9 +28,7 @@ int	check_pipe(char *data)
 void	is_pipe(t_pars **pars, char *data, int i, int j)
 {
 	char	*tmp;
-	int		y;
 
-	y = 0;
 	tmp = ft_substr(data, j, i - j);
 	*pars = p_add_list(*pars, tmp);
 }

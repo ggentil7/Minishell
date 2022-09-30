@@ -1,5 +1,33 @@
 #include "../minishell.h"
 
+
+char	*remove_quote(char *data)
+{
+	int		i;
+	int		j;
+	int		k;
+	int		*quote;
+	char	*new;
+
+	i = -1;
+	j = -1;
+	k = 0;
+	quote = init_tab_compt_quote(data);
+	new = malloc(sizeof(char) * ft_strlen(data) - compte_quote(data) + 1);
+	while (new[++j])
+	{
+		i++;
+		if (quote[k] == i)
+		{
+			i++;
+			k++;
+		}
+		new[j] = data[i];
+	}
+	free (quote);
+	return (new);
+}
+
 int	is_quote(char *data, int i)
 {
 	int	j;

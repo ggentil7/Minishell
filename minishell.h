@@ -51,7 +51,6 @@ int		is_bs_pipe(char *data, int i);
 // Parsing L2
 
 int		lst_to_tab(t_pars *pars);
-char	**ft_split_pipe(char *s, char c);
 
 // Check quote
 int		is_s_quote(char *data, int i);
@@ -60,6 +59,7 @@ int		is_quote(char *data, int i);
 int		check_s_q(char *line);
 int		check_d_q(char *line);
 int		after_is_quote(char *data, int i);
+char	*remove_quote(char *data);
 
 // List chained parsing
 t_pars	*p_empty_lst(void);
@@ -82,6 +82,13 @@ int		isempty(t_node *L);
 t_node	*create_cell(char *data);
 t_node	*add_list(t_node *L, char *data);
 char	*getat(t_node *L, int pos);
+
+// Utils
+char	**ft_split_pipe(char *s, char c);
+char	**ft_split_quote(char *s, char c);
+char	**split_to_remove(char **tab);
+int		compte_quote(char *data);
+int 	*init_tab_compt_quote(char *data);
 
 // Signal
 void	handle_sigint(int sig);
