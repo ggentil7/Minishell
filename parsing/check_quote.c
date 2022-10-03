@@ -9,20 +9,24 @@ char	*remove_quote(char *data)
 	int		*quote;
 	char	*new;
 
-	i = -1;
-	j = -1;
+	i = 0;
+	j = 0;
 	k = 0;
 	quote = init_tab_compt_quote(data);
-	new = malloc(sizeof(char) * ft_strlen(data) - compte_quote(data) + 1);
-	while (new[++j])
+	new = ft_calloc(sizeof(char), ft_strlen(data) - compte_quote(data) + 1);
+	while (data[i])
 	{
-		i++;
-		if (quote[k] == i)
+		if (quote[k] != i)
 		{
+			new[j] = data[i];
+			j++;
 			i++;
-			k++;
 		}
-		new[j] = data[i];
+		else
+		{
+			k++;
+			i++;
+		}
 	}
 	free (quote);
 	return (new);
@@ -85,20 +89,24 @@ int	after_is_quote(char *data, int i)
 		i++;
 		while (data[i] != '\'')
 		{
-			if (data[i] == '\0' || data[i] == '|')
+			if (data[i] == '\0')
 				return (-1);
 			i++;
 		}
+		if (data[i] == '|')
+			return (-1);
 	}
 	if (data[i] == '\"')
 	{
 		i++;
-		while (data[i] != '\'')
+		while (data[i] != '\"')
 		{
-			if (data[i] == '\0' || data[i] == '|')
+			if (data[i] == '\0')
 				return (-1);
 			i++;
 		}
+		if (data[i] == '|')
+			return (-1);
 	}
 	return (0);
 }

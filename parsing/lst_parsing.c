@@ -14,7 +14,7 @@ t_pars	*p_create_cell(char *data)
 {
 	t_pars	*cell;
 
-	cell = malloc(sizeof(cell));
+	cell = ft_calloc(sizeof(t_pars), 1);
 	if (!cell)
 		return (0);
 	cell->p_data = data;

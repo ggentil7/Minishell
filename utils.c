@@ -10,7 +10,7 @@ int *init_tab_compt_quote(char *data)
 	j = 0;
 	i = -1;
 	k = 0;
-	quote = malloc(sizeof(int) * compte_quote(data) + 1);
+	quote = ft_calloc(sizeof(int), compte_quote(data) + 1);
 	while (data[++i])
 	{
 		if (data[i] == '\'' || data[i] == '\"')
@@ -42,7 +42,6 @@ int	compte_quote(char *data)
 		if (j != i)
 			compt += 2;
 	}
-	printf("compt = %d\n", compt);
 	return (compt);
 }
 
@@ -101,21 +100,23 @@ char	**split_to_remove(char **tab)
 	int	i;
 	char **tab2;
 
-	i = -1;
-	tab2 = malloc(sizeof(char *) * ft_tablen(tab) + 1);
-	while (tab[++i])
+	i = 0;
+	tab2 = ft_calloc(sizeof(char *), ft_tablen(tab) + 1);
+	while (tab[i])
 	{
 		if (compte_quote(tab[i]) == 0)
 		{
 			tab2[i] = ft_strdup(tab[i]);
-			printf("tab2 [%s]\n", tab2[i]);
 		}
 		else
 		{
 			tab2[i] = ft_strdup(remove_quote(tab[i]));
-			printf("tab2 [%s]\n", tab2[i]);
 		}
+		i++;
 	}
+	i = -1;
+	while (tab[++i])
+		free (tab[i]);
 	free (tab);
 	return (tab2);
 }
@@ -147,4 +148,3 @@ char	**split_to_remove(char **tab)
 // 	}
 // 	return (tab);
 // }
-

@@ -20,11 +20,6 @@ typedef struct s_node
 	struct s_node	*next;
 }	t_node;
 
-// typedef struct s_input
-// {
-// 	char			**args;
-// }	t_input;
-
 typedef struct s_pars
 {
 	char			*p_data;

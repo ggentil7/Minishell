@@ -11,8 +11,6 @@ int	main(int argc, char **argv, char **envp)
 	pars = NULL;
 	node = NULL;
 	env_cpy(&node, envp);
-		// signal(SIGINT, &handle_sigint);
-		// signal(SIGQUIT, SIG_IGN);
 	while (1)
 	{
 

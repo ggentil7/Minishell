@@ -3,16 +3,21 @@
 int	lst_to_tab(t_pars *pars)
 {
 	int		i;
-	t_pars	*tmp;
+	char **temp;
 
 	i = 0;
-	tmp = pars;
-	while (tmp)
+	temp = NULL;
+	while (pars)
 	{
-		// printf("cellule [%d]\t\n", i);
-		tmp->args = ft_split_pipe(tmp->p_data, ' ');
-		tmp = tmp->next;
-		i++;
+		temp = ft_split_pipe(pars->p_data, ' ');
+		i = 0;
+		pars->args = temp;
+		pars = pars->next;
 	}
+	i = -1;
+	while (temp[++i])
+		free (temp[i]);
+	free (temp);
 	return (0);
 }
+

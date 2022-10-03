@@ -36,18 +36,23 @@ int	check_data_to_lst(char *data)
 	int j;
 
 	j = 0;
-	i = -1;
-	while (data[++i])
+	i = 0;
+	while (data[i])
 	{
 		j = i;
+		//printf("avant is_quote: data [%c], i = [%d]\n", data[i], i);
 		i = is_quote(data, i);
+		//printf("apres is_quote: data [%c], i = [%d]\n", data[i], i);
 		if (j != i)
 			i++;
+		//printf("avant after_is_quote: data [%c], i = [%d]\n", data[i], i);
 		if (after_is_quote(data, i) == -1)
 		{
+			//printf("dans after_is_quote: data [%c], i = [%d]\n", data[i], i);
 			printf("Error parsing quotes !\n");
 			return (-1);
 		}
+		//printf("apres after_is_quote: data [%c], i = [%d]\n", data[i], i);
 		if (data[i] == '|')
 		{
 			if (is_double_pipe(data, i) == -1 || check_pipe(data) == -1 || is_space_pipe(data, i) == -1)
@@ -55,6 +60,8 @@ int	check_data_to_lst(char *data)
 		}
 		if (data[i] == '\0')
 			return (0);
+		if (data[i] != '\'' && data[i] != '\"')
+			i++;
 	}
 	return (0);
 }

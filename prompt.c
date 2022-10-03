@@ -42,14 +42,13 @@ int	prompt(t_node *head, t_pars *pars)
 	int		i;
 
 	i = -1;
+	//add_history(ft_strdup("\"salut\" | ouais | 'jj'\"pouet\" | kzgfhio"));
 	user = username(head);
-	tmp = pars;
 	buffer = readline(user);
 	if (buffer != NULL && buffer[0] != '\0')
-		data_to_lst(&tmp, buffer);
+		data_to_lst(&pars, buffer);
+	tmp = pars;
 	lst_to_tab(tmp);
-	if (buffer != NULL && buffer[0] != '\0')
-		add_history(buffer);
 	while (tmp != NULL)
 	{
 		while (tmp->args[++i] != NULL)
@@ -57,7 +56,30 @@ int	prompt(t_node *head, t_pars *pars)
 		i = -1;
 		tmp = tmp->next;
 	}
+	tmp = pars;
+	while (tmp != NULL)
+	{
+		while (tmp->args[++i] != NULL)
+			free (tmp->args[i]);
+		free (tmp->args);
+		i = -1;
+		tmp = tmp->next;
+	}
+	tmp = pars;
 	p_lstclear(&tmp, NULL);
+	while (pars != NULL)
+	{
+		while (pars->args[++i] != NULL)
+			free (pars->args[i]);
+		free (pars->args);
+		i = -1;
+		pars = pars->next;
+	}
+	p_lstclear(&pars, NULL);
+
+
+	if (buffer != NULL && buffer[0] != '\0')
+		add_history(buffer);
 	free (user);
 	free(buffer);
 	return (0);

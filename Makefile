@@ -5,7 +5,7 @@ NAME			=		minishell
 
 #***** Sources / Objs *****#
 
-SRC				=		main.c prompt.c utils.c \
+SRC				=		main.c prompt.c utils.c init.c\
 						$(addprefix ./env/, env.c lst_chaine.c)\
 						$(addprefix ./parsing/, parsing.c lst_parsing.c check_quote.c pipe.c l2_parsing.c)\
 						signal.c 
@@ -67,7 +67,7 @@ logo :
 start : 
 			@$(START)
 
-%.o:		%.c minishell.h
+%.o:		%.c | minishell.h
 			$(CC) $(CFLAGS) -g $(HEADER) -c $< -o $@
 
 minishell:	${OBJS}
