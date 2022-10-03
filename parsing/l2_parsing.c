@@ -5,7 +5,7 @@ int	lst_to_tab(t_pars *pars)
 	// int		i;
 	char **temp;
 
-	// i = 0;
+	//  i = 0;
 	temp = NULL;
 	while (pars)
 	{

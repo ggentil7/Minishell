@@ -8,6 +8,7 @@ char	*remove_quote(char *data)
 	int		k;
 	int		*quote;
 	char	*new;
+	
 
 	i = 0;
 	j = 0;
