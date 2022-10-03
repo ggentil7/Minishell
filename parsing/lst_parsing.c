@@ -14,7 +14,7 @@ t_pars	*p_create_cell(char *data)
 {
 	t_pars	*cell;
 
-	cell = ft_calloc(sizeof(t_pars), 1);
+	cell = malloc(sizeof(t_pars));
 	if (!cell)
 		return (0);
 	cell->p_data = data;
@@ -57,22 +57,23 @@ char	*p_getat(t_pars *L, int pos)
 	return (L->p_data);
 }
 
-void	p_lstclear(t_pars **lst, void (*del)(void *))
+void	p_lstclear(t_pars *lst)
 {
 	t_pars	*tmp;
 
-	if (!lst || !del)
+	if (!lst)
 		return ;
-	while (*lst)
+	while (lst != NULL)
 	{
-		tmp = (*lst)->next;
-		p_lstdelone(*lst, del);
-		*lst = tmp;
+		tmp = lst->next;
+		p_lstdelone(lst);
+		lst = tmp;
+		printf("clear\n");
 	}
 }
 
-void	p_lstdelone(t_pars *lst, void (*del)(void *))
+void	p_lstdelone(t_pars *lst)
 {
-	del(lst->p_data);
+	free(lst->p_data);
 	free(lst);
 }

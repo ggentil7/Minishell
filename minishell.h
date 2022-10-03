@@ -62,8 +62,8 @@ t_pars	*p_create_cell(char *data);
 t_pars	*p_add_list(t_pars *L, char *data);
 int		p_isempty(t_pars *L);
 char	*p_getat(t_pars *L, int pos);
-void	p_lstclear(t_pars **lst, void (*del)(void *));
-void	p_lstdelone(t_pars *lst, void (*del)(void *));
+void	p_lstclear(t_pars *lst);
+void	p_lstdelone(t_pars *lst);
 
 // Env
 void	env_cpy(t_node **node, char **envp);		/* copie envp dans liste chainee */
@@ -77,6 +77,8 @@ int		isempty(t_node *L);
 t_node	*create_cell(char *data);
 t_node	*add_list(t_node *L, char *data);
 char	*getat(t_node *L, int pos);
+void	lstdelone(t_node *lst, void (*del)(void *));
+void	lstclear(t_node **lst, void (*del)(void *));
 
 // Utils
 char	**ft_split_pipe(char *s, char c);

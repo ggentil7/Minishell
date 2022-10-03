@@ -18,10 +18,13 @@ int	data_to_lst(t_pars **pars, char *data)
 			if (data[i] == '|')
 			{
 				is_pipe(pars, data, i, j);
+				j = i + 1;
 				if (data[i + 1] == ' ')
+				{
 					while (data[i + 1] == ' ')
 						i++;
 					j = i + 1;
+				}
 			}
 			if (data[i + 1] == '\0')
 				is_zero(pars, data, i, j);

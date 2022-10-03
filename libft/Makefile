@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: aboymond <aboymond@student.42.fr>          +#+  +:+       +#+         #
+#    By: piow00 <piow00@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/27 17:21:48 by aboymond          #+#    #+#              #
-#    Updated: 2022/10/03 13:49:15 by aboymond         ###   ########.fr        #
+#    Updated: 2022/10/03 21:42:47 by piow00           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,7 @@ BONUS = ft_lstiter.c ft_lstlast.c ft_lstmap.c ft_lstadd_back.c ft_lstnew.c     \
 	    ft_lstadd_front.c ft_lstsize.c ft_lstclear.c ft_lstdelone.c 		   \
 		ft_lstclear.c
 GCC = gcc -g
-CFLAGS    = -Wall -Werror -Wextra 
+#CFLAGS    = -Wall -Werror -Wextra 
 OBJS = $(SRC:.c=.o)
 OBJS_BONUS = $(BONUS:.c=.o)
 
