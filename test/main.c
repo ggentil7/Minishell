@@ -8,118 +8,37 @@
 int	check_s_c(char *line);
 int	check_d_c(char *line);
 int	check_c(const char *str, int i);
+int	remove_quote(char *data);
 
-int	main(void)
+int	main(int ac, char **av)
 {
-	char	*line;
-	char	*tmp = "salut gab comment tu vas?";
-	 int		i;
-	 int		y;
-
-	 i = -1;
-	 y = 0;
-	 while (tmp[++i] != ' ')
-	 {
-		if (tmp[i + 1] == ' ')
-		{
-			line = ft_substr(tmp, y, i + 1);
-			printf("line 1 = %s\n", line);
-		}
-	 }
-	 i++;
-	 y = i;
-	while (tmp[++i] != ' ')
-	 {
-		if (tmp[i + 1] == ' ')
-		{
-			line = ft_substr(tmp, y, i - y + 1);
-			printf("line 2 = %s\n", line);
-		}
-	 }
-	  i++;
-	 y = i;
-	while (tmp[++i] != ' ')
-	 {
-		if (tmp[i + 1] == ' ')
-		{
-			line = ft_substr(tmp, y, i - y + 1);
-			printf("line 3 = %s\n", line);
-		}
-	 }
-	  i++;
-	 y = i;
-	while (tmp[++i] != ' ')
-	 {
-		if (tmp[i + 1] == ' ')
-		{
-			line = ft_substr(tmp, y, i - y + 1);
-			printf("line 4 = %s\n", line);
-		}
-	 }
-	// while (666)
-	// {
-	// 	line = readline("test de merde de l'enfer : ");
-
-	// }
+	(void)ac;
+	remove_quote(av);
 	return (0);
 }
 
-// int	check_c(const char *str, int y)
-// {
-// 	int	i;
+int	remove_quote(char *data)
+{
+	int	i;
+	int	j;
+	int	k;
+	int	*quote;
+	//char	*new;
 
-// 	i = 0;
-// 	while (str[y++])
-// 	{
-// 		if (str[y] == '\"')
-// 		{
-// 			while (str[++y])
-// 			{
-// 				printf("y in = %d\n", y);
-// 				if (str[y + 1] == '\"')
-// 				{
-// 					i = y;
-// 					return (i);
-// 				}
-// 			}
-// 		}
-// 		printf("y = %d\n", y);
-// 	}
-// 	return (i);
-// }
-
-// int	check_s_c(char *line)
-// {
-// 	int	i;
-// 	int	compt;
-
-// 	i = 0;
-// 	compt = 0;
-// 	while (line[i])
-// 	{
-// 		if (line[i] == 39)
-// 			compt++;
-// 		i++;
-// 	}
-// 	if (compt % 2 == 1)
-// 		return (1);
-// 	return (0);
-// }
-
-// int	check_d_c(char *line)
-// {
-// 	int	i;
-// 	int	compt;
-
-// 	i = 0;
-// 	compt = 0;
-// 	while (line[i])
-// 	{
-// 		if (line[i] == 34)
-// 			compt++;
-// 		i++;
-// 	}
-// 	if (compt % 2 == 1)
-// 		return (1);
-// 	return (0);
-// }
+	j = 0;
+	i = -1;
+	k = 0;
+	while (data[++i])
+	{
+		if (data[i] == '\'' || data[i] == '\"')
+		{
+			j = i;
+			quote[k] = j;
+			k++;
+			i = is_quote(data, i);
+			quote[k] = i;
+			k++;
+		}
+	}
+	return (0);
+}
