@@ -57,22 +57,3 @@ char	*getat(t_node *L, int pos)
 	return (L->data);
 }
 
-void	lstclear(t_node **lst, void (*del)(void *))
-{
-	t_node	*tmp;
-
-	if (!lst || !del)
-		return ;
-	while (*lst)
-	{
-		tmp = (*lst)->next;
-		lstdelone(*lst, del);
-		*lst = tmp;
-	}
-}
-
-void	lstdelone(t_node *lst, void (*del)(void *))
-{
-	del(lst->data);
-	free(lst);
-}

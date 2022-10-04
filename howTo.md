@@ -28,3 +28,13 @@
 
    1. go into your branch
    1. grb main
+
+
+how to handle a leaks
+
+valgrind : valgrind --leak-check=yes <prog>
+
+leaks : export MallocStackLogging=1
+		leaks (other term)
+
+kill process : pkill <prog>

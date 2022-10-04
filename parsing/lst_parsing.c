@@ -1,3 +1,4 @@
+
 #include "../minishell.h"
 
 t_pars	*p_empty_lst(void)
@@ -55,25 +56,4 @@ char	*p_getat(t_pars *L, int pos)
 			return (NULL);
 	}
 	return (L->p_data);
-}
-
-void	p_lstclear(t_pars *lst)
-{
-	t_pars	*tmp;
-
-	if (!lst)
-		return ;
-	while (lst != NULL)
-	{
-		tmp = lst->next;
-		p_lstdelone(lst);
-		lst = tmp;
-		printf("clear\n");
-	}
-}
-
-void	p_lstdelone(t_pars *lst)
-{
-	free(lst->p_data);
-	free(lst);
 }

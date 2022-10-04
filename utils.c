@@ -1,6 +1,7 @@
+
 #include "minishell.h"
 
-int *init_tab_compt_quote(char *data)
+int	*init_tab_compt_quote(char *data)
 {
 	int	i;
 	int	j;
@@ -97,8 +98,8 @@ char	**ft_split_pipe(char *s, char c)
 
 char	**split_to_remove(char **tab)
 {
-	int	i;
-	char **tab2;
+	int		i;
+	char	**tab2;
 
 	i = 0;
 	tab2 = ft_calloc(sizeof(char *), ft_tablen(tab) + 1);
@@ -110,7 +111,7 @@ char	**split_to_remove(char **tab)
 		}
 		else
 		{
-			tab2[i] = ft_strdup(remove_quote(tab[i]));
+			tab2[i] = remove_quote(tab[i]);
 		}
 		i++;
 	}

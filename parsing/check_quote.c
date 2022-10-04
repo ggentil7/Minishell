@@ -1,5 +1,5 @@
-#include "../minishell.h"
 
+#include "../minishell.h"
 
 char	*remove_quote(char *data)
 {
@@ -8,7 +8,6 @@ char	*remove_quote(char *data)
 	int		k;
 	int		*quote;
 	char	*new;
-	
 
 	i = 0;
 	j = 0;
@@ -18,11 +17,7 @@ char	*remove_quote(char *data)
 	while (data[i])
 	{
 		if (quote[k] != i)
-		{
-			new[j] = data[i];
-			j++;
-			i++;
-		}
+			new[j++] = data[i++];
 		else
 		{
 			k++;
