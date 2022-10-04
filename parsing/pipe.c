@@ -1,3 +1,4 @@
+
 #include "../minishell.h"
 
 int	check_pipe(char *data)
@@ -12,12 +13,11 @@ int	check_pipe(char *data)
 			printf("Error parsing '|' !\n");
 			return (-1);
 		}
-		//printf("avant data[%c], i = %d\n", data[i], i);
 		i = is_quote(data, i);
-		//printf("apres data[%c], i = %d\n", data[i], i);
 		if (data[i] == '|')
 		{
-			if (is_double_pipe(data, i) == -1 || is_space_pipe(data, i) == -1 || is_bs_pipe(data, i) == -1)
+			if (is_double_pipe(data, i) == -1 || is_space_pipe(data, i) == -1
+				|| is_bs_pipe(data, i) == -1)
 				return (-1);
 		}
 		i++;

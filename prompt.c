@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   prompt.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aboymond <aboymond@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/10/04 11:53:11 by aboymond          #+#    #+#             */
+/*   Updated: 2022/10/04 15:26:06 by aboymond         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "minishell.h"
 
@@ -42,14 +53,32 @@ int	prompt(t_node *head, t_pars *pars)
 	int		i;
 
 	i = -1;
+	//add_history(ft_strdup("\"salut\" | ouais | 'jj'\"pouet\" | kzgfhio"));
 	user = username(head);
-	tmp = pars;
 	buffer = readline(user);
+	if (ft_strncmp(buffer, "exit", 4) == 0)
+	{
+		free_prompt(pars, buffer, user);
+		exit (EXIT_SUCCESS);
+	}
 	if (buffer != NULL && buffer[0] != '\0')
-		data_to_lst(&tmp, buffer);
+		data_to_lst(&pars, buffer);
+	tmp = pars;
 	lst_to_tab(tmp);
+	print_prompt(tmp);
 	if (buffer != NULL && buffer[0] != '\0')
 		add_history(buffer);
+	free_prompt(pars, buffer, user);
+	return (0);
+}
+
+void	print_prompt(t_pars *pars)
+{
+	t_pars	*tmp;
+	int		i;
+
+	i = -1;
+	tmp = pars;
 	while (tmp != NULL)
 	{
 		while (tmp->args[++i] != NULL)
@@ -57,8 +86,4 @@ int	prompt(t_node *head, t_pars *pars)
 		i = -1;
 		tmp = tmp->next;
 	}
-	p_lstclear(&tmp, NULL);
-	free (user);
-	free(buffer);
-	return (0);
 }

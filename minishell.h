@@ -20,11 +20,6 @@ typedef struct s_node
 	struct s_node	*next;
 }	t_node;
 
-// typedef struct s_input
-// {
-// 	char			**args;
-// }	t_input;
-
 typedef struct s_pars
 {
 	char			*p_data;
@@ -34,9 +29,14 @@ typedef struct s_pars
 	int				fd_out;
 }	t_pars;
 
+// Prompt
 int		prompt(t_node *node, t_pars *pars);
 char	*path(void);								/* recupere le path */
 char	*username(t_node *head);					/* user pour prompt */
+void	print_prompt(t_pars *pars);					/* affiche le prompt */
+
+// Error
+int		error_quote(void);
 
 // Parsing
 int		check_data_to_lst(char *data);
@@ -67,8 +67,8 @@ t_pars	*p_create_cell(char *data);
 t_pars	*p_add_list(t_pars *L, char *data);
 int		p_isempty(t_pars *L);
 char	*p_getat(t_pars *L, int pos);
-void	p_lstclear(t_pars **lst, void (*del)(void *));
-void	p_lstdelone(t_pars *lst, void (*del)(void *));
+void	p_lstclear(t_pars *lst);
+void	p_lstdelone(t_pars *lst);
 
 // Env
 void	env_cpy(t_node **node, char **envp);		/* copie envp dans liste chainee */
@@ -82,19 +82,24 @@ int		isempty(t_node *L);
 t_node	*create_cell(char *data);
 t_node	*add_list(t_node *L, char *data);
 char	*getat(t_node *L, int pos);
+void	lstdelone(t_node *lst);
+void	lstclear(t_node *lst);
 
 // Utils
 char	**ft_split_pipe(char *s, char c);
 char	**ft_split_quote(char *s, char c);
 char	**split_to_remove(char **tab);
 int		compte_quote(char *data);
-int 	*init_tab_compt_quote(char *data);
+int		*init_tab_compt_quote(char *data);
+
+// Free
+void	free_tab(char **tab);
+void	free_lst(t_pars *pars);
+void	free_prompt(t_pars *pars, char *buff, char *user);
 
 // Signal
 void	handle_sigint(int sig);
-
 void	rl_replace_line(const char *text, int clear_undo);
-
 void	rl_clear_history(void);
 
 #endif

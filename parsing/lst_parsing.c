@@ -1,3 +1,4 @@
+
 #include "../minishell.h"
 
 t_pars	*p_empty_lst(void)
@@ -14,7 +15,7 @@ t_pars	*p_create_cell(char *data)
 {
 	t_pars	*cell;
 
-	cell = malloc(sizeof(cell));
+	cell = malloc(sizeof(t_pars));
 	if (!cell)
 		return (0);
 	cell->p_data = data;
@@ -55,24 +56,4 @@ char	*p_getat(t_pars *L, int pos)
 			return (NULL);
 	}
 	return (L->p_data);
-}
-
-void	p_lstclear(t_pars **lst, void (*del)(void *))
-{
-	t_pars	*tmp;
-
-	if (!lst || !del)
-		return ;
-	while (*lst)
-	{
-		tmp = (*lst)->next;
-		p_lstdelone(*lst, del);
-		*lst = tmp;
-	}
-}
-
-void	p_lstdelone(t_pars *lst, void (*del)(void *))
-{
-	del(lst->p_data);
-	free(lst);
 }
