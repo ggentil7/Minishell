@@ -6,7 +6,7 @@
 /*   By: aboymond <aboymond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 11:53:11 by aboymond          #+#    #+#             */
-/*   Updated: 2022/10/04 15:26:06 by aboymond         ###   ########.fr       */
+/*   Updated: 2022/10/05 22:30:57 by aboymond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,8 @@ int	prompt(t_node *head, t_pars *pars)
 		data_to_lst(&pars, buffer);
 	tmp = pars;
 	lst_to_tab(tmp);
-	print_prompt(tmp);
+	cmd(tmp, head);
+	//print_prompt(tmp);
 	if (buffer != NULL && buffer[0] != '\0')
 		add_history(buffer);
 	free_prompt(pars, buffer, user);

@@ -18,6 +18,7 @@ typedef struct s_node
 {
 	char			*data;
 	struct s_node	*next;
+	char			**args;
 }	t_node;
 
 typedef struct s_pars
@@ -42,6 +43,14 @@ int		init_cmd(t_pars *pars);
 // Bultins
 int		cmd(t_pars *pars, t_node *env);
 int		bultin_search(t_pars *pars, t_node *env);
+int		bultin_env(t_pars *pars, t_node *env);
+int		bultin_export(t_pars *pars, t_node *node);
+
+// Utils Bultins
+char	**env_sort(char **env);
+char	**env_to_tab(t_node *node);
+int		print_export(char **env);
+int		add_to_export(t_pars *pars, t_node *node);
 
 // Error
 int		error_quote(void);
