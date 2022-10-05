@@ -8,8 +8,9 @@ int	main(int argc, char **argv, char **envp)
 	
 	(void)argc;
 	(void)argv;
-	pars = NULL;
 	node = NULL;
+	pars = NULL;
+	// init_all(pars, node);
 	env_cpy(&node, envp);
 	while (1)
 	{

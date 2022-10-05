@@ -52,6 +52,7 @@ char	**env_to_tab(t_node *node)
 	}
 	env[i] = NULL;
 	i = 0;
+	env = env_sort(env);
 	return (env);
 }
 
@@ -93,13 +94,13 @@ int	add_to_export(t_pars *pars, t_node *node)
 	// t_pars	*pars_tmp;
 	int		i;
 	int		j;
-	int		n;
-	int		y;
+	//int		n;
+	//int		y;
 
 	i = 1;
 	j = 0;
-	y = 0;
-	n = ft_tablen(pars->args);
+	//y = 0;
+	//n = ft_tablen(pars->args);
 	node_tmp = node;
 	while (node_tmp != NULL)
 		node_tmp = node_tmp->next;

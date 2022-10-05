@@ -39,6 +39,7 @@ void	print_prompt(t_pars *pars);					/* affiche le prompt */
 
 // Init
 int		init_cmd(t_pars *pars);
+void	init_all(t_pars *pars, t_node *env);
 
 // Bultins
 int		cmd(t_pars *pars, t_node *env);
@@ -111,7 +112,8 @@ int		*init_tab_compt_quote(char *data);
 
 // Free
 void	free_tab(char **tab);
-void	free_lst(t_pars *pars);
+void	free_lst_pars(t_pars *pars);
+void	free_lst_node(t_node *node);
 void	free_prompt(t_pars *pars, char *buff, char *user);
 
 // Signal

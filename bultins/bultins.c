@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   bultins.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aboymond <aboymond@student.42.fr>          +#+  +:+       +#+        */
+/*   By: piow00 <piow00@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 17:12:24 by aboymond          #+#    #+#             */
-/*   Updated: 2022/10/05 18:33:18 by aboymond         ###   ########.fr       */
+/*   Updated: 2022/10/06 00:44:44 by piow00           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,10 @@ int	bultin_search(t_pars *pars, t_node *env)
 	// else if (ft_strcmp(pars->cmd, "pwd") == 0)
 	// 	return (bultin_pwd(pars));
 	if (ft_strncmp(pars->cmd, "export", 6) == 0)
+	{
+		printf("%d\n", ft_strncmp(pars->cmd, "export", 6));	
 		return (bultin_export(pars, env));
+	}
 	// else if (ft_strcmp(pars->cmd, "unset") == 0)
 	// 	return (bultin_unset(pars, env));
 	else if (ft_strncmp(pars->cmd, "env", 3) == 0)
