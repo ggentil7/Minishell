@@ -103,7 +103,9 @@ void	rl_replace_line(const char *text, int clear_undo);
 void	rl_clear_history(void);
 
 // Bultins
+int		pwd(t_pars *pars);
 int		echo_n(t_pars *pars);
+int		cd(t_pars *pars, t_node *env);
 
 
 #endif
