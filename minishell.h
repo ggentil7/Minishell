@@ -31,6 +31,12 @@ typedef struct s_pars
 	char			*cmd;
 }	t_pars;
 
+typedef struct s_args
+{
+	char			**args;
+}	t_args;
+
+
 // Prompt
 int		prompt(t_node *node, t_pars *pars);
 char	*path(void);								/* recupere le path */
@@ -50,8 +56,12 @@ int		bultin_export(t_pars *pars, t_node *node);
 // Utils Bultins
 char	**env_sort(char **env);
 char	**env_to_tab(t_node *node);
+int		add_to_export(t_pars *pars, t_node *node, t_args *args);
+char	**tabjoin(char **tab, t_args *args);
+
+// Bultins print
 int		print_export(char **env);
-int		add_to_export(t_pars *pars, t_node *node);
+
 
 // Error
 int		error_quote(void);

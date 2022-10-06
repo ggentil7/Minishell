@@ -8,6 +8,7 @@ void	env_cpy(t_node **node, char **envp)
 	i = 0;
 	while (envp[i])
 	{
+		//printf("envp[%d] = %s\n", i, envp[i]);
 		*node = add_list(*node, envp[i]);
 		i++;
 	}

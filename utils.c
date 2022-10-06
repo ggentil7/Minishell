@@ -112,7 +112,6 @@ char	**split_to_remove(char **tab)
 		else
 		{
 			tab2[i] = remove_quote(tab[i]);
-			printf("tab2 = %s len = %d\n", tab2[i], (int)ft_strlen(tab2[i]));
 		}
 		i++;
 	}

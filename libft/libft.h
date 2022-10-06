@@ -6,7 +6,7 @@
 /*   By: aboymond <aboymond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/26 22:40:18 by aboymond          #+#    #+#             */
-/*   Updated: 2022/09/30 17:54:52 by aboymond         ###   ########.fr       */
+/*   Updated: 2022/10/06 15:03:11 by aboymond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@ int			ft_putnbrhexa(unsigned int nb, int t);
 int			ft_putnbrhexa_p(unsigned long long int n);
 int			ft_istrlen(const char *str);
 int			ft_tablen(char **tab);
+int			ft_strcmp(char *s1, char *s2);
 
 void		*ft_memset(void *b, int c, size_t len);
 void		ft_bzero(void *s, size_t n);

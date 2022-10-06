@@ -14,7 +14,6 @@ char	*remove_quote(char *data)
 	k = 0;
 	quote = init_tab_compt_quote(data);
 	new = ft_calloc(sizeof(char), (int)ft_strlen(data) - compte_quote(data) + 1);
-	printf("data 1 = %s len = %d\n", data, (int)strlen(data));
 	while (data[i])
 	{
 		if (quote[k] != i)
@@ -25,7 +24,6 @@ char	*remove_quote(char *data)
 			i++;
 		}
 	}
-	printf("new = %s len = %d\n", new, (int)ft_strlen(new));
 	free (quote);
 	return (new);
 }
