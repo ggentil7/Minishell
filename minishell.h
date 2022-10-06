@@ -107,8 +107,7 @@ int		bultin_search(t_pars *pars, t_node *env);
 int		cmd(t_pars *pars, t_node *env);
 int		bultin_echo_n(t_pars *pars);
 int		bultin_echo(t_pars *pars);
-int		bultin_pwd(void);
+int		bultin_pwd(t_pars *pars);
 int		bultin_cd(t_pars *pars, t_node *env);
-
 
 #endif

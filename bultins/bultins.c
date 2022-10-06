@@ -7,8 +7,8 @@ int	bultin_search(t_pars *pars, t_node *env)
 		return (bultin_echo_n(pars));
 	else if (ft_strcmp(*pars->args, "cd") == 0)
 		return (bultin_cd(pars, env));
-	//else if (ft_strcmp(*pars->args, "pwd") == 0)
-	//	return (bultin_pwd(pars));
+	else if (ft_strcmp(*pars->args, "pwd") == 0)
+		return (bultin_pwd(pars));
 	// else if (ft_strcmp(pars->cmd, "export") == 0)
 	// 	return (bultin_export(pars, env));
 	// else if (ft_strcmp(pars->cmd, "unset") == 0)
