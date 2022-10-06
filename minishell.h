@@ -102,4 +102,8 @@ void	handle_sigint(int sig);
 void	rl_replace_line(const char *text, int clear_undo);
 void	rl_clear_history(void);
 
+// Bultins
+int		echo_n(t_pars *pars);
+
+
 #endif
