@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   bultins_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: piow00 <piow00@student.42.fr>              +#+  +:+       +#+        */
+/*   By: aboymond <aboymond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/06 17:53:33 by aboymond          #+#    #+#             */
-/*   Updated: 2022/10/07 00:33:29 by piow00           ###   ########.fr       */
+/*   Updated: 2022/10/07 16:27:46 by aboymond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,24 +70,53 @@ char	**env_to_tab(t_node *node)
 	return (env);
 }
 
-char	**add_to_export(t_pars *pars, t_node *node, t_args *args)
+t_node	*add_to_export_lst(t_pars *pars, t_node *node)
 {
 	t_node	*node_tmp;
 	int		i;
 	int		j;
-	int		n;
-	int		y;
 
 	i = 1;
 	j = 0;
-	y = 0;
 	node_tmp = node;
-	n = ft_tablen(pars->args);
-	args->args = ft_calloc(sizeof(char *), (n + args->index) + 1);
 	while (node_tmp != NULL)
 	{
 		node_tmp = node_tmp->next;
 	}
+	while (pars->args[i])
+	{
+		while (j < (int)ft_strlen(pars->args[i]))
+		{
+			if (pars->args[i][j] == '=')
+			{
+				node_tmp = add_list(node, ft_strdup(pars->args[i]));
+				j = (int)ft_strlen(pars->args[i]);
+				node_tmp = node_tmp->next;
+			}
+			j++;
+		}
+		
+		j = 0;
+		i++;
+	}
+	//env = args->args;
+	//free_tab(args->args);
+	printf("ADD_LST\n");
+	return (node);
+}
+char	**add_to_export_tab(t_pars *pars, t_args *args)
+{
+	int		i;
+	int		j;
+	int		n;
+	int		y;
+	char	**env;
+
+	i = 1;
+	j = 0;
+	y = 0;
+	n = ft_tablen(pars->args);
+	env = ft_calloc(sizeof(char *), n + 1);
 	while (pars->args[i] && i < n)
 	{
 		while (j < (int)ft_strlen(pars->args[i]))
@@ -95,14 +124,12 @@ char	**add_to_export(t_pars *pars, t_node *node, t_args *args)
 			if (pars->args[i][j] == '=')
 			{
 				//printf("%p\n", node_tmp);
-				node_tmp = add_list(node, ft_strdup(pars->args[i]));
 				j = (int)ft_strlen(pars->args[i]);
-				node_tmp = node_tmp->next;
 			}
 			else if ((j + 1) == (int)ft_strlen(pars->args[i]) && y < n)
 			{
 				//printf("%s\n", pars->args[i]);
-				args->args[y] = ft_strdup(pars->args[i]);
+				env[y] = ft_strdup(pars->args[i]);
 				y++;
 			}
 			j++;
@@ -111,7 +138,12 @@ char	**add_to_export(t_pars *pars, t_node *node, t_args *args)
 		j = 0;
 		i++;
 	}
-	return (0);
+	//env = args->args;
+	//free_tab(args->args);
+	printf("ADD_TAB\n");
+	// if (args->args_tab != NULL)
+	// 	tabjoin(env, args->args_tab);
+	return (env);
 }
 char	**tabjoin(char **tab, char **args)
 {

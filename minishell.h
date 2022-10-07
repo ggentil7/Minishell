@@ -33,7 +33,8 @@ typedef struct s_pars
 
 typedef struct s_args
 {
-	char			**args;
+	char			**args_lst;
+	char			**args_tab;
 	int				index;
 }	t_args;
 
@@ -57,7 +58,8 @@ int		bultin_export(t_pars *pars, t_node *node, t_args *args);
 // Utils Bultins
 char	**env_sort(char **env);
 char	**env_to_tab(t_node *node);
-char		**add_to_export(t_pars *pars, t_node *node, t_args *args);
+t_node	*add_to_export_lst(t_pars *pars, t_node *node);
+char	**add_to_export_tab(t_pars *pars, t_args *args);
 char	**tabjoin(char **tab, char **args);
 
 // Bultins print

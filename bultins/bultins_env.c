@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   bultins_env.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: piow00 <piow00@student.42.fr>              +#+  +:+       +#+        */
+/*   By: aboymond <aboymond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 14:11:12 by aboymond          #+#    #+#             */
-/*   Updated: 2022/10/07 00:32:03 by piow00           ###   ########.fr       */
+/*   Updated: 2022/10/07 16:15:12 by aboymond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,30 +54,32 @@ int	bultin_export(t_pars *pars, t_node *node, t_args *args)
 {
 	t_pars	*pars_tmp;
 	t_node	*node_tmp;
-	char	**env;
-	char	**env2;
+	// char	**env;
+	// char	**env2;
 
 	pars_tmp = pars;
 	node_tmp = node;
-	if (args == NULL)
-		args = malloc(sizeof(t_args) * 1);
+	//add_to_export_lst(pars, node);
+	//add_to_export_tab(pars, args);
+	//env2 = add_to_export_tab(pars);
+	//args->args_tab = NULL;
+	args->args_lst = env_to_tab(add_to_export_lst(pars, node));
 	if (pars->args[1] == NULL)
 	{
-		env = env_to_tab(node_tmp);
-		if (args->args != NULL)
+		
+		if (args->args_tab != NULL)
 		{
-			env = tabjoin(env, args->args);
-			env = env_sort(env);
+			args->args_tab = tabjoin(args->args_tab, args->args_lst);
+			args->args_tab = env_sort(args->args_tab);
 		}
-		else
-			env = env_sort(env);
-		print_export(env);
-		//free_tab(env2);
+		else 
+			args->args_tab = args->args_lst;	
+		print_export(args->args_tab);
 	}
 	else
 	{
-		env2 = add_to_export(pars_tmp, node, args);
-		args->args = tabjoin(env2, args->args);
+		args->args_tab = add_to_export_tab(pars, args);
+		// env2 = tabjoin(add_to_export_tab(pars), env);
 	}
 	return (0);
 }

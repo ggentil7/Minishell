@@ -24,10 +24,10 @@ int	print_export(char **env)
 					j++;
 				}
 				printf("\"\033[0m");
-				printf("\n");
 			}
 			j++;
 		}
+		printf("\n");
 	}
 	return (0);
 }
