@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   prompt.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aboymond <aboymond@student.42.fr>          +#+  +:+       +#+        */
+/*   By: piow00 <piow00@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 11:53:11 by aboymond          #+#    #+#             */
-/*   Updated: 2022/10/06 15:38:21 by aboymond         ###   ########.fr       */
+/*   Updated: 2022/10/06 23:27:49 by piow00           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ char	*username(t_node *head)
 	return (user1);
 }
 
-int	prompt(t_node *head, t_pars *pars)
+int	prompt(t_node *head, t_pars *pars, t_args *args)
 {
 	t_pars	*tmp;
 	char	*buffer;
@@ -66,7 +66,7 @@ int	prompt(t_node *head, t_pars *pars)
 	tmp = pars;
 	lst_to_tab(tmp);
 	if (tmp != NULL)
-		cmd(tmp, head);
+		cmd(tmp, head, args);
 	//print_prompt(tmp);
 	if (buffer != NULL && buffer[0] != '\0')
 		add_history(buffer);

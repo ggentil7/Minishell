@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   bultins_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aboymond <aboymond@student.42.fr>          +#+  +:+       +#+        */
+/*   By: piow00 <piow00@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/06 17:53:33 by aboymond          #+#    #+#             */
-/*   Updated: 2022/10/06 19:26:07 by aboymond         ###   ########.fr       */
+/*   Updated: 2022/10/07 00:33:29 by piow00           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ char	**env_to_tab(t_node *node)
 	return (env);
 }
 
-int	add_to_export(t_pars *pars, t_node *node, t_args *args)
+char	**add_to_export(t_pars *pars, t_node *node, t_args *args)
 {
 	t_node	*node_tmp;
 	int		i;
@@ -83,7 +83,7 @@ int	add_to_export(t_pars *pars, t_node *node, t_args *args)
 	y = 0;
 	node_tmp = node;
 	n = ft_tablen(pars->args);
-	args->args = ft_calloc(sizeof(char *), (n + 1));
+	args->args = ft_calloc(sizeof(char *), (n + args->index) + 1);
 	while (node_tmp != NULL)
 	{
 		node_tmp = node_tmp->next;
@@ -101,7 +101,7 @@ int	add_to_export(t_pars *pars, t_node *node, t_args *args)
 			}
 			else if ((j + 1) == (int)ft_strlen(pars->args[i]) && y < n)
 			{
-				printf("%s\n", pars->args[i]);
+				//printf("%s\n", pars->args[i]);
 				args->args[y] = ft_strdup(pars->args[i]);
 				y++;
 			}
@@ -113,7 +113,7 @@ int	add_to_export(t_pars *pars, t_node *node, t_args *args)
 	}
 	return (0);
 }
-char	**tabjoin(char **tab, t_args *args)
+char	**tabjoin(char **tab, char **args)
 {
 	int	i;
 	int	y;
@@ -121,18 +121,19 @@ char	**tabjoin(char **tab, t_args *args)
 
 	i = 0;
 	y = 0;
-	tmp = ft_calloc(sizeof(char *), (ft_tablen(tab) + ft_tablen(args->args) + 1));
+	tmp = ft_calloc(sizeof(char *), (ft_tablen(tab) + ft_tablen(args)) + 1);
 	while (tab[i])
 	{
 		tmp[i] = ft_strdup(tab[i]);
 		i++;
 	}
-	while (args->args[y])
+	while (args[y])
 	{
-		tmp[i] = ft_strdup(args->args[y]);
+		tmp[i] = ft_strdup(args[y]);
 		i++;
 		y++;
 	}
+
 	printf("SALUT TEEEEEEST\n");
 	return (tmp);
 }
