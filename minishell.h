@@ -25,6 +25,7 @@ typedef struct s_pars
 	char			*p_data;
 	struct s_pars	*next;
 	char			**args;
+	char			*cmd;
 	int				fd_in;
 	int				fd_out;
 }	t_pars;
@@ -109,5 +110,8 @@ int		bultin_echo_n(t_pars *pars);
 int		bultin_echo(t_pars *pars);
 int		bultin_pwd(t_pars *pars);
 int		bultin_cd(t_pars *pars, t_node *env);
+
+// Init
+int		init_cmd(t_pars *pars);
 
 #endif
