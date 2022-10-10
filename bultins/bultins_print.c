@@ -31,3 +31,30 @@ int	print_export(char **env)
 	}
 	return (0);
 }
+
+int	print_env(t_node *env)
+{
+	t_node	*tmp;
+	int	i;
+
+	i = - 1;
+	tmp = env;
+	while (tmp != NULL)
+	{
+		i = - 1;
+		while (++i < (int)ft_strlen(tmp->data))
+		{
+			if (tmp->data[i] == '\0')
+			{
+				i = (int)ft_strlen(tmp->data) + 1;
+			}
+			if (tmp->data[i] == '=')
+			{
+				printf("%s\n", tmp->data);
+				i = (int)ft_strlen(tmp->data) + 1;
+			}
+		}
+		tmp = tmp->next;
+	}
+	return (0);
+}

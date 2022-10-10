@@ -6,7 +6,7 @@
 /*   By: aboymond <aboymond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/06 17:53:33 by aboymond          #+#    #+#             */
-/*   Updated: 2022/10/07 16:27:46 by aboymond         ###   ########.fr       */
+/*   Updated: 2022/10/10 14:04:08 by aboymond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,10 +74,8 @@ t_node	*add_to_export_lst(t_pars *pars, t_node *node)
 {
 	t_node	*node_tmp;
 	int		i;
-	int		j;
 
 	i = 1;
-	j = 0;
 	node_tmp = node;
 	while (node_tmp != NULL)
 	{
@@ -85,18 +83,8 @@ t_node	*add_to_export_lst(t_pars *pars, t_node *node)
 	}
 	while (pars->args[i])
 	{
-		while (j < (int)ft_strlen(pars->args[i]))
-		{
-			if (pars->args[i][j] == '=')
-			{
-				node_tmp = add_list(node, ft_strdup(pars->args[i]));
-				j = (int)ft_strlen(pars->args[i]);
-				node_tmp = node_tmp->next;
-			}
-			j++;
-		}
-		
-		j = 0;
+		node_tmp = add_list(node, ft_strdup(pars->args[i]));
+		node_tmp = node_tmp->next;
 		i++;
 	}
 	//env = args->args;
@@ -104,47 +92,47 @@ t_node	*add_to_export_lst(t_pars *pars, t_node *node)
 	printf("ADD_LST\n");
 	return (node);
 }
-char	**add_to_export_tab(t_pars *pars, t_args *args)
-{
-	int		i;
-	int		j;
-	int		n;
-	int		y;
-	char	**env;
+// char	**add_to_export_tab(t_pars *pars, t_node *env)
+// {
+// 	int		i;
+// 	int		j;
+// 	int		n;
+// 	int		y;
+// 	char	**env;
 
-	i = 1;
-	j = 0;
-	y = 0;
-	n = ft_tablen(pars->args);
-	env = ft_calloc(sizeof(char *), n + 1);
-	while (pars->args[i] && i < n)
-	{
-		while (j < (int)ft_strlen(pars->args[i]))
-		{
-			if (pars->args[i][j] == '=')
-			{
-				//printf("%p\n", node_tmp);
-				j = (int)ft_strlen(pars->args[i]);
-			}
-			else if ((j + 1) == (int)ft_strlen(pars->args[i]) && y < n)
-			{
-				//printf("%s\n", pars->args[i]);
-				env[y] = ft_strdup(pars->args[i]);
-				y++;
-			}
-			j++;
-		}
+// 	i = 1;
+// 	j = 0;
+// 	y = 0;
+// 	n = ft_tablen(pars->args);
+// 	env = ft_calloc(sizeof(char *), n + 1);
+// 	while (pars->args[i] && i < n)
+// 	{
+// 		while (j < (int)ft_strlen(pars->args[i]))
+// 		{
+// 			if (pars->args[i][j] == '=')
+// 			{
+// 				//printf("%p\n", node_tmp);
+// 				j = (int)ft_strlen(pars->args[i]);
+// 			}
+// 			else if ((j + 1) == (int)ft_strlen(pars->args[i]) && y < n)
+// 			{
+// 				//printf("%s\n", pars->args[i]);
+// 				env[y] = ft_strdup(pars->args[i]);
+// 				y++;
+// 			}
+// 			j++;
+// 		}
 		
-		j = 0;
-		i++;
-	}
-	//env = args->args;
-	//free_tab(args->args);
-	printf("ADD_TAB\n");
-	// if (args->args_tab != NULL)
-	// 	tabjoin(env, args->args_tab);
-	return (env);
-}
+// 		j = 0;
+// 		i++;
+// 	}
+// 	//env = args->args;
+// 	//free_tab(args->args);
+// 	printf("ADD_TAB\n");
+// 	// if (args->args_tab != NULL)
+// 	// 	tabjoin(env, args->args_tab);
+// 	return (env);
+// }
 char	**tabjoin(char **tab, char **args)
 {
 	int	i;

@@ -54,6 +54,7 @@ int		cmd(t_pars *pars, t_node *env, t_args *args);
 int		bultin_search(t_pars *pars, t_node *env, t_args *args);
 int		bultin_env(t_pars *pars, t_node *env);
 int		bultin_export(t_pars *pars, t_node *node, t_args *args);
+int		bultin_unset(t_pars *pars, t_node *env);
 
 // Utils Bultins
 char	**env_sort(char **env);
@@ -64,6 +65,7 @@ char	**tabjoin(char **tab, char **args);
 
 // Bultins print
 int		print_export(char **env);
+int		print_env(t_node *env);
 
 
 // Error
@@ -115,6 +117,7 @@ t_node	*add_list(t_node *L, char *data);
 char	*getat(t_node *L, int pos);
 void	lstdelone(t_node *lst);
 void	lstclear(t_node *lst);
+t_node	*lstclear_cell(t_node *node, char *data);
 
 // Utils
 char	**ft_split_pipe(char *s, char c);
