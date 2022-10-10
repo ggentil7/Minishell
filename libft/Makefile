@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: piow00 <piow00@student.42.fr>              +#+  +:+       +#+         #
+#    By: ggentil <ggentil@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/27 17:21:48 by aboymond          #+#    #+#              #
-#    Updated: 2022/10/03 21:42:47 by piow00           ###   ########.fr        #
+#    Updated: 2022/10/06 15:35:00 by ggentil          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ SRC = ft_isdigit.c ft_memcpy.c ft_split.c ft_strlen.c ft_tolower.c ft_strnstr.c\
 	  ft_striteri.c ft_putstr_fd.c ft_substr.c ft_isascii.c ft_memcmp.c        \
 	  ft_strlcpy.c ft_strdupcat.c ft_strichr.c ft_strdel.c get_next_line.c	   \
 	  ft_printf.c ft_putstrf.c ft_putcharf.c ft_printnbr.c ft_uprint.c 		   \
-	  ft_putnbrhexa.c ft_putnbrhexa_p.c ft_istrlen.c ft_tablen.c
+	  ft_putnbrhexa.c ft_putnbrhexa_p.c ft_istrlen.c ft_tablen.c ft_strcmp.c
 BONUS = ft_lstiter.c ft_lstlast.c ft_lstmap.c ft_lstadd_back.c ft_lstnew.c     \
 	    ft_lstadd_front.c ft_lstsize.c ft_lstclear.c ft_lstdelone.c 		   \
 		ft_lstclear.c

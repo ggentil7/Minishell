@@ -25,6 +25,7 @@ typedef struct s_pars
 	char			*p_data;
 	struct s_pars	*next;
 	char			**args;
+	char			*cmd;
 	int				fd_in;
 	int				fd_out;
 	char			*cmd;
@@ -109,5 +110,16 @@ void	free_prompt(t_pars *pars, char *buff, char *user);
 void	handle_sigint(int sig);
 void	rl_replace_line(const char *text, int clear_undo);
 void	rl_clear_history(void);
+
+// Bultins
+int		bultin_search(t_pars *pars, t_node *env);
+int		cmd(t_pars *pars, t_node *env);
+int		bultin_echo_n(t_pars *pars);
+int		bultin_echo(t_pars *pars);
+int		bultin_pwd(t_pars *pars);
+int		bultin_cd(t_pars *pars, t_node *env);
+
+// Init
+int		init_cmd(t_pars *pars);
 
 #endif

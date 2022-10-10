@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   prompt.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aboymond <aboymond@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ggentil <ggentil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 11:53:11 by aboymond          #+#    #+#             */
-/*   Updated: 2022/10/04 15:26:06 by aboymond         ###   ########.fr       */
+/*   Updated: 2022/10/07 15:42:27 by ggentil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,10 +62,14 @@ int	prompt(t_node *head, t_pars *pars)
 		exit (EXIT_SUCCESS);
 	}
 	if (buffer != NULL && buffer[0] != '\0')
-		data_to_lst(&pars, buffer);
+	{
+		if (data_to_lst(&pars, buffer) == -1)
+			return (1);
+	}
 	tmp = pars;
 	lst_to_tab(tmp);
-	print_prompt(tmp);
+	cmd(tmp, head);
+	//print_prompt(tmp);
 	if (buffer != NULL && buffer[0] != '\0')
 		add_history(buffer);
 	free_prompt(pars, buffer, user);
