@@ -28,6 +28,7 @@ typedef struct s_pars
 	char			*cmd;
 	int				fd_in;
 	int				fd_out;
+	char			*cmd;
 }	t_pars;
 
 // Prompt
@@ -35,6 +36,13 @@ int		prompt(t_node *node, t_pars *pars);
 char	*path(void);								/* recupere le path */
 char	*username(t_node *head);					/* user pour prompt */
 void	print_prompt(t_pars *pars);					/* affiche le prompt */
+
+// Init
+int		init_cmd(t_pars *pars);
+
+// Bultins
+int		cmd(t_pars *pars, t_node *env);
+int		bultin_search(t_pars *pars, t_node *env);
 
 // Error
 int		error_quote(void);

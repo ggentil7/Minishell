@@ -1,4 +1,3 @@
-
 #include "../minishell.h"
 
 int	bultin_search(t_pars *pars, t_node *env)
