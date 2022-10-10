@@ -37,8 +37,9 @@ int	bultin_cd(t_pars *pars, t_node *env)
 		path = pars->args[1];
 	if (chdir(path) == -1)
 	{
-		ft_putstr_fd("cd: No such file or directory", 1);
-		//ft_putstr_fd(path, 1);
+		write (1, "cd: ", 4);
+		ft_putstr_fd(path, 1);
+		ft_putstr_fd(": No such file or directory", 1);
 		write (1, "\n", 1);
 		return (1);
 	}
