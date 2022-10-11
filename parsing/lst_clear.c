@@ -60,15 +60,12 @@ t_node	*lstclear_cell(t_node *node, char *data)
 	while (supp != NULL)
 	{
 		printf("supp->data = %s %s %d\n", supp->data, data, i);
-		if (ft_strncmp(supp->data, data, i) == 0)
+		if (ft_strncmp(supp->data, data, i) == 0 && (supp->data[i] == '=' || supp->data[i] == '\0'))
 		{
-			if (supp->data[i] == '=' || supp->data[i] == '\0')
-			{
 				prec->next = supp->next;
 				tmp = supp->next;
 				free (supp);
 				supp = tmp;
-			}
 		}
 		else
 		{
