@@ -16,11 +16,9 @@ int	main(int argc, char **argv, char **envp)
 	env_cpy(&node, envp);
 	while (1)
 	{
-
 		signal(SIGINT, &handle_sigint);
 		signal(SIGQUIT, SIG_IGN);
-
-		prompt(node, pars, args); // copie de la liste 
+		prompt(node, pars); // copie de la liste 
 	}
 	lstclear(node);
 	rl_clear_history();

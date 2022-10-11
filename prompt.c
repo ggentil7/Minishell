@@ -1,14 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   prompt.c                                           :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: piow00 <piow00@student.42.fr>              +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/04 11:53:11 by aboymond          #+#    #+#             */
-/*   Updated: 2022/10/06 23:27:49 by piow00           ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
 
 #include "minishell.h"
 
@@ -62,11 +51,14 @@ int	prompt(t_node *head, t_pars *pars, t_args *args)
 		exit (EXIT_SUCCESS);
 	}
 	if (buffer != NULL && buffer[0] != '\0')
-		data_to_lst(&pars, buffer);
+	{
+		if (data_to_lst(&pars, buffer) == -1)
+			return (1);
+	}
 	tmp = pars;
 	lst_to_tab(tmp);
 	if (tmp != NULL)
-		cmd(tmp, head, args);
+		cmd(tmp, head);
 	//print_prompt(tmp);
 	if (buffer != NULL && buffer[0] != '\0')
 		add_history(buffer);

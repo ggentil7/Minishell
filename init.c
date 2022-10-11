@@ -7,9 +7,8 @@ int	init_cmd(t_pars *pars)
 	return (0);
 }
 
-void	init_all(t_pars *pars, t_node *env, t_args *args)
+void	init_all(t_pars *pars, t_node *env)
 {
 	(void)env;
 	(void)pars;
-	args->index = 0;
 }
