@@ -9,8 +9,7 @@ SRC				=		main.c prompt.c utils.c init.c signal.c free.c\
 						$(addprefix ./env/, env.c lst_chaine.c)\
 						$(addprefix ./parsing/, parsing.c lst_parsing.c check_quote.c pipe.c l2_parsing.c lst_clear.c)\
 						$(addprefix ./error/, error_parsing.c)\
-						$(addprefix ./bultins/, bultins.c bultin_echo.c bultin_cd.c bultin_pwd.c)
-            
+						$(addprefix ./bultins/, bultins.c bultins_env.c bultins_utils.c bultins_print.c bultin_echo.c bultin_cd.c bultin_pwd.c)
 OBJS			=		$(SRC:.c=.o)
 
 #***** Libft *****#

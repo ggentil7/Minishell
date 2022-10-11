@@ -1,14 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   libft.h                                            :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: ggentil <ggentil@student.42.fr>            +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/26 22:40:18 by aboymond          #+#    #+#             */
-/*   Updated: 2022/10/06 15:34:52 by ggentil          ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
@@ -68,7 +57,7 @@ int			ft_putnbrhexa(unsigned int nb, int t);
 int			ft_putnbrhexa_p(unsigned long long int n);
 int			ft_istrlen(const char *str);
 int			ft_tablen(char **tab);
-int    		ft_strcmp(char *s1, char *s2);
+int			ft_strcmp(char *s1, char *s2);
 
 void		*ft_memset(void *b, int c, size_t len);
 void		ft_bzero(void *s, size_t n);

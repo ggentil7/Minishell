@@ -18,6 +18,7 @@ typedef struct s_node
 {
 	char			*data;
 	struct s_node	*next;
+	char			**args;
 }	t_node;
 
 typedef struct s_pars
@@ -31,18 +32,42 @@ typedef struct s_pars
 	char			*cmd;
 }	t_pars;
 
+typedef struct s_args
+{
+	char			**args_lst;
+	char			**args_tab;
+	int				index;
+}	t_args;
+
+
 // Prompt
-int		prompt(t_node *node, t_pars *pars);
+int		prompt(t_node *node, t_pars *pars, t_args *args);
 char	*path(void);								/* recupere le path */
 char	*username(t_node *head);					/* user pour prompt */
 void	print_prompt(t_pars *pars);					/* affiche le prompt */
 
 // Init
 int		init_cmd(t_pars *pars);
+void	init_all(t_pars *pars, t_node *env, t_args *args);
 
 // Bultins
-int		cmd(t_pars *pars, t_node *env);
-int		bultin_search(t_pars *pars, t_node *env);
+int		cmd(t_pars *pars, t_node *env, t_args *args);
+int		bultin_search(t_pars *pars, t_node *env, t_args *args);
+int		bultin_env(t_pars *pars, t_node *env);
+int		bultin_export(t_pars *pars, t_node *node, t_args *args);
+int		bultin_unset(t_pars *pars, t_node *env);
+
+// Utils Bultins
+char	**env_sort(char **env);
+char	**env_to_tab(t_node *node);
+t_node	*add_to_export_lst(t_pars *pars, t_node *node);
+char	**add_to_export_tab(t_pars *pars, t_args *args);
+char	**tabjoin(char **tab, char **args);
+
+// Bultins print
+int		print_export(char **env);
+int		print_env(t_node *env);
+
 
 // Error
 int		error_quote(void);
@@ -93,6 +118,7 @@ t_node	*add_list(t_node *L, char *data);
 char	*getat(t_node *L, int pos);
 void	lstdelone(t_node *lst);
 void	lstclear(t_node *lst);
+t_node	*lstclear_cell(t_node *node, char *data);
 
 // Utils
 char	**ft_split_pipe(char *s, char c);
@@ -103,7 +129,8 @@ int		*init_tab_compt_quote(char *data);
 
 // Free
 void	free_tab(char **tab);
-void	free_lst(t_pars *pars);
+void	free_lst_pars(t_pars *pars);
+void	free_lst_node(t_node *node);
 void	free_prompt(t_pars *pars, char *buff, char *user);
 
 // Signal

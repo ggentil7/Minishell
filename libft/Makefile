@@ -1,14 +1,3 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: ggentil <ggentil@student.42.fr>            +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2021/10/27 17:21:48 by aboymond          #+#    #+#              #
-#    Updated: 2022/10/06 15:35:00 by ggentil          ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
 
 NAME = libft.a
 SRC = ft_isdigit.c ft_memcpy.c ft_split.c ft_strlen.c ft_tolower.c ft_strnstr.c\
@@ -22,7 +11,7 @@ SRC = ft_isdigit.c ft_memcpy.c ft_split.c ft_strlen.c ft_tolower.c ft_strnstr.c\
 	  ft_putnbrhexa.c ft_putnbrhexa_p.c ft_istrlen.c ft_tablen.c ft_strcmp.c
 BONUS = ft_lstiter.c ft_lstlast.c ft_lstmap.c ft_lstadd_back.c ft_lstnew.c     \
 	    ft_lstadd_front.c ft_lstsize.c ft_lstclear.c ft_lstdelone.c 		   \
-		ft_lstclear.c
+		ft_lstclear.c 
 GCC = gcc -g
 #CFLAGS    = -Wall -Werror -Wextra 
 OBJS = $(SRC:.c=.o)

@@ -17,7 +17,7 @@ void	free_tab(char **tab)
 	}
 }
 
-void	free_lst(t_pars *pars)
+void	free_lst_pars(t_pars *pars)
 {
 	t_pars	*tmp;
 
@@ -28,14 +28,16 @@ void	free_lst(t_pars *pars)
 		{
 			while (tmp != NULL)
 			{
-				free_tab(tmp->args);
+				if (tmp->args != NULL)
+					free_tab(tmp->args);
 				tmp = tmp->next;
 			}
 			p_lstclear(pars);
 		}
 		else
 		{
-			free_tab(tmp->args);
+			if (tmp->args != NULL)
+				free_tab(tmp->args);
 			p_lstclear(pars);
 		}
 	}
@@ -45,7 +47,35 @@ void	free_lst(t_pars *pars)
 
 void	free_prompt(t_pars *pars, char *buff, char *user)
 {
-	free_lst(pars);
+	free_lst_pars(pars);
 	free(buff);
 	free(user);
+}
+
+void	free_lst_node(t_node *node)
+{
+	t_node	*tmp;
+
+	tmp = node;
+	if (tmp != NULL)
+	{
+		if (tmp->next != NULL)
+		{
+			while (tmp != NULL)
+			{
+				if (tmp->args != NULL)
+					free_tab(tmp->args);
+				tmp = tmp->next;
+			}
+			lstclear(node);
+		}
+		else
+		{
+			if (tmp->args != NULL)
+				free_tab(tmp->args);
+			lstclear(node);
+		}
+	}
+	else
+		return ;
 }

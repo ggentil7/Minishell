@@ -1,14 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   prompt.c                                           :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: ggentil <ggentil@student.42.fr>            +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/04 11:53:11 by aboymond          #+#    #+#             */
-/*   Updated: 2022/10/07 15:42:27 by ggentil          ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
 
 #include "minishell.h"
 
@@ -45,14 +34,14 @@ char	*username(t_node *head)
 	return (user1);
 }
 
-int	prompt(t_node *head, t_pars *pars)
+int	prompt(t_node *head, t_pars *pars, t_args *args)
 {
 	t_pars	*tmp;
 	char	*buffer;
 	char	*user;
-	int		i;
+	// int		i;
 
-	i = -1;
+	// i = -1;
 	//add_history(ft_strdup("\"salut\" | ouais | 'jj'\"pouet\" | kzgfhio"));
 	user = username(head);
 	buffer = readline(user);
@@ -68,7 +57,8 @@ int	prompt(t_node *head, t_pars *pars)
 	}
 	tmp = pars;
 	lst_to_tab(tmp);
-	cmd(tmp, head);
+	if (tmp != NULL)
+		cmd(tmp, head);
 	//print_prompt(tmp);
 	if (buffer != NULL && buffer[0] != '\0')
 		add_history(buffer);

@@ -39,3 +39,39 @@ void	lstdelone(t_node *lst)
 	free (lst->data);
 	free (lst);
 }
+
+t_node	*lstclear_cell(t_node *node, char *data)
+{
+	t_node	*supp;
+	t_node	*prec;
+	t_node	*tmp;
+	int		i;
+
+	i = 0;
+	supp = node;
+	if ( node == NULL)
+		return (NULL);
+		printf("data %s\n", data);
+	while (i < (int)ft_strlen(data))
+	{
+		printf("test %d\n ", i);
+		i++;
+	}
+	while (supp != NULL)
+	{
+		printf("supp->data = %s %s %d\n", supp->data, data, i);
+		if (ft_strncmp(supp->data, data, i) == 0 && supp->data[i] == '=')
+		{
+			prec->next = supp->next;
+			tmp = supp->next;
+			free (supp);
+			supp = tmp;
+		}
+		else
+		{
+			prec = supp;
+			supp = supp->next;
+		}
+	}
+	return (node);
+}
