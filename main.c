@@ -5,14 +5,12 @@ int	main(int argc, char **argv, char **envp)
 {
 	t_node	*node;
 	t_pars	*pars;
-	t_args	*args;
 	
 	(void)argc;
 	(void)argv;
 	node = NULL;
 	pars = NULL;
-	args = ft_calloc(sizeof(t_args), 1);
-	init_all(pars, node, args);
+	init_all(pars, node);
 	env_cpy(&node, envp);
 	while (1)
 	{

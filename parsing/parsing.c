@@ -64,3 +64,18 @@ void	is_zero(t_pars **pars, char *data, int i, int j)
 	tmp = ft_substr(data, j, i - j + 1);
 	*pars = p_add_list(*pars, tmp);
 }
+
+int	is_space(char *data)
+{
+	int	i;
+
+	i = 0;
+	if (data[0] == ' ')
+	{
+		while (data[i] == ' ')
+			i++;
+		if (data[i] == '\0')
+			return (-1);
+	}
+	return (0);
+}

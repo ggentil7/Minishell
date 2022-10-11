@@ -29,7 +29,6 @@ typedef struct s_pars
 	char			*cmd;
 	int				fd_in;
 	int				fd_out;
-	char			*cmd;
 }	t_pars;
 
 typedef struct s_args
@@ -41,27 +40,21 @@ typedef struct s_args
 
 
 // Prompt
-int		prompt(t_node *node, t_pars *pars, t_args *args);
+int		prompt(t_node *node, t_pars *pars);
 char	*path(void);								/* recupere le path */
 char	*username(t_node *head);					/* user pour prompt */
 void	print_prompt(t_pars *pars);					/* affiche le prompt */
+int		is_space(char *data);
 
 // Init
 int		init_cmd(t_pars *pars);
-void	init_all(t_pars *pars, t_node *env, t_args *args);
-
-// Bultins
-int		cmd(t_pars *pars, t_node *env, t_args *args);
-int		bultin_search(t_pars *pars, t_node *env, t_args *args);
-int		bultin_env(t_pars *pars, t_node *env);
-int		bultin_export(t_pars *pars, t_node *node, t_args *args);
-int		bultin_unset(t_pars *pars, t_node *env);
+void	init_all(t_pars *pars, t_node *env);
 
 // Utils Bultins
 char	**env_sort(char **env);
 char	**env_to_tab(t_node *node);
 t_node	*add_to_export_lst(t_pars *pars, t_node *node);
-char	**add_to_export_tab(t_pars *pars, t_args *args);
+char	**add_to_export_tab(t_pars *pars);
 char	**tabjoin(char **tab, char **args);
 
 // Bultins print
@@ -145,6 +138,9 @@ int		bultin_echo_n(t_pars *pars);
 int		bultin_echo(t_pars *pars);
 int		bultin_pwd(t_pars *pars);
 int		bultin_cd(t_pars *pars, t_node *env);
+int		bultin_env(t_pars *pars, t_node *env);
+int		bultin_export(t_pars *pars, t_node *node);
+int		bultin_unset(t_pars *pars, t_node *env);
 
 // Init
 int		init_cmd(t_pars *pars);

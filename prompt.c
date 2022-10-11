@@ -34,7 +34,7 @@ char	*username(t_node *head)
 	return (user1);
 }
 
-int	prompt(t_node *head, t_pars *pars, t_args *args)
+int	prompt(t_node *head, t_pars *pars)
 {
 	t_pars	*tmp;
 	char	*buffer;
@@ -50,7 +50,7 @@ int	prompt(t_node *head, t_pars *pars, t_args *args)
 		free_prompt(pars, buffer, user);
 		exit (EXIT_SUCCESS);
 	}
-	if (buffer != NULL && buffer[0] != '\0')
+	if (buffer != NULL && buffer[0] != '\0' && is_space(buffer) != -1)
 	{
 		if (data_to_lst(&pars, buffer) == -1)
 			return (1);

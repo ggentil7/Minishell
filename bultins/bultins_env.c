@@ -6,7 +6,7 @@
 /*   By: aboymond <aboymond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 14:11:12 by aboymond          #+#    #+#             */
-/*   Updated: 2022/10/10 17:51:21 by aboymond         ###   ########.fr       */
+/*   Updated: 2022/10/11 14:06:27 by aboymond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,13 +57,12 @@ int	bultin_unset(t_pars *pars, t_node *env)
 	return (0);
 }
 
-int	bultin_export(t_pars *pars, t_node *node, t_args *args)
+int	bultin_export(t_pars *pars, t_node *node)
 {
 	t_pars	*pars_tmp;
 	t_node	*node_tmp;
 	char	**env;
 	// char	**env2;
-	(void)args;
 	pars_tmp = pars;
 	node_tmp = node;
 	if (pars->args[1] == NULL)

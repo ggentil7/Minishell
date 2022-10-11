@@ -10,7 +10,7 @@ int	bultin_search(t_pars *pars, t_node *env)
 	 else if (ft_strcmp(pars->cmd, "pwd") == 0)
 	 	return (bultin_pwd(pars));
 	if (ft_strcmp(pars->cmd, "export") == 0)
-		return (bultin_export(pars, env, args));
+		return (bultin_export(pars, env));
 	else if (ft_strcmp(pars->cmd, "unset") == 0)
 		return (bultin_unset(pars, env));
 	else if (ft_strcmp(pars->cmd, "env") == 0)
@@ -20,7 +20,7 @@ int	bultin_search(t_pars *pars, t_node *env)
 	return (0);
 }
 
-int	cmd(t_pars *pars, t_node *env, t_args *args)
+int	cmd(t_pars *pars, t_node *env)
 {
 	init_cmd(pars);
 	bultin_search(pars, env);
