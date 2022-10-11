@@ -142,6 +142,9 @@ int		bultin_env(t_pars *pars, t_node *env);
 int		bultin_export(t_pars *pars, t_node *node);
 int		bultin_unset(t_pars *pars, t_node *env);
 
+// Bultouts
+char	**conv_path(t_pars *pars, t_node *env);
+
 // Init
 int		init_cmd(t_pars *pars);
 
