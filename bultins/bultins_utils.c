@@ -6,7 +6,7 @@
 /*   By: aboymond <aboymond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/06 17:53:33 by aboymond          #+#    #+#             */
-/*   Updated: 2022/10/10 14:04:08 by aboymond         ###   ########.fr       */
+/*   Updated: 2022/10/12 17:11:07 by aboymond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,15 +58,14 @@ char	**env_to_tab(t_node *node)
 	env = ft_calloc(sizeof(char *), (i + 1));
 	i = 0;
 	tmp = node;
-	while (node != NULL)
+	while (tmp != NULL)
 	{
-		env[i] = node->data;
-		node = node->next;
+		env[i] = tmp->data;
+		tmp = tmp->next;
 		i++;
 	}
 	env[i] = NULL;
 	i = 0;
-	//env = env_sort(env);
 	return (env);
 }
 

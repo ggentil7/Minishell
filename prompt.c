@@ -47,6 +47,7 @@ int	prompt(t_node *head, t_pars *pars)
 	buffer = readline(user);
 	if (ft_strcmp(buffer, "exit") == 0)
 	{
+		//free_tab(head->args);
 		free_prompt(pars, buffer, user);
 		exit (EXIT_SUCCESS);
 	}

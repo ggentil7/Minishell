@@ -6,7 +6,7 @@
 /*   By: aboymond <aboymond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 14:11:12 by aboymond          #+#    #+#             */
-/*   Updated: 2022/10/11 14:06:27 by aboymond         ###   ########.fr       */
+/*   Updated: 2022/10/12 17:15:02 by aboymond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,25 +59,17 @@ int	bultin_unset(t_pars *pars, t_node *env)
 
 int	bultin_export(t_pars *pars, t_node *node)
 {
-	t_pars	*pars_tmp;
-	t_node	*node_tmp;
 	char	**env;
-	// char	**env2;
-	pars_tmp = pars;
-	node_tmp = node;
+
+	env = NULL;
 	if (pars->args[1] == NULL)
 	{
-		env = env_to_tab(node);
-		env = env_sort(env);
-		print_export(env);
+		node->args = env_to_tab(node);
+		node->args = env_sort(node->args);
+		print_export(node->args);
 	}
 	else
 		add_to_export_lst(pars, node);
-
-	//add_to_export_lst(pars, node);
-	//add_to_export_tab(pars, args);
-	//env2 = add_to_export_tab(pars);
-	//args->args_tab = NULL;
 
 	return (0);
 }

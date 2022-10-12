@@ -29,7 +29,8 @@ int	bultin_search(t_pars *pars, t_node *env)
 int	cmd(t_pars *pars, t_node *env)
 {
 	init_cmd(pars);
-	if (bultin_search(pars, env) == 0)
-		conv_path(pars, env);
+	bultin_search(pars, env);
+	//if (bultin_search(pars, env) == 0)
+		//conv_path(pars, env);
 	return (0);
 }

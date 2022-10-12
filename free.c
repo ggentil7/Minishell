@@ -8,7 +8,7 @@ void	free_tab(char **tab)
 	i = 0;
 	if (tab != NULL)
 	{
-		while (tab[i])
+		while (i < ft_tablen(tab))
 		{
 			free(tab[i]);
 			i++;

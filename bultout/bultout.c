@@ -17,12 +17,10 @@ char	**conv_path(t_pars *pars, t_node *env)
 			return (0);
 		y++;
 	}
-	printf("path: %s, %d\n", path, y);
 	path_tab = ft_split(path, ':');
 	path_tab[0] = ft_substr(path_tab[0], y + 1, (int)ft_strlen(path_tab[0]));
 	while (path_tab[i])
 	{
-		printf("path_tab[%d]: %s\n", i, path_tab[i]);
 		y = 0;
 		i++;
 	}

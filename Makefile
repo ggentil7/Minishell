@@ -21,12 +21,14 @@ MLIBFT			=		$(MAKE) -C libft
 #***** Couleurs *****#
 
 GREEN			=		\033[1;32m
+BLUE			=		\033[0;94m
 RED				=		\033[1;31m
 ENDCOLOR		=		\033[0m
 
 #***** Textes *****#
 
 START			=		echo "$(GREEN)Start compilation\n$(ENDCOLOR)"
+END_COMP_LIB	=		echo "$(BLUE)End compilation LIBFT\n$(ENDCOLOR)"
 END_COMP		=		echo "$(GREEN)End compilation\n$(ENDCOLOR)"
 S_OBJS			=		echo "$(RED)Suppression des objets\n$(ENDCOLOR)"
 S_NAME			=		echo "$(RED)Suppression du programme\n$(ENDCOLOR)"
@@ -50,7 +52,7 @@ L				=		$(CFLAGS) -g -fsanitize=address -fno-omit-frame-pointer
 RM				=		rm -f
 LIBS			= 		-I$(HOME)/.brew/Cellar/readline/8.1.2/include -lreadline \
 						-L$(HOME)/.brew/Cellar/readline/8.1.2/lib
-HEADER			=		-I./includes 
+HEADER			=		-I./includes -I./libft/libft.h
 ifeq ($(shell uname), Linux)
 
 CC				=		gcc
@@ -59,21 +61,23 @@ endif
 
 #***** Compilation *****#
 
-all : $(NAME)
+all : lib logo $(NAME)
 
-$(NAME) : logo start minishell
+
+
+lib:
+			@$(START)
+			@$(MLIBFT) all
+			@$(END_COMP_LIB)
 
 logo :
 			@$(MSHELL)
 
-start : 
-			@$(START)
 
-%.o:		%.c | minishell.h
+%.o:		%.c | minishell.h ./libft/libft.h Makefile
 			$(CC) $(CFLAGS) -g $(HEADER) -c $< -o $@
 
-minishell:	${OBJS}
-			${MLIBFT} all
+$(NAME) :	${OBJS}
 			${CC} ${CFLAGS} -o ${NAME} ${OBJS} ${LIBFT} ${LIBS} ${HEADER}
 			@$(END_COMP)
 
@@ -96,4 +100,4 @@ fclean:		clean
 
 re:			fclean all
 
-.PHONY:		all bonus clean fclean re
+.PHONY:		all clean fclean
