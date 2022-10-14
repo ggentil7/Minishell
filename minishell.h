@@ -148,4 +148,7 @@ char	**conv_path(t_pars *pars, t_node *env);
 // Init
 int		init_cmd(t_pars *pars);
 
+int		test_exec(t_pars *pars, t_node *env, char **path_tab);
+void	execution(t_pars *pars, t_node *env);
+
 #endif

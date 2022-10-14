@@ -6,9 +6,10 @@ void	free_tab(char **tab)
 	int	i;
 
 	i = 0;
+	printf("tab = %d\n", ft_tablen(tab));
 	if (tab != NULL)
 	{
-		while (i < ft_tablen(tab))
+		while (tab[i])
 		{
 			free(tab[i]);
 			i++;
