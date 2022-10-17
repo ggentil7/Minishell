@@ -6,7 +6,7 @@
 /*   By: aboymond <aboymond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/12 12:20:09 by aboymond          #+#    #+#             */
-/*   Updated: 2021/11/16 11:34:16 by aboymond         ###   ########.fr       */
+/*   Updated: 2022/10/14 17:28:34 by aboymond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static int	ft_set(const char *s, char c)
 
 	count = 0;
 	i = 0;
-	while (s[i])
+	while (i < (int)ft_strlen(s))
 	{
 		if (s[i] != c)
 		{
@@ -45,12 +45,12 @@ char	**ft_split(char const *s, char c)
 	if (!s)
 		return (0);
 	tab = ft_calloc(sizeof(char *), ft_set(s, c) + 1);
-	while (tab && s[i])
+	while (tab && i < (int)ft_strlen(s))
 	{
-		while (s[i] && s[i] == c)
+		while (i < (int)ft_strlen(s) && s[i] == c)
 			i++;
 		tmp = i;
-		while (s[i] && s[i] != c)
+		while (i < (int)ft_strlen(s) && s[i] != c)
 			i++;
 		if (tmp != i)
 			tab[j++] = ft_substr(s, tmp, i - tmp);

@@ -16,10 +16,10 @@ int	main(int argc, char **argv, char **envp)
 	{
 		signal(SIGINT, &handle_sigint);
 		signal(SIGQUIT, SIG_IGN);
-		prompt(node, pars); // copie de la liste 
+		prompt(node, pars);
 	}
-	lstclear(node);
-	rl_clear_history();
+	// lstclear(node);
+	// rl_clear_history();
 	return (0);
 }
  
