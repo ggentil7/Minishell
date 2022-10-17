@@ -43,8 +43,8 @@ int	prompt(t_node *head, t_pars *pars)
 	user = username(head);
 	buffer = readline(user);
 	if (!buffer)
-		exit (1) ;
-	if (ft_strcmp(buffer, "exit") == 0)
+		exit (EXIT_FAILURE);
+	if (ft_strncmp(buffer, "exit", 4) == 0)
 	{
 		free_prompt(pars, buffer, user);
 		exit (EXIT_SUCCESS);
