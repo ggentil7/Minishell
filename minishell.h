@@ -10,6 +10,7 @@
 # include <sys/ioctl.h>
 # include <fcntl.h>
 # include <sys/wait.h>
+# include <termios.h>
 # include "./libft/libft.h"
 
 // struct list chained
@@ -37,7 +38,6 @@ typedef struct s_args
 	char			**args_tab;
 	int				index;
 }	t_args;
-
 
 // Prompt
 int		prompt(t_node *node, t_pars *pars);
@@ -128,6 +128,8 @@ void	free_prompt(t_pars *pars, char *buff, char *user);
 
 // Signal
 void	handle_sigint(int sig);
+void	handle_signal(struct termios *saved);
+void	hide_key(struct termios *saved);
 void	rl_replace_line(const char *text, int clear_undo);
 void	rl_clear_history(void);
 
