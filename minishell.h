@@ -59,6 +59,7 @@ char	**tabjoin(char **tab, char **args);
 
 // Bultins print
 int		print_export(char **env);
+int		print_export2(char **env, int i);
 int		print_env(t_node *env);
 
 
@@ -144,7 +145,13 @@ int		bultin_env(t_pars *pars, t_node *env);
 int		bultin_export(t_pars *pars, t_node *node);
 int		bultin_unset(t_pars *pars, t_node *env);
 
+// Bultouts
+char	**conv_path(t_pars *pars, t_node *env);
+
 // Init
 int		init_cmd(t_pars *pars);
+
+int		test_exec(t_pars *pars, t_node *env, char **path_tab);
+void	execution(t_pars *pars, t_node *env);
 
 #endif

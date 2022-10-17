@@ -39,10 +39,7 @@ int	prompt(t_node *head, t_pars *pars)
 	t_pars	*tmp;
 	char	*buffer;
 	char	*user;
-	// int		i;
 
-	// i = -1;
-	//add_history(ft_strdup("\"salut\" | ouais | 'jj'\"pouet\" | kzgfhio"));
 	user = username(head);
 	buffer = readline(user);
 	if (!buffer)
