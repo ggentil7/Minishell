@@ -10,26 +10,33 @@ int	print_export(char **env)
 	while (env[++i])
 	{
 		printf("\033[1;31mdeclare -x \033[0m");
-		j = 0;
-		while (j < (int)ft_strlen(env[i]))
-		{
-			printf("\033[1;94m%c\033[0m", env[i][j]);
-			if (env[i][j] == '=')
-			{
-				j++;
-				printf("\033[1;92m\"");
-				while (env[i][j] != '\0')
-				{
-					printf("%c", env[i][j]);
-					j++;
-				}
-				printf("\"\033[0m");
-			}
-			j++;
-		}
+		j = -1;
+		i = print_export2(env, i);
 		printf("\n");
 	}
 	return (0);
+}
+int	print_export2(char **env, int i)
+{
+	int	j;
+
+	j = -1;
+	while (++j < (int)ft_strlen(env[i]))
+	{
+		printf("\033[1;94m%c\033[0m", env[i][j]);
+		if (env[i][j] == '=')
+		{
+			j++;
+			printf("\033[1;92m\"");
+			while (env[i][j] != '\0')
+			{
+				printf("%c", env[i][j]);
+				j++;
+			}
+			printf("\"\033[0m");
+		}
+	}
+	return (i);
 }
 
 int	print_env(t_node *env)

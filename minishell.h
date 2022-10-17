@@ -59,6 +59,7 @@ char	**tabjoin(char **tab, char **args);
 
 // Bultins print
 int		print_export(char **env);
+int		print_export2(char **env, int i);
 int		print_env(t_node *env);
 
 

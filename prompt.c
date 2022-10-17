@@ -39,17 +39,13 @@ int	prompt(t_node *head, t_pars *pars)
 	t_pars	*tmp;
 	char	*buffer;
 	char	*user;
-	// int		i;
 
-	// i = -1;
-	//add_history(ft_strdup("\"salut\" | ouais | 'jj'\"pouet\" | kzgfhio"));
 	user = username(head);
 	buffer = readline(user);
 	if (!buffer)
 		exit (1) ;
 	if (ft_strcmp(buffer, "exit") == 0)
 	{
-		//free_tab(head->args);
 		free_prompt(pars, buffer, user);
 		exit (EXIT_SUCCESS);
 	}
