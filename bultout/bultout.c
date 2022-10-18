@@ -40,7 +40,7 @@ int	exec_bultout(t_pars *pars, char **path_tab)
 	return (0);
 }
 
-void	exec_bultout_2(t_pars *pars, char **path_tab)
+int	exec_bultout_2(t_pars *pars, char **path_tab)
 {
 	int		i;
 	int		y;
@@ -49,6 +49,7 @@ void	exec_bultout_2(t_pars *pars, char **path_tab)
 
 	i = 0;
 	y = 0;
+	//printf("cmd exec = %s\n", pars->cmd);
 	while (path_tab[y])
 	{
 		start_cmd_path = ft_strjoin(path_tab[y], "/");
@@ -60,4 +61,11 @@ void	exec_bultout_2(t_pars *pars, char **path_tab)
 		free (cmd_path);
 		y++;
 	}
+	//printf("i = %d\n", i);
+	if (i == 0)
+	{
+		
+		return (-1);
+	}
+	return (0);
 }

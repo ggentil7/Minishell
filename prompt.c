@@ -40,6 +40,7 @@ int	prompt(t_node *head, t_pars *pars)
 	char	*buffer;
 	char	*user;
 
+	//add_history("ls | cat");
 	user = username(head);
 	buffer = readline(user);
 	if (!buffer)
@@ -56,6 +57,9 @@ int	prompt(t_node *head, t_pars *pars)
 	}
 	tmp = pars;
 	lst_to_tab(tmp);
+	tmp = pars;
+	if (tmp != NULL)
+		init_pipe(tmp);
 	if (tmp != NULL)
 		cmd(tmp, head);
 	//print_prompt(tmp);

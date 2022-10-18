@@ -48,7 +48,7 @@ int		is_space(char *data);
 
 // Init
 int		init_cmd(t_pars *pars);
-void	init_all(t_pars *pars, t_node *env);
+void	init_pipe(t_pars *pars);
 
 // Utils Bultins
 char	**env_sort(char **env);
@@ -150,7 +150,10 @@ char	**conv_path(t_pars *pars, t_node *env);
 int		init_cmd(t_pars *pars);
 
 int		exec_bultout(t_pars *pars, char **path_tab);
-void	exec_bultout_2(t_pars *pars, char **path_tab);
+int		exec_bultout_2(t_pars *pars, char **path_tab);
 void	execution(t_pars *pars, t_node *env);
+
+// Pipe
+int		pipeline(t_pars *pars, t_node *env);
 
 #endif
