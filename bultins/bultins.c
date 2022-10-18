@@ -42,8 +42,9 @@ void	execution(t_pars *pars, t_node *env)
 	char	**tmp;
 
 	tmp = conv_path(pars, env);
-	if (test_exec(pars, env, tmp) == -1)
+	if (exec_bultout(pars, tmp) == -1)
 	{
 		printf("minishell: %s: command not found\n", pars->cmd);
 	}
+	free_tab(tmp);
 }

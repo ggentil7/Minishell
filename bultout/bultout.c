@@ -26,7 +26,21 @@ char	**conv_path(t_pars *pars, t_node *env)
 	return (path_t);
 }
 
-int	test_exec(t_pars *pars, t_node *env, char **path_tab)
+int	exec_bultout(t_pars *pars, char **path_tab)
+{
+	pid_t	pid;
+
+	pid = fork();
+	if (pid != 0)
+		wait (NULL);
+	else
+	{
+		exec_bultout_2(pars, path_tab);
+	}
+	return (0);
+}
+
+void	exec_bultout_2(t_pars *pars, char **path_tab)
 {
 	int		i;
 	int		y;
@@ -46,11 +60,4 @@ int	test_exec(t_pars *pars, t_node *env, char **path_tab)
 		free (cmd_path);
 		y++;
 	}
-	if (i == 0)
-	{
-		free_tab(path_tab);
-		return (-1);
-	}
-	free_tab(path_tab);
-	return (0);
 }
