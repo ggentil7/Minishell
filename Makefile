@@ -58,6 +58,7 @@ ifeq ($(shell uname), Linux)
 
 CC				=		gcc
 LIBS			= 		-L/usr/local/lib -I/usr/local/include -lreadline
+HEADER			=		-I./includes
 endif
 
 #***** Compilation *****#

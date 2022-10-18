@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   bultins_env.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aboymond <aboymond@student.42.fr>          +#+  +:+       +#+        */
+/*   By: piow00 <piow00@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 14:11:12 by aboymond          #+#    #+#             */
-/*   Updated: 2022/10/12 17:15:02 by aboymond         ###   ########.fr       */
+/*   Updated: 2022/10/18 21:07:30 by piow00           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,12 +34,8 @@ int	bultin_env(t_pars *pars, t_node *env)
 
 int	bultin_unset(t_pars *pars, t_node *env)
 {
-	t_node	*tmp;
-	t_pars	*tmpars;
 	int 	i;
 
-	tmp = env;
-	tmpars = pars;
 	i = 1;
 	if (pars->args[1] == NULL)
 	{
@@ -59,9 +55,6 @@ int	bultin_unset(t_pars *pars, t_node *env)
 
 int	bultin_export(t_pars *pars, t_node *node)
 {
-	char	**env;
-
-	env = NULL;
 	if (pars->args[1] == NULL)
 	{
 		node->args = env_to_tab(node);

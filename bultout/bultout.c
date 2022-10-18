@@ -6,11 +6,9 @@ char	**conv_path(t_pars *pars, t_node *env)
 	char	*path;
 	char	**path_t;
 	char	*path_tab_tmp;
-	int		i;
 	int		y;
 
 	(void)pars;
-	i = 0;
 	y = 0;
 	path = search_env(env, "PATH");
 	while (path[y] != '=')
@@ -64,7 +62,6 @@ int	exec_bultout_2(t_pars *pars, char **path_tab)
 	//printf("i = %d\n", i);
 	if (i == 0)
 	{
-		
 		return (-1);
 	}
 	return (0);

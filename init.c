@@ -2,8 +2,17 @@
 
 int	init_cmd(t_pars *pars)
 {
-	if (pars->args != NULL)
-		pars->cmd = pars->args[0];
+	t_pars	*tmp;
+
+	tmp = pars;
+	if (tmp->args != NULL)
+	{
+		while (tmp != NULL)
+		{
+			tmp->cmd = tmp->args[0];
+			tmp = tmp->next;
+		}
+	}
 	//printf("cmd init = %s\n", pars->cmd);
 	return (0);
 }
@@ -12,9 +21,7 @@ void	init_pipe(t_pars *pars)
 {
 	int	fd[2];
 	t_pars *tmp;
-	int	i;
 
-	i = 0;
 	tmp = pars;
 	tmp->fd_in = 0;
 	while (tmp->next != NULL)
@@ -23,7 +30,6 @@ void	init_pipe(t_pars *pars)
 		tmp->fd_out = fd[1];
 		tmp->next->fd_in = fd[0];
 		tmp = tmp->next;
-		i = 1;
 	}
 	tmp->fd_out = 1;
 	tmp = pars;

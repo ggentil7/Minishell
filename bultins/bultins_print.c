@@ -3,14 +3,11 @@
 int	print_export(char **env)
 {
 	int	i;
-	int	j;
 
 	i = -1;
-	j = 0;
 	while (env[++i])
 	{
 		printf("\033[1;31mdeclare -x \033[0m");
-		j = -1;
 		i = print_export2(env, i);
 		printf("\n");
 	}

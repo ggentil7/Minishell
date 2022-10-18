@@ -6,7 +6,7 @@
 /*   By: piow00 <piow00@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/29 14:19:12 by aboymond          #+#    #+#             */
-/*   Updated: 2022/05/06 20:28:17 by piow00           ###   ########.fr       */
+/*   Updated: 2022/10/18 21:00:25 by piow00           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 static int	ft_intlen(unsigned int n)
 {
 	unsigned int			i;
-	unsigned long int		nb;
+	long int		nb;
 
 	nb = n;
 	i = 0;
@@ -38,7 +38,7 @@ static char	*ft_calcul(unsigned int n)
 {
 	char					*str;
 	unsigned int			i;
-	unsigned long int		nb;
+	long int				nb;
 
 	nb = n;
 	i = ft_intlen(nb);
@@ -64,7 +64,7 @@ static char	*ft_calcul(unsigned int n)
 static char	*ft_uitoa(unsigned int n)
 {
 	char				*str;
-	unsigned long int	nb;
+	long int			nb;
 
 	nb = n;
 	str = ft_calcul(nb);

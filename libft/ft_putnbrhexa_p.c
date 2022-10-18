@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putnbrhexa_p.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aboymond <aboymond@student.42.fr>          +#+  +:+       +#+        */
+/*   By: piow00 <piow00@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/29 17:23:21 by aboymond          #+#    #+#             */
-/*   Updated: 2022/04/12 11:32:52 by aboymond         ###   ########.fr       */
+/*   Updated: 2022/10/18 20:56:54 by piow00           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	ft_putnbrhexa_p(unsigned long long int n)
 	char	*hexa;
 
 	hexa = "0123456789abcdef";
-	if (n >= 0 && n <= 15)
+	if (n <= 15)
 		ft_putcharf(hexa[n]);
 	else
 	{
