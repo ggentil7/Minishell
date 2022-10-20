@@ -27,6 +27,7 @@ typedef struct s_pars
 	struct s_pars	*next;
 	char			**args;
 	char			*cmd;
+	pid_t			pid;
 	int				fd_in;
 	int				fd_out;
 }	t_pars;
@@ -155,5 +156,6 @@ void	execution(t_pars *pars, t_node *env);
 
 // Pipe
 int		pipeline(t_pars *pars, t_node *env);
+void	free_pipe(t_pars *pars);
 
 #endif

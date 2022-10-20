@@ -40,7 +40,7 @@ int	prompt(t_node *head, t_pars *pars)
 	char	*buffer;
 	char	*user;
 
-	//add_history("ls | cat");
+	add_history("cat free.c | grep NULL");
 	user = username(head);
 	buffer = readline(user);
 	if (!buffer)

@@ -42,11 +42,13 @@ int	exec_bultout_2(t_pars *pars, char **path_tab)
 {
 	int		i;
 	int		y;
+	int d;
 	char	*cmd_path;
 	char	*start_cmd_path;
 
 	i = 0;
 	y = 0;
+	d = 0;
 	//printf("cmd exec = %s\n", pars->cmd);
 	while (path_tab[y])
 	{
@@ -56,10 +58,11 @@ int	exec_bultout_2(t_pars *pars, char **path_tab)
 		if (!access(cmd_path, X_OK))
 			if (execve(cmd_path, &pars->args[i], NULL) == -1)
 				i++;
+		printf("pathtab = %s, i = %d\n", cmd_path, i);
 		free (cmd_path);
 		y++;
 	}
-	//printf("i = %d\n", i);
+	printf("GREEEEEEEP\n");
 	if (i == 0)
 	{
 		return (-1);
