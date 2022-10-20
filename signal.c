@@ -1,15 +1,33 @@
 #include "minishell.h"
 
-int	g_status;
-
 void	handle_sigint(int sig)
 {
 	if (sig == SIGINT)
 	{
-		g_status = 130;
-		ioctl(STDIN_FILENO, TIOCSTI, "\n");
 		rl_replace_line("", 0);
-		rl_redisplay();
 		rl_on_new_line();
+		write (1, "\n", 1);
+		rl_redisplay();
 	}
+	else if (sig == SIGQUIT)
+	{
+		rl_on_new_line();
+		rl_redisplay();
+	}
+}
+
+void	handle_signal(struct termios *saved)
+{
+	hide_key(saved);
+	signal(SIGINT, handle_sigint);
+}
+
+void	hide_key(struct termios *saved)
+{
+	struct termios	attr;
+
+	tcgetattr(STDIN_FILENO, &attr);
+	tcgetattr(STDIN_FILENO, saved);
+	attr.c_lflag &= ~ECHOCTL;
+	tcsetattr(STDIN_FILENO, TCSAFLUSH, &attr);
 }

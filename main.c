@@ -5,6 +5,7 @@ int	main(int argc, char **argv, char **envp)
 {
 	t_node	*node;
 	t_pars	*pars;
+	struct termios	saved;
 	
 	(void)argc;
 	(void)argv;
@@ -13,9 +14,9 @@ int	main(int argc, char **argv, char **envp)
 	env_cpy(&node, envp);
 	while (1)
 	{
-		signal(SIGINT, &handle_sigint);
-		signal(SIGQUIT, SIG_IGN);
-		prompt(node, pars);
+		handle_signal(&saved);
+		prompt(node, pars); // copie de la liste 
+		tcsetattr(STDIN_FILENO, TCSANOW, &saved);
 	}
 	// lstclear(node);
 	// rl_clear_history();
