@@ -28,6 +28,7 @@ typedef struct s_pars
 	struct s_pars	*next;
 	char			**args;
 	char			*cmd;
+	pid_t			pid;
 	int				fd_in;
 	int				fd_out;
 }	t_pars;
@@ -48,7 +49,7 @@ int		is_space(char *data);
 
 // Init
 int		init_cmd(t_pars *pars);
-void	init_all(t_pars *pars, t_node *env);
+void	init_pipe(t_pars *pars);
 
 // Utils Bultins
 char	**env_sort(char **env);
@@ -151,7 +152,12 @@ char	**conv_path(t_pars *pars, t_node *env);
 // Init
 int		init_cmd(t_pars *pars);
 
-int		test_exec(t_pars *pars, t_node *env, char **path_tab);
+int		exec_bultout(t_pars *pars, char **path_tab);
+int		exec_bultout_2(t_pars *pars, char **path_tab);
 void	execution(t_pars *pars, t_node *env);
+
+// Pipe
+int		pipeline(t_pars *pars, t_node *env);
+void	free_pipe(t_pars *pars);
 
 #endif

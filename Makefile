@@ -10,7 +10,8 @@ SRC				=		main.c prompt.c utils.c init.c signal.c free.c\
 						$(addprefix ./parsing/, parsing.c lst_parsing.c check_quote.c pipe.c l2_parsing.c lst_clear.c)\
 						$(addprefix ./error/, error_parsing.c)\
 						$(addprefix ./bultins/, bultins.c bultins_env.c bultins_utils.c bultins_print.c bultin_echo.c bultin_cd.c bultin_pwd.c)\
-						$(addprefix ./bultout/, bultout.c)
+						$(addprefix ./bultout/, bultout.c)\
+						$(addprefix ./pipe/, pipe.c)
 OBJS			=		$(SRC:.c=.o)
 
 #***** Libft *****#
@@ -57,6 +58,7 @@ ifeq ($(shell uname), Linux)
 
 CC				=		gcc
 LIBS			= 		-L/usr/local/lib -I/usr/local/include -lreadline
+HEADER			=		-I./includes
 endif
 
 #***** Compilation *****#

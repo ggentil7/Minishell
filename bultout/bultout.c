@@ -6,11 +6,9 @@ char	**conv_path(t_pars *pars, t_node *env)
 	char	*path;
 	char	**path_t;
 	char	*path_tab_tmp;
-	int		i;
 	int		y;
 
 	(void)pars;
-	i = 0;
 	y = 0;
 	path = search_env(env, "PATH");
 	while (path[y] != '=')
@@ -26,15 +24,32 @@ char	**conv_path(t_pars *pars, t_node *env)
 	return (path_t);
 }
 
-int	test_exec(t_pars *pars, t_node *env, char **path_tab)
+int	exec_bultout(t_pars *pars, char **path_tab)
+{
+	pid_t	pid;
+
+	pid = fork();
+	if (pid != 0)
+		wait (NULL);
+	else
+	{
+		exec_bultout_2(pars, path_tab);
+	}
+	return (0);
+}
+
+int	exec_bultout_2(t_pars *pars, char **path_tab)
 {
 	int		i;
 	int		y;
+	int d;
 	char	*cmd_path;
 	char	*start_cmd_path;
 
 	i = 0;
 	y = 0;
+	d = 0;
+	//printf("cmd exec = %s\n", pars->cmd);
 	while (path_tab[y])
 	{
 		start_cmd_path = ft_strjoin(path_tab[y], "/");
@@ -48,9 +63,7 @@ int	test_exec(t_pars *pars, t_node *env, char **path_tab)
 	}
 	if (i == 0)
 	{
-		free_tab(path_tab);
 		return (-1);
 	}
-	free_tab(path_tab);
 	return (0);
 }

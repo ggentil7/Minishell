@@ -11,7 +11,6 @@ int	main(int argc, char **argv, char **envp)
 	(void)argv;
 	node = NULL;
 	pars = NULL;
-	init_all(pars, node);
 	env_cpy(&node, envp);
 	while (1)
 	{
