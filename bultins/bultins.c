@@ -35,8 +35,6 @@ int	cmd(t_pars *pars, t_node *env)
 		bultin_search(pars, env);
 	else
 		pipeline(pars, env);
-	//if (bultin_search(pars, env) == 0)
-		//conv_path(pars, env);
 	return (0);
 }
 

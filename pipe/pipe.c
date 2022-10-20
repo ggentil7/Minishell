@@ -2,8 +2,6 @@
 
 int	pipeline(t_pars *pars, t_node *env)
 {
-	
-	// pid_t	pid;
 	t_pars	*tmp;
 	
 	tmp = pars;
@@ -20,9 +18,6 @@ int	pipeline(t_pars *pars, t_node *env)
 			execution(tmp, env);
 			exit (0);
 		}
-
-		
-		printf("tmp pipeline %s\n", tmp->p_data);
 		tmp = tmp->next;
 	}
 	free_pipe(pars);
