@@ -4,7 +4,7 @@
 int	bultin_search(t_pars *pars, t_node *env)
 {
 	if (ft_strcmp(pars->cmd, "echo") == 0 || ft_strcmp(pars->cmd, "ECHO") == 0)
-	 	return (bultin_echo(pars));
+	 	return (bultin_echo_n(pars));
 	 else if (ft_strcmp(pars->cmd, "cd") == 0)
 	 	return (bultin_cd(pars, env));
 	 else if (ft_strcmp(pars->cmd, "pwd") == 0

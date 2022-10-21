@@ -27,6 +27,8 @@ typedef struct s_pars
 	char			*p_data;
 	struct s_pars	*next;
 	char			**args;
+	char			*redir;
+	char			**redir_args;
 	char			*cmd;
 	pid_t			pid;
 	int				fd_in;
@@ -159,5 +161,10 @@ void	execution(t_pars *pars, t_node *env);
 // Pipe
 int		pipeline(t_pars *pars, t_node *env);
 void	free_pipe(t_pars *pars);
+void	wait_pipe(t_pars *pars);
+
+// Redirection
+int		redirection_tab(t_pars *pars);
+int		redo_tab(t_pars pars, int i);
 
 #endif

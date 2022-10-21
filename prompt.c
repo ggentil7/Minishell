@@ -40,7 +40,7 @@ int	prompt(t_node *head, t_pars *pars)
 	char	*buffer;
 	char	*user;
 
-	add_history("cat free.c | grep NULL");
+	add_history("echo salut >> wesh");
 	user = username(head);
 	buffer = readline(user);
 	if (!buffer)
@@ -50,6 +50,7 @@ int	prompt(t_node *head, t_pars *pars)
 	}
 	if (ft_strcmp(buffer, "exit") == 0)
 	{
+		printf("exit\n");
 		free_prompt(pars, buffer, user);
 		exit (EXIT_SUCCESS);
 	}
@@ -61,10 +62,11 @@ int	prompt(t_node *head, t_pars *pars)
 	tmp = pars;
 	lst_to_tab(tmp);
 	tmp = pars;
-	if (tmp != NULL)
-		init_pipe(tmp);
-	if (tmp != NULL)
-		cmd(tmp, head);
+	redirection_tab(tmp);
+	// if (tmp != NULL)
+	// 	init_pipe(tmp);
+	// if (tmp != NULL)
+	// 	cmd(tmp, head);
 	//print_prompt(tmp);
 	if (buffer != NULL && buffer[0] != '\0')
 		add_history(buffer);

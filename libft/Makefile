@@ -52,15 +52,36 @@ SRC = 	ft_atoi.c \
 		ft_uprint.c \
 		get_next_line.c
 
+#******Colors******#
+
+BLUE_T			=		\033[0;34m
+BLUE			=		\033[44m
+ENDCOLOR		=		\033[0m
+
+#******Echo********#
+
+START			=		echo "$(BLUE_T)Start compilation LIBFT\n$(ENDCOLOR)"
+END_COMP_LIB	=		echo "$(BLUE_T)End compilation LIBFT\n$(ENDCOLOR)"
+CHARG_LINE		=		echo "$(BLUE)    $(ENDCOLOR)\c"
+BS_N			=		echo "\n"
+
+#******Rules*******#
+
 OBJS = ${SRC:.c=.o}
 
-all: ${NAME}
+all: start ${NAME}
+
+start:
+	@${START}
 
 %.o: %.c
-	${CC} ${CFLAGS} -c $< -o $@
+		@${CC} ${CFLAGS} -c $< -o $@
+		@$(CHARG_LINE)
 
 ${NAME}: ${OBJS}
-	${AR} ${NAME} ${OBJS}
+		 @$(BS_N)
+		@${AR} ${NAME} ${OBJS}
+		@$(END_COMP_LIB)
 
 
 clean: 

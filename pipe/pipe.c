@@ -21,13 +21,7 @@ int	pipeline(t_pars *pars, t_node *env)
 		tmp = tmp->next;
 	}
 	free_pipe(pars);
-	tmp = pars;
-	while (tmp != NULL)
-	{
-		if (tmp->pid > 0)
-			waitpid(tmp->pid, NULL, 0);
-		tmp = tmp->next;
-	}
+	wait_pipe(pars);
 	return (0);
 }
 
@@ -40,5 +34,18 @@ void	free_pipe(t_pars *pars)
 		if (pars->fd_out > 2)
 			close(pars->fd_out);
 		pars = pars->next;
+	}
+}
+
+void	wait_pipe(t_pars *pars)
+{
+	t_pars	*tmp;
+
+	tmp = pars;
+	while (tmp != NULL)
+	{
+		if (tmp->pid > 0)
+			waitpid(tmp->pid, NULL, 0);
+		tmp = tmp->next;
 	}
 }

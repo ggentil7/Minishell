@@ -11,7 +11,9 @@ SRC				=		main.c prompt.c utils.c init.c signal.c free.c\
 						$(addprefix ./error/, error_parsing.c)\
 						$(addprefix ./bultins/, bultins.c bultins_env.c bultins_utils.c bultins_print.c bultin_echo.c bultin_cd.c bultin_pwd.c)\
 						$(addprefix ./bultout/, bultout.c)\
-						$(addprefix ./pipe/, pipe.c)
+						$(addprefix ./pipe/, pipe.c)\
+						$(addprefix ./redirec/, redirection.c)
+
 OBJS			=		$(SRC:.c=.o)
 
 #***** Libft *****#
@@ -25,14 +27,16 @@ GREEN			=		\033[1;32m
 BLUE			=		\033[0;94m
 RED				=		\033[1;31m
 ENDCOLOR		=		\033[0m
+BG_G			=		\033[42m
 
 #***** Textes *****#
 
 START			=		echo "$(GREEN)Start compilation\n$(ENDCOLOR)"
-END_COMP_LIB	=		echo "$(BLUE)End compilation LIBFT\n$(ENDCOLOR)"
 END_COMP		=		echo "$(GREEN)End compilation\n$(ENDCOLOR)"
 S_OBJS			=		echo "$(RED)Suppression des objets\n$(ENDCOLOR)"
 S_NAME			=		echo "$(RED)Suppression du programme\n$(ENDCOLOR)"
+CHARG_LINE		=		echo "$(BG_G)    $(ENDCOLOR)\c"
+BS_N			=		echo "\n"
 
 #***** Logo *****#
 
@@ -51,8 +55,8 @@ CC				=		gcc
 CFLAGS			=		-Wall -Wextra -Werror
 L				=		$(CFLAGS) -g -fsanitize=address -fno-omit-frame-pointer
 RM				=		rm -f
-LIBS			= 		-I$(HOME)/.brew/Cellar/readline/8.1.2/include -lreadline \
-						-L$(HOME)/.brew/Cellar/readline/8.1.2/lib
+LIBS			= 		-I$(HOME)/.brew/Cellar/readline/8.2.1/include -lreadline \
+						-L$(HOME)/.brew/Cellar/readline/8.2.1/lib
 HEADER			=		-I./includes -I./libft/libft.h
 ifeq ($(shell uname), Linux)
 
@@ -63,24 +67,28 @@ endif
 
 #***** Compilation *****#
 
-all : lib logo $(NAME)
+all : lib start logo $(NAME)
 
 
 
 lib:
-			@$(START)
 			@$(MLIBFT) all
 			@$(END_COMP_LIB)
+
+start:
+			@$(START)
 
 logo :
 			@$(MSHELL)
 
 
 %.o:		%.c | minishell.h ./libft/libft.h Makefile
-			$(CC) $(CFLAGS) -g $(HEADER) -c $< -o $@
+			@$(CC) $(CFLAGS) -g $(HEADER) -c $< -o $@
+			@$(CHARG_LINE)
 
 $(NAME) :	${OBJS}
-			${CC} ${CFLAGS} -o ${NAME} ${OBJS} ${LIBFT} ${LIBS} ${HEADER}
+			@$(BS_N)
+			@${CC} ${CFLAGS} -o ${NAME} ${OBJS} ${LIBFT} ${LIBS} ${HEADER}
 			@$(END_COMP)
 
 l :			${OBJS}
