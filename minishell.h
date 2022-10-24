@@ -27,10 +27,11 @@ typedef struct s_pars
 	char			*p_data;
 	struct s_pars	*next;
 	char			**args;
-	char			*redir;
-	char			**redir_args;
+	char			**redir;
+	char			*redir_args;
 	char			*cmd;
 	pid_t			pid;
+	int				*i_redir;
 	int				fd_in;
 	int				fd_out;
 }	t_pars;
@@ -165,6 +166,6 @@ void	wait_pipe(t_pars *pars);
 
 // Redirection
 int		redirection_tab(t_pars *pars);
-int		redo_tab(t_pars pars, int i);
+int		redo_tab(t_pars *pars, int i, int y);
 
 #endif

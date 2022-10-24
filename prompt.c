@@ -40,12 +40,13 @@ int	prompt(t_node *head, t_pars *pars)
 	char	*buffer;
 	char	*user;
 
-	add_history("echo salut >> wesh");
+	add_history(" echo salut >> wesh  yo super cool << la vie  one est bien cousin > aller viens  le pipe de mort de merde < mini pute");
 	user = username(head);
 	buffer = readline(user);
 	if (!buffer)
 	{
 		printf("exit\n");
+		free_prompt(pars, buffer, user);
 		exit (1) ;
 	}
 	if (ft_strcmp(buffer, "exit") == 0)
