@@ -40,7 +40,7 @@ int	prompt(t_node *head, t_pars *pars)
 	char	*buffer;
 	char	*user;
 
-	add_history(" echo salut >> wesh  yo super cool << la vie  one est bien cousin > aller viens  le pipe de mort de merde < mini pute");
+	add_history("echo salut > text | echo wesh > text");
 	user = username(head);
 	buffer = readline(user);
 	if (!buffer)
@@ -62,12 +62,13 @@ int	prompt(t_node *head, t_pars *pars)
 	}
 	tmp = pars;
 	lst_to_tab(tmp);
-	tmp = pars;
-	redirection_tab(tmp);
-	// if (tmp != NULL)
-	// 	init_pipe(tmp);
-	// if (tmp != NULL)
-	// 	cmd(tmp, head);
+	//tmp = pars;
+	//tmp = pars;
+	if (tmp != NULL)
+		init_pipe(tmp);
+	//redirection_tab(tmp);
+	if (tmp != NULL)
+		cmd(tmp, head);
 	//print_prompt(tmp);
 	if (buffer != NULL && buffer[0] != '\0')
 		add_history(buffer);

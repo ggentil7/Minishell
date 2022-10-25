@@ -12,7 +12,7 @@ SRC				=		main.c prompt.c utils.c init.c signal.c free.c\
 						$(addprefix ./bultins/, bultins.c bultins_env.c bultins_utils.c bultins_print.c bultin_echo.c bultin_cd.c bultin_pwd.c)\
 						$(addprefix ./bultout/, bultout.c)\
 						$(addprefix ./pipe/, pipe.c)\
-						$(addprefix ./redirec/, redirection.c)
+						$(addprefix ./redirec/, redirection.c chevrons.c)
 
 OBJS			=		$(SRC:.c=.o)
 

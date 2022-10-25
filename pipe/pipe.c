@@ -15,7 +15,8 @@ int	pipeline(t_pars *pars, t_node *env)
 			if (tmp->fd_in > 2)
 				dup2(tmp->fd_in, STDIN_FILENO);
 			free_pipe(pars);
-			execution(tmp, env);
+			if (bultin_search(tmp, env) == -1)
+				execution(tmp, env);
 			exit (0);
 		}
 		tmp = tmp->next;

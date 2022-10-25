@@ -27,11 +27,8 @@ typedef struct s_pars
 	char			*p_data;
 	struct s_pars	*next;
 	char			**args;
-	char			**redir;
-	char			*redir_args;
 	char			*cmd;
 	pid_t			pid;
-	int				*i_redir;
 	int				fd_in;
 	int				fd_out;
 }	t_pars;
@@ -166,6 +163,12 @@ void	wait_pipe(t_pars *pars);
 
 // Redirection
 int		redirection_tab(t_pars *pars);
-int		redo_tab(t_pars *pars, int i, int y);
+int		chevron_detect(t_pars *pars, char *tab, int i);
+int		del_chevron_more(t_pars *pars,  int i);
+
+// Chevrons
+int		chevron_d_simple(t_pars *pars, int i);
+int		chevron_d_double(t_pars *pars, int i);
+int		chevron_g_simple(t_pars *pars, int i);
 
 #endif

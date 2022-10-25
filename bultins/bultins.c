@@ -21,20 +21,14 @@ int	bultin_search(t_pars *pars, t_node *env)
 	else if (ft_strcmp(pars->cmd, "env") == 0
 		|| ft_strcmp(pars->cmd, "ENV") == 0)
 		return (bultin_env(pars, env));
-	else
-		pipeline(pars, env);
-	// else if (ft_strcmp(pars->cmd, "exit") == 0)
-	// 	return (bultin_exit(pars));
 	return (-1);
 }
 
 int	cmd(t_pars *pars, t_node *env)
 {
 	init_cmd(pars);
-	if (pars->next == NULL)
-		bultin_search(pars, env);
-	else
-		pipeline(pars, env);
+	redirection_tab(pars);
+	pipeline(pars, env);
 	return (0);
 }
 
