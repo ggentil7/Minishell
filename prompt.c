@@ -40,16 +40,18 @@ int	prompt(t_node *head, t_pars *pars)
 	char	*buffer;
 	char	*user;
 
-	add_history("cat free.c | grep NULL");
+	// add_history("cat << EOF > toto.txt");
 	user = username(head);
 	buffer = readline(user);
 	if (!buffer)
 	{
 		printf("exit\n");
+		free_prompt(pars, buffer, user);
 		exit (1) ;
 	}
 	if (ft_strcmp(buffer, "exit") == 0)
 	{
+		printf("exit\n");
 		free_prompt(pars, buffer, user);
 		exit (EXIT_SUCCESS);
 	}
@@ -60,9 +62,9 @@ int	prompt(t_node *head, t_pars *pars)
 	}
 	tmp = pars;
 	lst_to_tab(tmp);
-	tmp = pars;
 	if (tmp != NULL)
 		init_pipe(tmp);
+	tmp = pars;
 	if (tmp != NULL)
 		cmd(tmp, head);
 	//print_prompt(tmp);

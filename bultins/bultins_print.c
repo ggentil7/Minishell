@@ -18,9 +18,10 @@ int	print_export2(char **env, int i)
 	int	j;
 
 	j = -1;
+	printf("\033[1;94m");
 	while (++j < (int)ft_strlen(env[i]))
 	{
-		printf("\033[1;94m%c\033[0m", env[i][j]);
+		printf("%c", env[i][j]);
 		if (env[i][j] == '=')
 		{
 			j++;

@@ -9,3 +9,6 @@ fonction au bol (t_node *head)       /* ne modifie pas la liste node */
 		{
 		tmp = tmp->next;
 		}
+
+ cat << EOF > toto.txt
+ 

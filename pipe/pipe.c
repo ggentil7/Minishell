@@ -10,24 +10,21 @@ int	pipeline(t_pars *pars, t_node *env)
 		tmp->pid = fork();
 		if (tmp->pid == 0)
 		{
+			// redirection_tab(tmp);
+			// printf("in 2 = %d, out 2 = %d\n", tmp->fd_in, tmp->fd_out);
 			if (tmp->fd_out > 2)
 				dup2(tmp->fd_out, STDOUT_FILENO);
 			if (tmp->fd_in > 2)
 				dup2(tmp->fd_in, STDIN_FILENO);
 			free_pipe(pars);
-			execution(tmp, env);
+			if (bultin_search(tmp, env) == -1)
+				execution(tmp, env);
 			exit (0);
 		}
 		tmp = tmp->next;
 	}
 	free_pipe(pars);
-	tmp = pars;
-	while (tmp != NULL)
-	{
-		if (tmp->pid > 0)
-			waitpid(tmp->pid, NULL, 0);
-		tmp = tmp->next;
-	}
+	wait_pipe(pars);
 	return (0);
 }
 
@@ -40,5 +37,18 @@ void	free_pipe(t_pars *pars)
 		if (pars->fd_out > 2)
 			close(pars->fd_out);
 		pars = pars->next;
+	}
+}
+
+void	wait_pipe(t_pars *pars)
+{
+	t_pars	*tmp;
+
+	tmp = pars;
+	while (tmp != NULL)
+	{
+		if (tmp->pid > 0)
+			waitpid(tmp->pid, NULL, 0);
+		tmp = tmp->next;
 	}
 }

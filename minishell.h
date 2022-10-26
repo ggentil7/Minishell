@@ -4,6 +4,9 @@
 
 # include <stdlib.h>
 # include <unistd.h>
+# include <stdio.h>
+# include <errno.h>
+# include <string.h>
 # include <readline/readline.h>
 # include <readline/history.h>
 # include <signal.h>
@@ -28,6 +31,7 @@ typedef struct s_pars
 	struct s_pars	*next;
 	char			**args;
 	char			*cmd;
+	int				chevr;
 	pid_t			pid;
 	int				fd_in;
 	int				fd_out;
@@ -145,6 +149,7 @@ int		bultin_cd(t_pars *pars, t_node *env);
 int		bultin_env(t_pars *pars, t_node *env);
 int		bultin_export(t_pars *pars, t_node *node);
 int		bultin_unset(t_pars *pars, t_node *env);
+int		is_bultin(t_pars *pars);
 
 // Bultouts
 char	**conv_path(t_pars *pars, t_node *env);
@@ -159,5 +164,17 @@ void	execution(t_pars *pars, t_node *env);
 // Pipe
 int		pipeline(t_pars *pars, t_node *env);
 void	free_pipe(t_pars *pars);
+void	wait_pipe(t_pars *pars);
+
+// Redirection
+int		redirection_tab(t_pars *pars);
+int		chevron_detect(t_pars *pars, char *tab, int i);
+int		del_chevron_more(t_pars *pars,  int i);
+
+// Chevrons
+int		chevron_d_simple(t_pars *pars, int i);
+int		chevron_d_double(t_pars *pars, int i);
+int		chevron_g_simple(t_pars *pars, int i);
+int		chevron_g_double(t_pars *pars, int i);
 
 #endif
