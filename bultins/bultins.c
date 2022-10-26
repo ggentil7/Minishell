@@ -28,7 +28,10 @@ int	cmd(t_pars *pars, t_node *env)
 {
 	init_cmd(pars);
 	redirection_tab(pars);
-	pipeline(pars, env);
+	if(is_bultin(pars) != -1 && pars->next == NULL && pars->chevr == 0)
+		bultin_search(pars, env);
+	else
+		pipeline(pars, env);
 	return (0);
 }
 
@@ -42,4 +45,27 @@ void	execution(t_pars *pars, t_node *env)
 		printf("minishell: %s: command not found\n", pars->cmd);
 	}
 	free_tab(tmp);
+}
+
+int	is_bultin(t_pars *pars)
+{
+	if (ft_strcmp(pars->cmd, "echo") == 0 || ft_strcmp(pars->cmd, "ECHO") == 0)
+	 	return (0);
+	 else if (ft_strcmp(pars->cmd, "cd") == 0)
+	 	return (0);
+	 else if (ft_strcmp(pars->cmd, "pwd") == 0
+	 	|| ft_strcmp(pars->cmd, "PWD") == 0)
+	 	return (0);
+	if (ft_strcmp(pars->cmd, "export") == 0)
+		return (0);
+	else if (ft_strcmp(pars->cmd, "EXPORT") == 0)
+		return (0);
+	if (ft_strcmp(pars->cmd, "unset") == 0)
+		return (0);
+	else if (ft_strcmp(pars->cmd, "UNSET") == 0)
+		return (0);
+	else if (ft_strcmp(pars->cmd, "env") == 0
+		|| ft_strcmp(pars->cmd, "ENV") == 0)
+		return (0);
+	return (-1);
 }

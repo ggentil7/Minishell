@@ -10,6 +10,8 @@ int	pipeline(t_pars *pars, t_node *env)
 		tmp->pid = fork();
 		if (tmp->pid == 0)
 		{
+			// redirection_tab(tmp);
+			// printf("in 2 = %d, out 2 = %d\n", tmp->fd_in, tmp->fd_out);
 			if (tmp->fd_out > 2)
 				dup2(tmp->fd_out, STDOUT_FILENO);
 			if (tmp->fd_in > 2)

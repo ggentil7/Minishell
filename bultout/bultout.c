@@ -49,7 +49,6 @@ int	exec_bultout_2(t_pars *pars, char **path_tab)
 	i = 0;
 	y = 0;
 	d = 0;
-	//printf("cmd exec = %s\n", pars->cmd);
 	while (path_tab[y])
 	{
 		start_cmd_path = ft_strjoin(path_tab[y], "/");

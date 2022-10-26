@@ -8,6 +8,7 @@ int	redirection_tab(t_pars *pars)
 	int	i;
 
 	tmp = pars;
+	tmp->chevr = 0;
 	while (tmp != NULL)
 	{
 		i = 0;
@@ -15,7 +16,8 @@ int	redirection_tab(t_pars *pars)
 		{
 			if (chevron_detect(tmp, tmp->args[i], i) == -1)
 				i++;
-			printf("redirect tmp->args[%d] = %s\n", i, tmp->args[i]);
+			else
+				tmp->chevr++;
 		}
 		tmp = tmp->next;
 	}
@@ -42,7 +44,7 @@ int	chevron_detect(t_pars *pars, char *tab, int i)
 	else if (ft_strcmp(tab, "<<") == 0)
 	{
 		del_chevron_more(pars, i);
-		//chevron_g_double(pars, tab, i);
+		chevron_g_double(pars, i);
 	}
 	else
 		return (-1);
@@ -57,7 +59,6 @@ int	del_chevron_more(t_pars *pars, int i)
 	while (pars->args[j])
 	{
 		pars->args[i] = pars->args[j];
-		//printf("args chevron = %s\n", pars->args[i]);
 		i++;
 		j++;
 	}

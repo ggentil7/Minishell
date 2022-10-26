@@ -6,7 +6,7 @@
 /*   By: aboymond <aboymond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/06 17:53:33 by aboymond          #+#    #+#             */
-/*   Updated: 2022/10/14 17:38:32 by aboymond         ###   ########.fr       */
+/*   Updated: 2022/10/26 18:48:51 by aboymond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,27 +89,27 @@ t_node	*add_to_export_lst(t_pars *pars, t_node *node)
 	return (node);
 }
 
-char	**tabjoin(char **tab, char **args)
-{
-	int	i;
-	int	y;
-	char	**tmp;
+// char	**tabjoin(char **tab, char **args)
+// {
+// 	int	i;
+// 	int	y;
+// 	char	**tmp;
 
-	i = 0;
-	y = 0;
-	tmp = ft_calloc(sizeof(char *), (ft_tablen(tab) + ft_tablen(args)) + 1);
-	while (tab[i])
-	{
-		tmp[i] = ft_strdup(tab[i]);
-		i++;
-	}
-	while (args[y])
-	{
-		tmp[i] = ft_strdup(args[y]);
-		i++;
-		y++;
-	}
+// 	i = 0;
+// 	y = 0;
+// 	tmp = ft_calloc(sizeof(char *), (ft_tablen(tab) + ft_tablen(args)) + 1);
+// 	while (tab[i])
+// 	{
+// 		tmp[i] = ft_strdup(tab[i]);
+// 		i++;
+// 	}
+// 	while (args[y])
+// 	{
+// 		tmp[i] = ft_strdup(args[y]);
+// 		i++;
+// 		y++;
+// 	}
 
-	printf("SALUT TEEEEEEST\n");
-	return (tmp);
-}
+// 	printf("SALUT TEEEEEEST\n");
+// 	return (tmp);
+// }

@@ -40,7 +40,7 @@ int	prompt(t_node *head, t_pars *pars)
 	char	*buffer;
 	char	*user;
 
-	add_history("echo salut > text | echo wesh > text");
+	// add_history("cat << EOF > toto.txt");
 	user = username(head);
 	buffer = readline(user);
 	if (!buffer)
@@ -62,11 +62,9 @@ int	prompt(t_node *head, t_pars *pars)
 	}
 	tmp = pars;
 	lst_to_tab(tmp);
-	//tmp = pars;
-	//tmp = pars;
 	if (tmp != NULL)
 		init_pipe(tmp);
-	//redirection_tab(tmp);
+	tmp = pars;
 	if (tmp != NULL)
 		cmd(tmp, head);
 	//print_prompt(tmp);
