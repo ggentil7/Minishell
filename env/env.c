@@ -14,6 +14,28 @@ void	env_cpy(t_node **node, char **envp)
 	}
 }
 
+char	*search_env_var(t_node *head, char *search) /* trouver la bonne ligne dans envp */
+{
+	t_node	*tmp;
+	char	*sea;
+
+	tmp = head;
+	sea = NULL;
+	int i = 0;
+	while (tmp)
+	{	
+		i++;
+		if (ft_strncmp(tmp->data, search, ft_strlen(search)) == 0)
+		{
+			sea = tmp->data;
+			return (sea);
+		}
+		tmp = tmp->next;
+	}
+	return (NULL);
+}
+
+
 char	*search_env(t_node *head, char *search) /* trouver la bonne ligne dans envp */
 {
 	t_node	*tmp;
@@ -58,6 +80,8 @@ char	*reste(char *str)  /* fonction pour recuperer le reste apres le  = */
 	i = 0;
 	y = 0;
 	res = NULL;
+	if (str == NULL)
+		return (NULL);
 	while (str[i] != '=')
 		i++;
 	i++;

@@ -8,7 +8,7 @@ int	lst_to_tab(t_pars *pars)
 	temp = NULL;
 	while (pars)
 	{
-		temp = ft_split_pipe(pars->p_data, ' ');
+		temp = ft_split_pipe(pars->p_data, ' ', pars);
 		pars->args = temp;
 		pars = pars->next;
 	}

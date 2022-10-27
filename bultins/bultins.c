@@ -4,7 +4,7 @@
 int	bultin_search(t_pars *pars, t_node *env)
 {
 	if (ft_strcmp(pars->cmd, "echo") == 0 || ft_strcmp(pars->cmd, "ECHO") == 0)
-	 	return (bultin_echo_n(pars));
+	 	return (bultin_echo_n(pars, env));
 	 else if (ft_strcmp(pars->cmd, "cd") == 0)
 	 	return (bultin_cd(pars, env));
 	 else if (ft_strcmp(pars->cmd, "pwd") == 0
@@ -38,13 +38,19 @@ int	cmd(t_pars *pars, t_node *env)
 void	execution(t_pars *pars, t_node *env)
 {
 	char	**tmp;
+	char	**tmp_env;
 
+	tmp_env = env_to_tab(env);
 	tmp = conv_path(pars, env);
-	if (exec_bultout_2(pars, tmp) == -1)
+	if_path_not_exist(pars, tmp, tmp_env);
+	//if (tmp == NULL)
+		
+	if (tmp == NULL || exec_bultout_2(pars, tmp, tmp_env) == -1)
 	{
 		printf("minishell: %s: command not found\n", pars->cmd);
 	}
-	free_tab(tmp);
+	if (tmp != NULL)
+		free_tab(tmp);
 }
 
 int	is_bultin(t_pars *pars)

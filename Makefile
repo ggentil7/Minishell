@@ -5,7 +5,7 @@ NAME			=		minishell
 
 #***** Sources / Objs *****#
 
-SRC				=		main.c prompt.c utils.c init.c signal.c free.c\
+SRC				=		main.c prompt.c utils.c init.c signal.c free.c utils2.c\
 						$(addprefix ./env/, env.c lst_chaine.c)\
 						$(addprefix ./parsing/, parsing.c lst_parsing.c check_quote.c pipe.c l2_parsing.c lst_clear.c)\
 						$(addprefix ./error/, error_parsing.c)\
@@ -52,7 +52,7 @@ MSHELL			=		echo "$(GREEN) \t++\      ++\ ++\           ++\           ++\       
 #***** Flags *****#
 
 CC				=		gcc
-CFLAGS			=		-Wall -Wextra -Werror
+CFLAGS			=		-Wall -Wextra -Werror -g
 L				=		$(CFLAGS) -g -fsanitize=address -fno-omit-frame-pointer
 RM				=		rm -f
 LIBS			= 		-I$(HOME)/.brew/Cellar/readline/8.2.1/include -lreadline \

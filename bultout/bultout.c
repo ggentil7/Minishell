@@ -10,6 +10,8 @@ char	**conv_path(t_pars *pars, t_node *env)
 
 	(void)pars;
 	y = 0;
+	if (search_env(env, "PATH") == NULL)
+		return (NULL);
 	path = search_env(env, "PATH");
 	while (path[y] != '=')
 	{
@@ -24,42 +26,41 @@ char	**conv_path(t_pars *pars, t_node *env)
 	return (path_t);
 }
 
-int	exec_bultout(t_pars *pars, char **path_tab)
-{
-	pid_t	pid;
-
-	pid = fork();
-	if (pid != 0)
-		wait (NULL);
-	else
-	{
-		exec_bultout_2(pars, path_tab);
-	}
-	return (0);
-}
-
-int	exec_bultout_2(t_pars *pars, char **path_tab)
+int	exec_bultout_2(t_pars *pars, char **path_tab, char **env)
 {
 	int		i;
 	int		y;
-	int d;
 	char	*cmd_path;
 	char	*start_cmd_path;
 
 	i = 0;
 	y = 0;
-	d = 0;
 	while (path_tab[y])
 	{
 		start_cmd_path = ft_strjoin(path_tab[y], "/");
 		cmd_path = ft_strjoin(start_cmd_path, pars->cmd);
 		free (start_cmd_path);
 		if (!access(cmd_path, X_OK))
-			if (execve(cmd_path, &pars->args[i], NULL) == -1)
+			if (execve(cmd_path, &pars->args[i], env) == -1)
 				i++;
 		free (cmd_path);
 		y++;
 	}
+	if (i == 0)
+	{
+		return (-1);
+	}
+	return (0);
+}
+
+int	if_path_not_exist(t_pars *pars, char **path_tab, char **env)
+{
+	(void)path_tab;
+	int		i;
+
+	i = 0;
+		if (execve(pars->cmd, &pars->args[i], env) == -1)
+			i++;
 	if (i == 0)
 	{
 		return (-1);
