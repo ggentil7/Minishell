@@ -14,10 +14,11 @@ t_node	*create_cell(char *data)
 {
 	t_node	*cell;
 
-	cell = malloc(sizeof(t_node));
+	cell = ft_calloc(sizeof(t_node), 1);
 	if (!cell)
 		return (0);
 	cell->data = data;
+	cell->args = NULL;
 	cell->next = NULL;
 	return (cell);
 }

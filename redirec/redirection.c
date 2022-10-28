@@ -8,9 +8,9 @@ int	redirection_tab(t_pars *pars)
 	int	i;
 
 	tmp = pars;
-	tmp->chevr = 0;
 	while (tmp != NULL)
 	{
+		tmp->chevr = 0;
 		i = 0;
 		while (tmp->args[i])
 		{
@@ -55,6 +55,7 @@ int	del_chevron_more(t_pars *pars, int i)
 {
 	int	j;
 
+	free(pars->args[i]);
 	j = i + 1;
 	while (pars->args[j])
 	{

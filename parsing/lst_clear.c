@@ -61,6 +61,7 @@ t_node	*lstclear_cell(t_node *node, char *data)
 		{
 				prec->next = supp->next;
 				tmp = supp->next;
+				free(supp->data);
 				free (supp);
 				supp = tmp;
 		}

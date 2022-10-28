@@ -46,7 +46,7 @@ int	compte_quote(char *data)
 	return (compt);
 }
 
-static int	ft_set(char *s, char c)
+int	ft_set(char *s, char c)
 {
 	int	i;
 	int	count;
@@ -113,14 +113,11 @@ char	**split_to_remove(char **tab, t_pars *pars)
 		}
 		else
 		{
-			tab2[i] = remove_quote(tab[i]);
+			tab2[i] = ft_strdup(remove_quote(tab[i]));
 		}
 		i++;
 	}
-	i = -1;
-	while (tab[++i])
-		free (tab[i]);
-	free (tab);
+	free_tab(tab);
 	return (tab2);
 }
 

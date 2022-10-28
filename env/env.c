@@ -9,7 +9,7 @@ void	env_cpy(t_node **node, char **envp)
 	while (envp[i])
 	{
 		//printf("envp[%d] = %s\n", i, envp[i]);
-		*node = add_list(*node, envp[i]);
+		*node = add_list(*node, ft_strdup(envp[i]));
 		i++;
 	}
 }

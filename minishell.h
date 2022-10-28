@@ -131,6 +131,7 @@ int		compte_quote(char *data);
 int		*init_tab_compt_quote(char *data);
 void	is_dollars(char *tab, int i, t_pars *pars);
 char	*remove_dollars(char *tab);
+int		ft_set(char *s, char c);
 
 // Free
 void	free_tab(char **tab);

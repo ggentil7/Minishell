@@ -48,9 +48,13 @@ void	execution(t_pars *pars, t_node *env)
 	if (tmp == NULL || exec_bultout_2(pars, tmp, tmp_env) == -1)
 	{
 		printf("minishell: %s: command not found\n", pars->cmd);
+		free_lst_pars(pars);
+		free_lst_node(env);
 	}
 	if (tmp != NULL)
 		free_tab(tmp);
+	if (tmp_env != NULL)
+		free(tmp_env);
 }
 
 int	is_bultin(t_pars *pars)

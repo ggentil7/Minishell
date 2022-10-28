@@ -28,16 +28,16 @@ void	free_lst_pars(t_pars *pars)
 		{
 			while (tmp != NULL)
 			{
-				if (tmp->args != NULL)
-					free_tab(tmp->args);
+				free(tmp->doll_flag);
+				free_tab(tmp->args);
 				tmp = tmp->next;
 			}
 			p_lstclear(pars);
 		}
 		else
 		{
-			if (tmp->args != NULL)
-				free_tab(tmp->args);
+			free(tmp->doll_flag);
+			free_tab(tmp->args);
 			p_lstclear(pars);
 		}
 	}
