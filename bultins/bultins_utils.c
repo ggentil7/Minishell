@@ -6,7 +6,7 @@
 /*   By: aboymond <aboymond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/06 17:53:33 by aboymond          #+#    #+#             */
-/*   Updated: 2022/10/26 18:48:51 by aboymond         ###   ########.fr       */
+/*   Updated: 2022/10/28 11:03:22 by aboymond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ char	**env_sort(char **env)
 		i = j + 1;
 		while (i < n)
 		{
-			if (strcmp(env[j], env[i]) > 0)
+			if (ft_strcmp(env[j], env[i]) > 0)
 			{
 				tmp = env[j];
 				env[j] = env[i];
@@ -82,6 +82,8 @@ t_node	*add_to_export_lst(t_pars *pars, t_node *node)
 	}
 	while (pars->args[i])
 	{
+		printf("pars->args[%d] = %s\n", i, pars->args[i]);
+		// lstclear_cell(node, pars->args[i]);
 		node_tmp = add_list(node, ft_strdup(pars->args[i]));
 		node_tmp = node_tmp->next;
 		i++;

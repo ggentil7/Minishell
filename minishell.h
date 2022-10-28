@@ -32,6 +32,7 @@ typedef struct s_pars
 	char			**args;
 	char			*cmd;
 	int				chevr;
+	int				*doll_flag;
 	pid_t			pid;
 	int				fd_in;
 	int				fd_out;
@@ -43,6 +44,8 @@ typedef struct s_args
 	char			**args_tab;
 	int				index;
 }	t_args;
+
+char	*search_env_var(t_node *head, char *search);
 
 // Prompt
 int		prompt(t_node *node, t_pars *pars);
@@ -108,6 +111,7 @@ void	env_cpy(t_node **node, char **envp);		/* copie envp dans liste chainee */
 int		check_env(char *env, char *vari);			/* compare variable d'env */
 char	*search_env(t_node *head, char *search);	/* cherche la variable d'env */
 char	*reste(char *str);
+int		check_equal(char *str);
 
 // list chained
 t_node	*empty_lst(void);
@@ -120,11 +124,14 @@ void	lstclear(t_node *lst);
 t_node	*lstclear_cell(t_node *node, char *data);
 
 // Utils
-char	**ft_split_pipe(char *s, char c);
+char	**ft_split_pipe(char *s, char c, t_pars *pars);
 char	**ft_split_quote(char *s, char c);
-char	**split_to_remove(char **tab);
+char	**split_to_remove(char **tab, t_pars *pars);
 int		compte_quote(char *data);
 int		*init_tab_compt_quote(char *data);
+void	is_dollars(char *tab, int i, t_pars *pars);
+char	*remove_dollars(char *tab);
+int		ft_set(char *s, char c);
 
 // Free
 void	free_tab(char **tab);
@@ -142,24 +149,26 @@ void	rl_clear_history(void);
 // Bultins
 int		bultin_search(t_pars *pars, t_node *env);
 int		cmd(t_pars *pars, t_node *env);
-int		bultin_echo_n(t_pars *pars);
-int		bultin_echo(t_pars *pars);
+int		bultin_echo_n(t_pars *pars, t_node *env);
+int		bultin_echo(t_pars *pars, int i, t_node *env);
 int		bultin_pwd(t_pars *pars);
 int		bultin_cd(t_pars *pars, t_node *env);
 int		bultin_env(t_pars *pars, t_node *env);
 int		bultin_export(t_pars *pars, t_node *node);
 int		bultin_unset(t_pars *pars, t_node *env);
 int		is_bultin(t_pars *pars);
+int		compt_egal(char *str);
+int		bultin_export_la_suite(t_pars *pars, t_node *node);
 
 // Bultouts
 char	**conv_path(t_pars *pars, t_node *env);
+int		exec_bultout_2(t_pars *pars, char **path_tab, char **env);
+void	execution(t_pars *pars, t_node *env);
+int		if_path_not_exist(t_pars *pars, char **path_tab, char **env);
 
 // Init
 int		init_cmd(t_pars *pars);
 
-int		exec_bultout(t_pars *pars, char **path_tab);
-int		exec_bultout_2(t_pars *pars, char **path_tab);
-void	execution(t_pars *pars, t_node *env);
 
 // Pipe
 int		pipeline(t_pars *pars, t_node *env);

@@ -21,10 +21,15 @@ char	*username(t_node *head)
 	dol = "\033[1;35m $ \033[0m";
 	mini = "\033[1;34mMinishell\033[0m";
 	at = "\033[0m\033[1;35m@\033[0m";
-	user = search_env(head, "USER");
-	user1 = reste(user);
-	user = ft_strjoin("\033[1;34m", user1);
-	free (user1);
+	if (search_env(head, "USER") == NULL)
+		user = ft_strdup("🖕🖕🖕🖕");
+	else
+	{
+		user = search_env(head, "USER");
+		user1 = reste(user);
+		user = ft_strjoin("\033[1;34m", user1);
+		free (user1);
+	}
 	user1 = ft_strjoin(user, at);
 	free (user);
 	user = ft_strjoin(user1, mini);

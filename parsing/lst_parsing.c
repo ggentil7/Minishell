@@ -15,10 +15,11 @@ t_pars	*p_create_cell(char *data)
 {
 	t_pars	*cell;
 
-	cell = malloc(sizeof(t_pars));
+	cell = ft_calloc(sizeof(t_pars), 1);
 	if (!cell)
 		return (0);
 	cell->p_data = data;
+	cell->args = NULL;
 	cell->next = NULL;
 	return (cell);
 }

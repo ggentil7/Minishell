@@ -10,8 +10,8 @@ int	chevron_d_simple(t_pars *pars, int i)
 		printf("Error FD >\n");
 		return (0);
 	}
-	// if (pars->fd_out > 2)
-	// 	close(pars->fd_out);
+	if (pars->fd_out > 2)
+		close(pars->fd_out);
 	pars->fd_out = fd;
 	del_chevron_more(pars, i);
 	return (0);
@@ -27,8 +27,8 @@ int	chevron_d_double(t_pars *pars, int i)
 		printf("Error FD >>\n");
 		return (0);
 	}
-	// if (pars->fd_out > 2)
-	// 	close(pars->fd_out);
+	if (pars->fd_out > 2)
+		close(pars->fd_out);
 	pars->fd_out = fd;
 	del_chevron_more(pars, i);
 	return (0);
@@ -44,8 +44,8 @@ int	chevron_g_simple(t_pars *pars, int i)
 		printf("Error FD <\n");
 		return (0);
 	}
-	// if (pars->fd_in > 2)
-	// 	close(pars->fd_in);
+	if (pars->fd_in > 2)
+		close(pars->fd_in);
 	pars->fd_in = fd;
 	del_chevron_more(pars, i);
 	return (0);

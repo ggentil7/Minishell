@@ -46,7 +46,7 @@ int	compte_quote(char *data)
 	return (compt);
 }
 
-static int	ft_set(char *s, char c)
+int	ft_set(char *s, char c)
 {
 	int	i;
 	int	count;
@@ -67,7 +67,7 @@ static int	ft_set(char *s, char c)
 	return (count);
 }
 
-char	**ft_split_pipe(char *s, char c)
+char	**ft_split_pipe(char *s, char c, t_pars *pars)
 {
 	char	**tab;
 	int		i;
@@ -93,32 +93,31 @@ char	**ft_split_pipe(char *s, char c)
 		if (tmp != i)
 			tab[j++] = ft_substr(s, tmp, i - tmp);
 	}
-	return (split_to_remove(tab));
+	return (split_to_remove(tab, pars));
 }
 
-char	**split_to_remove(char **tab)
+char	**split_to_remove(char **tab, t_pars *pars)
 {
 	int		i;
 	char	**tab2;
 
 	i = 0;
+	pars->doll_flag = ft_calloc(sizeof(int), ft_tablen(tab) + 1);
 	tab2 = ft_calloc(sizeof(char *), ft_tablen(tab) + 1);
 	while (tab[i])
 	{
+		is_dollars(tab[i], i, pars);
 		if (compte_quote(tab[i]) == 0)
 		{
 			tab2[i] = ft_strdup(tab[i]);
 		}
 		else
 		{
-			tab2[i] = remove_quote(tab[i]);
+			tab2[i] = ft_strdup(remove_quote(tab[i]));
 		}
 		i++;
 	}
-	i = -1;
-	while (tab[++i])
-		free (tab[i]);
-	free (tab);
+	free_tab(tab);
 	return (tab2);
 }
 

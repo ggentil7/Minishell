@@ -13,14 +13,13 @@ int	init_cmd(t_pars *pars)
 			tmp = tmp->next;
 		}
 	}
-	//printf("cmd init = %s\n", pars->cmd);
 	return (0);
 }
 
 void	init_pipe(t_pars *pars)
 {
-	int	fd[2];
-	t_pars *tmp;
+	int		fd[2];
+	t_pars	*tmp;
 
 	tmp = pars;
 	tmp->fd_in = 0;

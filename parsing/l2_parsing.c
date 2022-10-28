@@ -4,13 +4,15 @@
 int	lst_to_tab(t_pars *pars)
 {
 	char	**temp;
+	t_pars	*tmp;
 
 	temp = NULL;
-	while (pars)
+	tmp = pars;
+	while (tmp)
 	{
-		temp = ft_split_pipe(pars->p_data, ' ');
-		pars->args = temp;
-		pars = pars->next;
+		temp = ft_split_pipe(tmp->p_data, ' ', tmp);
+		tmp->args = temp;
+		tmp = tmp->next;
 	}
 	return (0);
 }
