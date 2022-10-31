@@ -50,7 +50,7 @@ int		prompt(t_node *node, t_pars *pars);
 char	*path(void);								/* recupere le path */
 char	*username(t_node *head);					/* user pour prompt */
 void	print_prompt(t_pars *pars);					/* affiche le prompt */
-// int		is_space(char *data);
+int		is_space(char *data);
 
 // Init
 int		init_cmd(t_pars *pars);
