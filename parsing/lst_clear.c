@@ -49,7 +49,7 @@ t_node	*lstclear_cell(t_node *node, char *data)
 
 	i = 0;
 	supp = node;
-	if ( node == NULL)
+	if (node == NULL)
 		return (NULL);
 	while (i < (int)ft_strlen(data))
 	{
@@ -59,11 +59,11 @@ t_node	*lstclear_cell(t_node *node, char *data)
 	{
 		if (ft_strncmp(supp->data, data, i) == 0 && (supp->data[i] == '=' || supp->data[i] == '\0'))
 		{
-				prec->next = supp->next;
-				tmp = supp->next;
-				free(supp->data);
-				free (supp);
-				supp = tmp;
+			prec->next = supp->next;
+			tmp = supp->next;
+			free(supp->data);
+			free (supp);
+			supp = tmp;
 		}
 		else
 		{

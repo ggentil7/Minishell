@@ -11,6 +11,7 @@ void	handle_sigint(int sig)
 	}
 	else if (sig == SIGQUIT)
 	{
+		//signal(SIGQUIT, SIG_IGN);
 		rl_on_new_line();
 		rl_redisplay();
 	}

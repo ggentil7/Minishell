@@ -3,9 +3,9 @@
 int	bultin_pwd(t_pars *pars)
 {
 	char	*path;
-	(void)pars;
-	int	i;
+	int		i;
 
+	(void)pars;
 	i = ft_tablen(pars->args);
 	if (i > 1)
 	{
@@ -21,4 +21,3 @@ int	bultin_pwd(t_pars *pars)
 	}
 	return (0);
 }
-

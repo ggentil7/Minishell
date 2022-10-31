@@ -52,7 +52,7 @@ int	prompt(t_node *head, t_pars *pars)
 	{
 		printf("exit\n");
 		free_prompt(pars, buffer, user);
-		exit (1) ;
+		exit (1);
 	}
 	if (ft_strcmp(buffer, "exit") == 0)
 	{

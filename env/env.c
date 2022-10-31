@@ -8,20 +8,20 @@ void	env_cpy(t_node **node, char **envp)
 	i = 0;
 	while (envp[i])
 	{
-		//printf("envp[%d] = %s\n", i, envp[i]);
 		*node = add_list(*node, ft_strdup(envp[i]));
 		i++;
 	}
 }
 
-char	*search_env_var(t_node *head, char *search) /* trouver la bonne ligne dans envp */
+char	*search_env_var(t_node *head, char *search)
 {
 	t_node	*tmp;
 	char	*sea;
+	int		i;
 
 	tmp = head;
 	sea = NULL;
-	int i = 0;
+	i = 0;
 	while (tmp)
 	{	
 		i++;
@@ -35,8 +35,7 @@ char	*search_env_var(t_node *head, char *search) /* trouver la bonne ligne dans 
 	return (NULL);
 }
 
-
-char	*search_env(t_node *head, char *search) /* trouver la bonne ligne dans envp */
+char	*search_env(t_node *head, char *search)
 {
 	t_node	*tmp;
 	char	*sea;
@@ -55,7 +54,7 @@ char	*search_env(t_node *head, char *search) /* trouver la bonne ligne dans envp
 	return (NULL);
 }
 
-int	check_env(char *env, char *vari)  /* validerr la bonne ligne */
+int	check_env(char *env, char *vari)
 {
 	int	i;
 
@@ -71,7 +70,7 @@ int	check_env(char *env, char *vari)  /* validerr la bonne ligne */
 	return (0);
 }
 
-char	*reste(char *str)  /* fonction pour recuperer le reste apres le  = */
+char	*reste(char *str)
 {
 	char	*res;
 	int		i;

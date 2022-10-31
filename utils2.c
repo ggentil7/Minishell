@@ -31,10 +31,11 @@ char	*remove_dollars(char *tab)
 	return (tmp);
 }
 
-int check_equal(char *str)
+int	check_equal(char	*str)
 {
-	int i = -1;
+	int	i;
 
+	i = -1;
 	while (str[++i])
 		if (str[i] == '=')
 			return (1);

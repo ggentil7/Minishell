@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   bultins_env.c                                      :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: aboymond <aboymond@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/05 14:11:12 by aboymond          #+#    #+#             */
-/*   Updated: 2022/10/28 11:00:17 by aboymond         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 
 #include "../minishell.h"
 
@@ -32,7 +20,7 @@ int	bultin_env(t_pars *pars, t_node *env)
 
 int	bultin_unset(t_pars *pars, t_node *env)
 {
-	int 	i;
+	int	i;
 
 	i = 1;
 	if (pars->args[1] == NULL)
@@ -54,9 +42,9 @@ int	bultin_unset(t_pars *pars, t_node *env)
 int	bultin_export(t_pars *pars, t_node *node)
 {
 	t_node	*tmp;
-	char 	*tmp2;
+	char	*tmp2;
 	int		i;
-	printf("export\n");
+
 	i = 0;
 	tmp = node;
 	if (pars->args[1] == NULL)
@@ -73,7 +61,7 @@ int	bultin_export(t_pars *pars, t_node *node)
 			if (search_env(tmp, pars->args[i]) != NULL)
 			{
 				if (!check_equal(pars->args[i]))
-						continue;
+					continue ;
 				tmp2 = search_env(tmp, pars->args[i]);
 				printf("tmp2 = %s\n", tmp2);
 				lstclear_cell(tmp, tmp2);
@@ -87,4 +75,3 @@ int	bultin_export(t_pars *pars, t_node *node)
 	}
 	return (0);
 }
-

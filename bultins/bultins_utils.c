@@ -1,25 +1,12 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   bultins_utils.c                                    :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: aboymond <aboymond@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/06 17:53:33 by aboymond          #+#    #+#             */
-/*   Updated: 2022/10/28 11:03:22 by aboymond         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
-
 
 #include "../minishell.h"
 
 char	**env_sort(char **env)
 {
-	int i;
-	int j;
-	int n;
-	char *tmp;
+	int		i;
+	int		j;
+	int		n;
+	char	*tmp;
 
 	i = 0;
 	j = 0;
@@ -83,7 +70,6 @@ t_node	*add_to_export_lst(t_pars *pars, t_node *node)
 	while (pars->args[i])
 	{
 		printf("pars->args[%d] = %s\n", i, pars->args[i]);
-		// lstclear_cell(node, pars->args[i]);
 		node_tmp = add_list(node, ft_strdup(pars->args[i]));
 		node_tmp = node_tmp->next;
 		i++;

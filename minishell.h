@@ -45,14 +45,12 @@ typedef struct s_args
 	int				index;
 }	t_args;
 
-char	*search_env_var(t_node *head, char *search);
-
 // Prompt
 int		prompt(t_node *node, t_pars *pars);
 char	*path(void);								/* recupere le path */
 char	*username(t_node *head);					/* user pour prompt */
 void	print_prompt(t_pars *pars);					/* affiche le prompt */
-int		is_space(char *data);
+// int		is_space(char *data);
 
 // Init
 int		init_cmd(t_pars *pars);
@@ -69,7 +67,6 @@ char	**tabjoin(char **tab, char **args);
 int		print_export(char **env);
 int		print_export2(char **env, int i);
 int		print_env(t_node *env);
-
 
 // Error
 int		error_quote(void);
@@ -107,11 +104,12 @@ void	p_lstclear(t_pars *lst);
 void	p_lstdelone(t_pars *lst);
 
 // Env
-void	env_cpy(t_node **node, char **envp);		/* copie envp dans liste chainee */
-int		check_env(char *env, char *vari);			/* compare variable d'env */
-char	*search_env(t_node *head, char *search);	/* cherche la variable d'env */
+void	env_cpy(t_node **node, char **envp);
+int		check_env(char *env, char *vari);
+char	*search_env(t_node *head, char *search);
 char	*reste(char *str);
 int		check_equal(char *str);
+char	*search_env_var(t_node *head, char *search);
 
 // list chained
 t_node	*empty_lst(void);
@@ -168,7 +166,6 @@ int		if_path_not_exist(t_pars *pars, char **path_tab, char **env);
 
 // Init
 int		init_cmd(t_pars *pars);
-
 
 // Pipe
 int		pipeline(t_pars *pars, t_node *env);
