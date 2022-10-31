@@ -143,6 +143,7 @@ void	handle_signal(struct termios *saved);
 void	hide_key(struct termios *saved);
 void	rl_replace_line(const char *text, int clear_undo);
 void	rl_clear_history(void);
+void	handle_sigquit(int sig);
 
 // Bultins
 int		bultin_search(t_pars *pars, t_node *env);

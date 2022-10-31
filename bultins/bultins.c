@@ -26,6 +26,8 @@ int	bultin_search(t_pars *pars, t_node *env)
 
 int	cmd(t_pars *pars, t_node *env)
 {
+	signal(SIGINT, handle_sigquit);
+	signal(SIGQUIT, handle_sigquit);
 	init_cmd(pars);
 	redirection_tab(pars);
 	if (is_bultin(pars) != -1 && pars->next == NULL && pars->chevr == 0)
@@ -42,7 +44,7 @@ void	execution(t_pars *pars, t_node *env)
 
 	tmp_env = env_to_tab(env);
 	tmp = conv_path(pars, env);
-	if_path_not_exist(pars, tmp, tmp_env);		
+	if_path_not_exist(pars, tmp, tmp_env);
 	if (tmp == NULL || exec_bultout_2(pars, tmp, tmp_env) == -1)
 	{
 		printf("minishell: %s: command not found\n", pars->cmd);
