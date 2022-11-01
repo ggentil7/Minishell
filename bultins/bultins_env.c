@@ -6,7 +6,7 @@
 /*   By: aboymond <aboymond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 14:11:12 by aboymond          #+#    #+#             */
-/*   Updated: 2022/10/28 11:00:17 by aboymond         ###   ########.fr       */
+/*   Updated: 2022/10/31 14:05:35 by aboymond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ int	bultin_unset(t_pars *pars, t_node *env)
 	int 	i;
 
 	i = 1;
+	printf("unset = %s\n", env->data);
 	if (pars->args[1] == NULL)
 	{
 		printf("unset: not enough arguments\n");

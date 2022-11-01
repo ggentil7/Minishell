@@ -20,6 +20,7 @@ void	handle_signal(struct termios *saved)
 {
 	hide_key(saved);
 	signal(SIGINT, handle_sigint);
+	signal(SIGQUIT, handle_sigint);
 }
 
 void	hide_key(struct termios *saved)

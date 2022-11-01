@@ -39,43 +39,38 @@ char	*username(t_node *head)
 	return (user1);
 }
 
-int	prompt(t_node *head, t_pars *pars)
+int	prompt_(t_node *head, t_pars *pars, t_prompt *prompt)
 {
 	t_pars	*tmp;
-	char	*buffer;
-	char	*user;
 
-	// add_history("cat << EOF > toto.txt");
-	user = username(head);
-	buffer = readline(user);
-	if (!buffer)
+	prompt->user = username(head);
+	prompt->buffer = readline(prompt->user);
+	
+	if (!prompt->buffer)
 	{
 		printf("exit\n");
-		free_prompt(pars, buffer, user);
+		free_prompt(pars, prompt);
 		exit (1) ;
 	}
-	if (ft_strcmp(buffer, "exit") == 0)
+	if (prompt->buffer != NULL && prompt->buffer[0] != '\0')
+		add_history(prompt->buffer);
+	if (prompt->buffer != NULL && prompt->buffer[0] != '\0' && is_tab(prompt->buffer) != -1 && check_chev(prompt->buffer) != -1)
 	{
-		printf("exit\n");
-		free_prompt(pars, buffer, user);
-		exit (EXIT_SUCCESS);
-	}
-	if (buffer != NULL && buffer[0] != '\0' && is_space(buffer) != -1)
-	{
-		if (data_to_lst(&pars, buffer) == -1)
+		if (data_to_lst(&pars, prompt->buffer) == -1)
+		{
+			free (prompt->buffer);
+			free (prompt->user);
 			return (1);
+		}
 	}
 	tmp = pars;
-	lst_to_tab(tmp);
+	lst_to_tab(tmp, head);
 	if (tmp != NULL)
+	{
 		init_pipe(tmp);
-	tmp = pars;
-	if (tmp != NULL)
-		cmd(tmp, head);
-	//print_prompt(tmp);
-	if (buffer != NULL && buffer[0] != '\0')
-		add_history(buffer);
-	free_prompt(pars, buffer, user);
+		cmd(tmp, head, prompt);
+	}
+	free_prompt(pars, prompt);
 	return (0);
 }
 
@@ -94,3 +89,44 @@ void	print_prompt(t_pars *pars)
 		tmp = tmp->next;
 	}
 }
+
+// int	prompt(t_node *head, t_pars *pars)
+// {
+// 	t_pars	*tmp;
+// 	char	*buffer;
+// 	char	*user;
+
+// 	// add_history("cat << EOF > toto.txt");
+// 	user = username(head);
+// 	buffer = readline(user);
+	
+// 	if (!buffer)
+// 	{
+// 		printf("exit\n");
+// 		free_prompt(pars, buffer, user);
+// 		exit (1) ;
+// 	}
+// 	if (ft_strcmp(buffer, "exit") == 0)
+// 	{
+// 		printf("exit\n");
+// 		free_prompt(pars, buffer, user);
+// 		exit (EXIT_SUCCESS);
+// 	}
+// 	if (buffer != NULL && buffer[0] != '\0')
+// 		add_history(buffer);
+// 	if (buffer != NULL && buffer[0] != '\0' && is_tab(buffer) != -1 && check_chev(buffer) != -1)
+// 	{
+// 		if (data_to_lst(&pars, buffer) == -1)
+// 			return (1);
+// 	}
+// 	tmp = pars;
+// 	lst_to_tab(tmp);
+// 	if (tmp != NULL)
+// 		init_pipe(tmp);
+// 	tmp = pars;
+// 	if (tmp != NULL)
+// 		cmd(tmp, head);
+// 	//print_prompt(tmp);
+// 	free_prompt(pars, buffer, user);
+// 	return (0);
+// }

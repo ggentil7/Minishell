@@ -1,6 +1,6 @@
 #include "../minishell.h"
 
-int	pipeline(t_pars *pars, t_node *env)
+int	pipeline(t_pars *pars, t_node *env, t_prompt *prompt)
 {
 	t_pars	*tmp;
 	
@@ -15,7 +15,7 @@ int	pipeline(t_pars *pars, t_node *env)
 			if (tmp->fd_in > 2)
 				dup2(tmp->fd_in, STDIN_FILENO);
 			free_pipe(pars);
-			if (bultin_search(tmp, env) == -1)
+			if (bultin_search(tmp, env, prompt) == -1)
 				execution(tmp, env);
 			exit (127);
 		}
@@ -46,7 +46,13 @@ void	wait_pipe(t_pars *pars)
 	while (tmp != NULL)
 	{
 		if (tmp->pid > 0)
-			waitpid(tmp->pid, NULL, 0);
+		{
+			waitpid(tmp->pid, &g_ret, 0);
+			if (WIFSIGNALED(g_ret))
+				g_ret = 128 + g_ret;
+			if (WIFEXITED(g_ret))
+				g_ret = WEXITSTATUS(g_ret);
+		}
 		tmp = tmp->next;
 	}
 }

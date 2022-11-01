@@ -62,7 +62,7 @@ int	check_env(char *env, char *vari)  /* validerr la bonne ligne */
 	i = 0;
 	while (env[i] && vari[i] == env[i])
 	{
-		if (env[i + 1] == '=')
+		if (env[i + 1] == '=' && vari[i + 1] == '\0')
 		{
 			return (1);
 		}

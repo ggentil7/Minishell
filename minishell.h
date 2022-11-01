@@ -32,23 +32,25 @@ typedef struct s_pars
 	char			**args;
 	char			*cmd;
 	int				chevr;
-	int				*doll_flag;
+	int				doll_flag;
+	char			*doll_tab;
 	pid_t			pid;
 	int				fd_in;
 	int				fd_out;
 }	t_pars;
 
-typedef struct s_args
+typedef struct s_prompt
 {
-	char			**args_lst;
-	char			**args_tab;
-	int				index;
-}	t_args;
+	char			*buffer;
+	char			*user;
+}	t_prompt;
+
+int		g_ret;
 
 char	*search_env_var(t_node *head, char *search);
 
 // Prompt
-int		prompt(t_node *node, t_pars *pars);
+int		prompt_(t_node *node, t_pars *pars, t_prompt *prompt);
 char	*path(void);								/* recupere le path */
 char	*username(t_node *head);					/* user pour prompt */
 void	print_prompt(t_pars *pars);					/* affiche le prompt */
@@ -83,10 +85,11 @@ int		is_space_pipe(char *data, int i);
 int		is_double_pipe(char *data, int i);
 int		check_pipe(char *data);
 int		is_bs_pipe(char *data, int i);
+int		is_tab(char *data);
 
 // Parsing L2
 
-int		lst_to_tab(t_pars *pars);
+int		lst_to_tab(t_pars *pars, t_node *node);
 
 // Check quote
 int		is_s_quote(char *data, int i);
@@ -124,20 +127,23 @@ void	lstclear(t_node *lst);
 t_node	*lstclear_cell(t_node *node, char *data);
 
 // Utils
-char	**ft_split_pipe(char *s, char c, t_pars *pars);
+char	**ft_split_pipe(char *s, char c, t_pars *pars, t_node *node);
 char	**ft_split_quote(char *s, char c);
-char	**split_to_remove(char **tab, t_pars *pars);
+char	**split_to_remove(char **tab, t_pars *pars, t_node *node);
 int		compte_quote(char *data);
 int		*init_tab_compt_quote(char *data);
-void	is_dollars(char *tab, int i, t_pars *pars);
+int		is_dollars(char *tab, t_pars *pars, t_node *node);
 char	*remove_dollars(char *tab);
 int		ft_set(char *s, char c);
+int		check_chev(char *chevr);
+int		compt_doll(char *tab);
+char	*after_egal(t_node *env, char *search);
 
 // Free
 void	free_tab(char **tab);
 void	free_lst_pars(t_pars *pars);
 void	free_lst_node(t_node *node);
-void	free_prompt(t_pars *pars, char *buff, char *user);
+void	free_prompt(t_pars *pars, t_prompt *prompt);
 
 // Signal
 void	handle_sigint(int sig);
@@ -147,8 +153,8 @@ void	rl_replace_line(const char *text, int clear_undo);
 void	rl_clear_history(void);
 
 // Bultins
-int		bultin_search(t_pars *pars, t_node *env);
-int		cmd(t_pars *pars, t_node *env);
+int		bultin_search(t_pars *pars, t_node *env, t_prompt *prompt);
+int		cmd(t_pars *pars, t_node *env, t_prompt *prompt);
 int		bultin_echo_n(t_pars *pars, t_node *env);
 int		bultin_echo(t_pars *pars, int i, t_node *env);
 int		bultin_pwd(t_pars *pars);
@@ -171,7 +177,7 @@ int		init_cmd(t_pars *pars);
 
 
 // Pipe
-int		pipeline(t_pars *pars, t_node *env);
+int		pipeline(t_pars *pars, t_node *env, t_prompt *prompt);
 void	free_pipe(t_pars *pars);
 void	wait_pipe(t_pars *pars);
 
@@ -185,5 +191,11 @@ int		chevron_d_simple(t_pars *pars, int i);
 int		chevron_d_double(t_pars *pars, int i);
 int		chevron_g_simple(t_pars *pars, int i);
 int		chevron_g_double(t_pars *pars, int i);
+
+// Return
+int	ret(char *msg, int ret, int num);
+
+// Exit
+int		exit_minishell(t_pars *pars, t_node *env, t_prompt *prompt);
 
 #endif
