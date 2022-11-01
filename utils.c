@@ -107,7 +107,7 @@ char	**split_to_remove(char **tab, t_pars *pars, t_node *env)
 	{
 		if (compte_quote(tab[i]) == 0)
 		{
-			tab[i] = dollard(tab[i]);
+			// tab[i] = dollard(tab[i]);
 			if (is_dollars(tab[i], pars, env) == 0)
 				tab2[i] = ft_strdup(pars->doll_tab);
 			else
