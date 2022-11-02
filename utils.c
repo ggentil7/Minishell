@@ -105,20 +105,20 @@ char	**split_to_remove(char **tab, t_pars *pars, t_node *env)
 	tab2 = ft_calloc(sizeof(char *), ft_tablen(tab) + 1);
 	while (tab[i])
 	{
+		printf("tab[i] = %s\n", tab[i]);
+
+
+
+
 		if (compte_quote(tab[i]) == 0)
 		{
-			// tab[i] = dollard(tab[i]);
-			if (is_dollars(tab[i], pars, env) == 0)
-				tab2[i] = ft_strdup(pars->doll_tab);
-			else
-				tab2[i] = ft_strdup(tab[i]);
+			tab2[i] = is_dollars(tab[i], pars, env);
+			tab2[i] = ft_strdup(tab[i]);
 		}
 		else
 		{
-			if (is_dollars(tab[i], pars, env) == 0)
-				tab2[i] = ft_strdup(pars->doll_tab);
-			else
-				tab2[i] = ft_strdup(remove_quote(tab[i]));
+			tab2[i] = is_dollars(tab[i], pars, env);
+			tab2[i] = ft_strdup(remove_quote(tab[i]));
 		}
 		i++;
 	}

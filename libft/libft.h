@@ -38,6 +38,7 @@ char		*ft_strdupcat(char **s1, char *s2);
 char		*get_next_line(int fd);
 
 int			ft_isalpha(int c);
+int			ft_isalpha_under_s(int c);
 int			ft_isdigit(int c);
 int			ft_isalnum(int c);
 int			ft_isprint(int c);

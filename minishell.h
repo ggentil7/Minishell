@@ -132,7 +132,7 @@ char	**ft_split_quote(char *s, char c);
 char	**split_to_remove(char **tab, t_pars *pars, t_node *node);
 int		compte_quote(char *data);
 int		*init_tab_compt_quote(char *data);
-int		is_dollars(char *tab, t_pars *pars, t_node *node);
+char	*is_dollars(char *tab, t_pars *pars, t_node *node);
 char	*remove_dollars(char *tab);
 int		ft_set(char *s, char c);
 int		check_chev(char *chevr);

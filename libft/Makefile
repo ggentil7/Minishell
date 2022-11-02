@@ -50,7 +50,8 @@ SRC = 	ft_atoi.c \
 		ft_tolower.c \
 		ft_toupper.c \
 		ft_uprint.c \
-		get_next_line.c
+		get_next_line.c\
+		ft_isalpha_under_s.c
 
 #******Colors******#
 

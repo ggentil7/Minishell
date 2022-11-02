@@ -1,34 +1,76 @@
 #include "./minishell.h"
 
-int	is_dollars(char *tab, t_pars *pars, t_node *env)
+int	is_env_char(char c)
 {
-	int	y;
-	int	j;
-	char *tmp;
+	return ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z') || c == '_' || (c >= '0' && c <= '9'));
+}
 
-	y = 0;
-	j = compt_doll(tab);
-	if ((tab[y] == '\"' && tab[y + 1] == '$') || tab[y] == '$')
+char	*parse_dollar(char *line, unsigned int *i, t_node *env)
+{
+	char	*name;
+	char	*value;
+	unsigned int	j;
+
+	j = 0;
+	while (*i + j < ft_strlen(line) - 1 && is_env_char(line[*i + j]))
+		j++;
+	name = ft_substr(line, *i, *i + j);
+	*i = *i + j;
+	value = after_egal(env, name);
+	if (value == NULL)
+		value = ft_strdup("");
+	return (value);
+}
+
+char	*is_dollars(char *line, t_pars *pars, t_node *env)
+{
+	unsigned int		i;
+	unsigned int		j;
+	int		k;
+	char	**tab;
+
+	(void)pars;
+	tab = ft_calloc(1000, sizeof(char *));
+	if (!tab)
+		return (NULL);
+	i = 0;
+	while (i < 1000)
 	{
-		if (j > 1)
-		{
-			while (tab[y])
-			{
-				if (tab[y] == '$')
-					return (-1);
-				y++;
-			}
-		}
+		tab[i] = ft_calloc(10000, sizeof(char));
+		if (!tab[i])
+			return (NULL);
+		i++;
+	}
+
+	i = 0;
+	j = 0;
+	k = 0;
+
+	
+	while (i < ft_strlen(line) - 1)
+	{
+		if (line[i] != '$' && i < ft_strlen(line) - 1)
+			tab[j][k++] = line[i++];
 		else
 		{
-			y++;
-			tmp = ft_substr(tab, y, ft_strlen(tab));
-			pars->doll_tab = after_egal(env, tmp);
+			j++;
+			i++;
+			/*if (line[i] == '?')
+				parse_return_value();*/
+			free(tab[j]);
+			tab[j++] = parse_dollar(line, &i, env);
 		}
+		printf("debug: %c\n", line[i]);
 	}
-	else
-		return (-1);
-	return (0);
+	
+	i = 0;
+	while (tab[i][0] != '\0')
+	{
+		printf("%s\n", tab[i]);
+		i++;
+	}
+	//return (join_tab(tab));
+	return (NULL);
 }
 
 int	compt_doll(char *tab)
