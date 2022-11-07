@@ -3,7 +3,7 @@
 int	pipeline(t_pars *pars, t_node *env, t_prompt *prompt)
 {
 	t_pars	*tmp;
-	
+
 	tmp = pars;
 	while (tmp != NULL)
 	{

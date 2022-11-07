@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   bultins_env.c                                      :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: aboymond <aboymond@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/05 14:11:12 by aboymond          #+#    #+#             */
-/*   Updated: 2022/11/07 13:33:52 by aboymond         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 
 #include "../minishell.h"
 
@@ -32,7 +20,7 @@ int	bultin_env(t_pars *pars, t_node *env)
 
 int	bultin_unset(t_pars *pars, t_node *env)
 {
-	int 	i;
+	int	i;
 
 	i = 1;
 	if (pars->args[1] == NULL)
@@ -56,7 +44,8 @@ int	bultin_export(t_pars *pars, t_node *node)
 	t_node	*tmp;
 	char 	*tmp2;
 	char 	*tmp3;
-	int		i;
+  int		i;
+  
 	i = 0;
 	tmp = node;
 	if (pars->args[1] == NULL)
@@ -85,4 +74,3 @@ int	bultin_export(t_pars *pars, t_node *node)
 	}
 	return (0);
 }
-

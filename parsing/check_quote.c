@@ -13,7 +13,7 @@ char	*remove_quote(char *data)
 	j = 0;
 	k = 0;
 	quote = init_tab_compt_quote(data);
-	new = ft_calloc(sizeof(char), (int)ft_strlen(data) - compte_quote(data) + 1);
+	new = ft_calloc(sizeof(char), (int)ft_strlen(data)- compte_quote(data) + 1);
 	while (data[i])
 	{
 		if (quote[k] != i)

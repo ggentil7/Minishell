@@ -1,11 +1,10 @@
+
 # include "../minishell.h"
-
-
 
 int	redirection_tab(t_pars *pars)
 {
-	t_pars *tmp;
-	int	i;
+	t_pars	*tmp;
+	int		i;
 
 	tmp = pars;
 	while (tmp != NULL)
@@ -66,4 +65,3 @@ int	del_chevron_more(t_pars *pars, int i)
 	pars->args[i] = NULL;
 	return (0);
 }
-

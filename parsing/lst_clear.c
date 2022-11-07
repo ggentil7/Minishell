@@ -49,7 +49,7 @@ t_node	*lstclear_cell(t_node *node, char *data)
 
 	i = 0;
 	supp = node;
-	if ( node == NULL)
+	if (node == NULL)
 		return (NULL);
 	while (i < (int)ft_strlen(data))
 	{

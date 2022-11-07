@@ -57,4 +57,3 @@ char	*getat(t_node *L, int pos)
 	}
 	return (L->data);
 }
-

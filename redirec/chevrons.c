@@ -19,7 +19,7 @@ int	chevron_d_simple(t_pars *pars, int i)
 
 int	chevron_d_double(t_pars *pars, int i)
 {
-	int fd;
+	int	fd;
 
 	fd = open(pars->args[i], O_CREAT | O_WRONLY | O_APPEND, 0644);
 	if (fd == -1)
@@ -36,7 +36,7 @@ int	chevron_d_double(t_pars *pars, int i)
 
 int	chevron_g_simple(t_pars *pars, int i)
 {
-	int fd;
+	int	fd;
 
 	fd = open(pars->args[i], O_RDONLY);
 	if (fd == -1)

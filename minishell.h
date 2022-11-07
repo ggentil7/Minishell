@@ -47,8 +47,6 @@ typedef struct s_prompt
 
 int		g_ret;
 
-char	*search_env_var(t_node *head, char *search);
-
 // Prompt
 int		prompt_(t_node *node, t_pars *pars, t_prompt *prompt);
 char	*path(void);								/* recupere le path */
@@ -71,7 +69,6 @@ char	**tabjoin(char **tab, char **args);
 int		print_export(char **env);
 int		print_export2(char **env, int i);
 int		print_env(t_node *env);
-
 
 // Error
 int		error_quote(void);
@@ -110,12 +107,13 @@ void	p_lstclear(t_pars *lst);
 void	p_lstdelone(t_pars *lst);
 
 // Env
-void	env_cpy(t_node **node, char **envp);		/* copie envp dans liste chainee */
-int		check_env(char *env, char *vari);			/* compare variable d'env */
-char	*search_env(t_node *head, char *search);	/* cherche la variable d'env */
+void	env_cpy(t_node **node, char **envp);
+int		check_env(char *env, char *vari);
+char	*search_env(t_node *head, char *search);
 char	*reste(char *str);
 char	*check_equal(char *str);
 char	*del_env(t_node *head, char *search);
+char	*search_env_var(t_node *head, char *search);
 
 // list chained
 t_node	*empty_lst(void);
@@ -154,6 +152,7 @@ void	handle_signal(struct termios *saved);
 void	hide_key(struct termios *saved);
 void	rl_replace_line(const char *text, int clear_undo);
 void	rl_clear_history(void);
+void	handle_sigquit(int sig);
 
 // Bultins
 int		bultin_search(t_pars *pars, t_node *env, t_prompt *prompt);
@@ -177,7 +176,6 @@ int		if_path_not_exist(t_pars *pars, char **path_tab, char **env);
 
 // Init
 int		init_cmd(t_pars *pars);
-
 
 // Pipe
 int		pipeline(t_pars *pars, t_node *env, t_prompt *prompt);

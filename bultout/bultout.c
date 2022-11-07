@@ -60,11 +60,11 @@ int	exec_bultout_2(t_pars *pars, char **path_tab, char **env)
 
 int	if_path_not_exist(t_pars *pars, char **path_tab, char **env)
 {
-	(void)path_tab;
-	int		i;
+	int	i;
 
+	(void)path_tab;
 	i = 0;
-		if (execve(pars->cmd, &pars->args[i], env) == -1)
+	if (execve(pars->cmd, &pars->args[i], env) == -1)
 			i++;
 	if (i == 0)
 	{

@@ -32,7 +32,3 @@ int	check_chev(char *chevr)
 	return (0);
 }
 
-
-
-
-
