@@ -42,9 +42,10 @@ int	bultin_unset(t_pars *pars, t_node *env)
 int	bultin_export(t_pars *pars, t_node *node)
 {
 	t_node	*tmp;
-	char	*tmp2;
-	int		i;
-
+	char 	*tmp2;
+	char 	*tmp3;
+  int		i;
+  
 	i = 0;
 	tmp = node;
 	if (pars->args[1] == NULL)
@@ -55,23 +56,21 @@ int	bultin_export(t_pars *pars, t_node *node)
 	}
 	else
 	{
-		while (pars->args[++i])
-		{
-			printf("arg: %s\n", pars->args[i]);
-			if (search_env(tmp, pars->args[i]) != NULL)
-			{
-				if (!check_equal(pars->args[i]))
-					continue ;
-				tmp2 = search_env(tmp, pars->args[i]);
-				printf("tmp2 = %s\n", tmp2);
-				lstclear_cell(tmp, tmp2);
-				printf("clear\n");
-			}
-		}
 		i = 0;
 		while (pars->args[++i])
-			if (search_env_var(tmp, pars->args[i]) == NULL)
-				add_to_export_lst(pars, tmp);
+		{
+			tmp2 = check_equal(pars->args[i]);
+			if (search_env(tmp, tmp2) != NULL )
+			{
+				if(ft_strchr(pars->args[i], '=') != NULL)
+				{
+					tmp3 = del_env(tmp, tmp2);
+					add_to_export_lst(pars, tmp, pars->args[i]);
+				}
+			}
+			else
+				add_to_export_lst(pars, tmp, pars->args[i]);
+		}
 	}
 	return (0);
 }

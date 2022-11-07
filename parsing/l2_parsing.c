@@ -1,7 +1,7 @@
 
 #include "../minishell.h"
 
-int	lst_to_tab(t_pars *pars)
+int	lst_to_tab(t_pars *pars, t_node *env)
 {
 	char	**temp;
 	t_pars	*tmp;
@@ -10,7 +10,7 @@ int	lst_to_tab(t_pars *pars)
 	tmp = pars;
 	while (tmp)
 	{
-		temp = ft_split_pipe(tmp->p_data, ' ', tmp);
+		temp = ft_split_pipe(tmp->p_data, ' ', tmp, env);
 		tmp->args = temp;
 		tmp = tmp->next;
 	}

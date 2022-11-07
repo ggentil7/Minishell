@@ -79,3 +79,22 @@ int	is_space(char *data)
 	}
 	return (0);
 }
+
+int	is_tab(char *data)
+{
+	int	i;
+	int space_or_tab;
+
+	i = 0;
+	space_or_tab = 0;
+	while(data[i])
+	{
+		if (data[i] == ' ' || data[i] == '\t')
+			space_or_tab++;
+		i++;
+	}
+	if (i == space_or_tab)
+		return (-1);
+	return (0);
+	
+}

@@ -2,6 +2,6 @@
 
 int	error_quote(void)
 {
-	printf("Error parsing quotes !\n");
+	ret("syntax error near unexpected token quote", 258, 0);
 	return (-1);
 }

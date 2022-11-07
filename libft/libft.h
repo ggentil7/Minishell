@@ -30,6 +30,7 @@ char		*ft_strnstr(const char *hs, const char *n, size_t len);
 char		*ft_strdup(const char *s1);
 char		*ft_substr(char const *s, unsigned int start, size_t len);
 char		*ft_strjoin(char const *s1, char const *s2);
+char		*ft_strjoin_free(char *s1, char *s2);
 char		*ft_strtrim(char const *s1, char const *set);
 char		*ft_strmapi(char const *s, char (*f) (unsigned int, char));
 char		*ft_itoa(int n);
@@ -38,6 +39,7 @@ char		*ft_strdupcat(char **s1, char *s2);
 char		*get_next_line(int fd);
 
 int			ft_isalpha(int c);
+int			ft_isalpha_under_s(int c);
 int			ft_isdigit(int c);
 int			ft_isalnum(int c);
 int			ft_isprint(int c);

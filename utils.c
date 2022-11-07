@@ -67,7 +67,7 @@ int	ft_set(char *s, char c)
 	return (count);
 }
 
-char	**ft_split_pipe(char *s, char c, t_pars *pars)
+char	**ft_split_pipe(char *s, char c, t_pars *pars, t_node *env)
 {
 	char	**tab;
 	int		i;
@@ -93,58 +93,29 @@ char	**ft_split_pipe(char *s, char c, t_pars *pars)
 		if (tmp != i)
 			tab[j++] = ft_substr(s, tmp, i - tmp);
 	}
-	return (split_to_remove(tab, pars));
+	return (split_to_remove(tab, pars, env));
 }
 
-char	**split_to_remove(char **tab, t_pars *pars)
+char	**split_to_remove(char **tab, t_pars *pars, t_node *env)
 {
 	int		i;
 	char	**tab2;
 
 	i = 0;
-	pars->doll_flag = ft_calloc(sizeof(int), ft_tablen(tab) + 1);
+	(void)pars;
 	tab2 = ft_calloc(sizeof(char *), ft_tablen(tab) + 1);
 	while (tab[i])
 	{
-		is_dollars(tab[i], i, pars);
 		if (compte_quote(tab[i]) == 0)
 		{
-			tab2[i] = ft_strdup(tab[i]);
+			tab2[i] = is_dollars(tab[i], env);
 		}
 		else
 		{
-			tab2[i] = ft_strdup(remove_quote(tab[i]));
+			tab2[i] = ft_strdup(remove_quote(is_dollars(tab[i], env)));
 		}
 		i++;
 	}
-	free_tab(tab);
+	// free_tab(tab);
 	return (tab2);
 }
-
-// char	**ft_split_quote(char *s, char c)
-// {
-// 	char	**tab;
-// 	int		i;
-// 	int		j;
-// 	int		tmp;
-
-// 	j = 0;
-// 	i = 0;
-// 	s = remove_quote(s);
-// 	tab = ft_calloc(sizeof(char *), ft_set(s, c) + 1);
-// 	while (tab && s[i])
-// 	{
-// 		while (s[i] && s[i] == c)
-// 		{
-// 			i++;
-// 		}
-// 		tmp = i;
-// 		while (s[i] && s[i] != c)
-// 		{
-// 			i++;
-// 		}
-// 		if (tmp != i)
-// 			tab[j++] = ft_substr(s, tmp, i - tmp);
-// 	}
-// 	return (tab);
-// }

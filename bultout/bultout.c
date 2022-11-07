@@ -33,16 +33,21 @@ int	exec_bultout_2(t_pars *pars, char **path_tab, char **env)
 	char	*cmd_path;
 	char	*start_cmd_path;
 
-	i = 0;
 	y = 0;
+	i = 0;
 	while (path_tab[y])
 	{
 		start_cmd_path = ft_strjoin(path_tab[y], "/");
 		cmd_path = ft_strjoin(start_cmd_path, pars->cmd);
 		free (start_cmd_path);
 		if (!access(cmd_path, X_OK))
-			if (execve(cmd_path, &pars->args[i], env) == -1)
+			if (execve(cmd_path, pars->args, env) == -1)
+			{
 				i++;
+				free(cmd_path);
+				printf("execve\n");
+				ret(NULL, 127, 2);
+			}
 		free (cmd_path);
 		y++;
 	}

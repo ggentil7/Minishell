@@ -59,11 +59,23 @@ t_node	*lstclear_cell(t_node *node, char *data)
 	{
 		if (ft_strncmp(supp->data, data, i) == 0 && (supp->data[i] == '=' || supp->data[i] == '\0'))
 		{
-			prec->next = supp->next;
-			tmp = supp->next;
-			free(supp->data);
-			free (supp);
-			supp = tmp;
+			if (ft_strcmp(node->data, search_env(node, data)) == 0)
+			{
+				tmp = supp->next->next;
+				free(supp->data);
+				supp->data = ft_strdup(supp->next->data);
+				free (supp->next->data);
+				free (supp->next);
+				supp->next = tmp;
+			}
+			else
+			{
+				prec->next = supp->next;
+				tmp = supp->next;
+				free(supp->data);
+				free (supp);
+				supp = tmp;
+			}
 		}
 		else
 		{

@@ -1,43 +1,34 @@
 #include "./minishell.h"
 
-void	is_dollars(char *tab, int i, t_pars *pars)
+char	*check_equal(char *str)
 {
-	int	y;
-
-	y = 0;
-	if ((tab[y] == '\"' && tab[y + 1] == '$') || tab[y] == '$')
-	{
-		pars->doll_flag[i] = 1;
-	}
-	else
-		pars->doll_flag[i] = 0;
-}
-
-char	*remove_dollars(char *tab)
-{
-	int		i;
-	int		y;
 	char	*tmp;
+	int i = -1;
 
-	i = 0;
-	y = 1;
-	tmp = ft_calloc(ft_strlen(tab), sizeof(char));
-	while (tab[y])
-	{
-		tmp[i] = tab[y];
-		i++;
-		y++;
-	}
-	return (tmp);
-}
-
-int	check_equal(char	*str)
-{
-	int	i;
-
-	i = -1;
 	while (str[++i])
 		if (str[i] == '=')
-			return (1);
+			return (tmp = ft_substr(str, 0, i));
+	return (ft_substr(str, 0, i));
+}
+
+int	check_chev(char *chevr)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	j = 0;
+	while (chevr[i])
+	{
+		if (chevr[i] == '>' || chevr[i] == '<')
+			j++;
+		i++;
+	}
+	if (i == j)
+	{
+		ret("syntax error near unexpected token `newline'", 258, 0);
+		return (-1);
+	}
 	return (0);
 }
+
