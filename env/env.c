@@ -47,7 +47,27 @@ char	*search_env(t_node *head, char *search) /* trouver la bonne ligne dans envp
 	{
 		if (check_env(tmp->data, search) == 1)
 		{
-			sea = tmp->data;
+			sea = ft_strdup(tmp->data);
+			return (sea);
+		}
+		tmp = tmp->next;
+	}
+	return (NULL);
+}
+
+char	*del_env(t_node *head, char *search) /* trouver la bonne ligne dans envp */
+{
+	t_node	*tmp;
+	char	*sea;
+
+	tmp = head;
+	sea = NULL;
+	while (tmp)
+	{
+		if (check_env(tmp->data, search) == 1)
+		{
+			sea = ft_strdup(tmp->data);
+			lstclear_cell(head, tmp->data);
 			return (sea);
 		}
 		tmp = tmp->next;
@@ -62,7 +82,7 @@ int	check_env(char *env, char *vari)  /* validerr la bonne ligne */
 	i = 0;
 	while (env[i] && vari[i] == env[i])
 	{
-		if (env[i + 1] == '=' && vari[i + 1] == '\0')
+		if (env[i + 1] == '=' || vari[i + 1] == '\0')
 		{
 			return (1);
 		}
@@ -82,7 +102,7 @@ char	*reste(char *str)  /* fonction pour recuperer le reste apres le  = */
 	res = NULL;
 	if (str == NULL)
 		return (NULL);
-	while (str[i] != '=')
+	while (str[i] != '=' && str[i])
 		i++;
 	i++;
 	y = ft_strlen(str) - i;

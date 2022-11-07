@@ -63,7 +63,7 @@ void	init_pipe(t_pars *pars);
 // Utils Bultins
 char	**env_sort(char **env);
 char	**env_to_tab(t_node *node);
-t_node	*add_to_export_lst(t_pars *pars, t_node *node);
+t_node	*add_to_export_lst(t_pars *pars, t_node *node, char *args);
 char	**add_to_export_tab(t_pars *pars);
 char	**tabjoin(char **tab, char **args);
 
@@ -114,7 +114,8 @@ void	env_cpy(t_node **node, char **envp);		/* copie envp dans liste chainee */
 int		check_env(char *env, char *vari);			/* compare variable d'env */
 char	*search_env(t_node *head, char *search);	/* cherche la variable d'env */
 char	*reste(char *str);
-int		check_equal(char *str);
+char	*check_equal(char *str);
+char	*del_env(t_node *head, char *search);
 
 // list chained
 t_node	*empty_lst(void);
@@ -132,11 +133,13 @@ char	**ft_split_quote(char *s, char c);
 char	**split_to_remove(char **tab, t_pars *pars, t_node *node);
 int		compte_quote(char *data);
 int		*init_tab_compt_quote(char *data);
-char	*is_dollars(char *tab, t_pars *pars, t_node *node);
+char	*is_dollars(char *tab, t_node *node);
 char	*remove_dollars(char *tab);
 int		ft_set(char *s, char c);
 int		check_chev(char *chevr);
 int		compt_doll(char *tab);
+int		is_dollars_or_quote(char *line, int i);
+char	*join_dollars(t_node *env, char *line, char *tmp, int i);
 char	*after_egal(t_node *env, char *search);
 
 // Free

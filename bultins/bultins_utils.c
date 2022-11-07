@@ -6,7 +6,7 @@
 /*   By: aboymond <aboymond@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/06 17:53:33 by aboymond          #+#    #+#             */
-/*   Updated: 2022/10/28 11:03:22 by aboymond         ###   ########.fr       */
+/*   Updated: 2022/11/07 13:32:59 by aboymond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,25 +69,21 @@ char	**env_to_tab(t_node *node)
 	return (env);
 }
 
-t_node	*add_to_export_lst(t_pars *pars, t_node *node)
+t_node	*add_to_export_lst(t_pars *pars, t_node *node, char *args)
 {
 	t_node	*node_tmp;
 	int		i;
 
 	i = 1;
+	(void)pars;
 	node_tmp = node;
 	while (node_tmp != NULL)
 	{
 		node_tmp = node_tmp->next;
 	}
-	while (pars->args[i])
-	{
-		printf("pars->args[%d] = %s\n", i, pars->args[i]);
-		// lstclear_cell(node, pars->args[i]);
-		node_tmp = add_list(node, ft_strdup(pars->args[i]));
-		node_tmp = node_tmp->next;
-		i++;
-	}
+	node_tmp = add_list(node, ft_strdup(args));
+	node_tmp = node_tmp->next;
+	i++;
 	return (node);
 }
 

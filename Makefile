@@ -5,7 +5,7 @@ NAME			=		minishell
 
 #***** Sources / Objs *****#
 
-SRC				=		main.c prompt.c utils.c init.c signal.c free.c utils2.c return_value.c exit.c\
+SRC				=		main.c prompt.c utils.c init.c signal.c free.c utils2.c return_value.c exit.c utils_dollars.c\
 						$(addprefix ./env/, env.c lst_chaine.c utils.c)\
 						$(addprefix ./parsing/, parsing.c lst_parsing.c check_quote.c pipe.c l2_parsing.c lst_clear.c)\
 						$(addprefix ./error/, error_parsing.c)\
@@ -82,7 +82,7 @@ logo :
 			@$(MSHELL)
 
 
-%.o:		%.c | minishell.h ./libft/libft.h Makefile
+%.o:		%.c minishell.h ./libft/libft.h Makefile
 			@$(CC) $(CFLAGS) -g $(HEADER) -c $< -o $@
 			@$(CHARG_LINE)
 
