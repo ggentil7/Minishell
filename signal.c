@@ -9,11 +9,6 @@ void	handle_sigint(int sig)
 		rl_on_new_line();
 		rl_redisplay();
 	}
-	// else if (sig == SIGQUIT)
-	// {
-	// 	rl_on_new_line();
-	// 	rl_redisplay();
-	// }
 }
 
 void	handle_signal(struct termios *saved)
@@ -21,7 +16,6 @@ void	handle_signal(struct termios *saved)
 	hide_key(saved);
 	signal(SIGINT, handle_sigint);
 	signal(SIGQUIT, SIG_IGN);
-	//signal(SIGQUIT, handle_sigquit);
 }
 
 void	hide_key(struct termios *saved)
