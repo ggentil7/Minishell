@@ -59,11 +59,6 @@ int	chevron_g_double(t_pars *pars, int i)
 	char	*key;
 
 	error_pipe(fd);
-	if (pipe(fd) == -1)
-	{
-		printf(""minishell: syntax error near unexpected token `newline'\n"");
-		return (0);
-	}
 	key = pars->args[i];
 	line = NULL;
 	while (1)
@@ -90,7 +85,7 @@ int	error_pipe(int fd[2])
 {
 	if (pipe(fd) == -1)
 	{
-		printf("Error pipe\n");
+		printf("minishell: syntax error near unexpected token `newline'\n");
 		return (0);
 	}
 	return (0);

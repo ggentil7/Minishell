@@ -50,7 +50,6 @@ int	prompt_(t_node *head, t_pars *pars, t_prompt *prompt)
 
 	prompt->user = username(head);
 	prompt->buffer = readline(prompt->user);
-	
 	if (!prompt->buffer)
 	{
 		printf("exit\n");

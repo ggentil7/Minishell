@@ -6,7 +6,7 @@
 /*   By: ggentil <ggentil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 14:40:29 by ggentil           #+#    #+#             */
-/*   Updated: 2022/11/08 14:42:01 by ggentil          ###   ########.fr       */
+/*   Updated: 2022/11/08 15:57:08 by ggentil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,7 @@ int	bultin_export(t_pars *pars, t_node *node)
 				if (ft_strchr(pars->args[i], '=') != NULL)
 				{
 					del_env(node, tmp);
+					add_to_export_lst(pars, env, pars->args[i]);
 				}
 			}
 			else
