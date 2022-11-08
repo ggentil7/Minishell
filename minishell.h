@@ -191,7 +191,7 @@ int		chevron_d_simple(t_pars *pars, int i);
 int		chevron_d_double(t_pars *pars, int i);
 int		chevron_g_simple(t_pars *pars, int i);
 int		chevron_g_double(t_pars *pars, int i);
-int		error_pipe(int fd[2]);
+int		error_pipe_redir(int fd[2]);
 
 // Exit
 int		exit_minishell(t_pars *pars, t_node *env, t_prompt *prompt);

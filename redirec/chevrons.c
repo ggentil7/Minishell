@@ -8,6 +8,7 @@ int	chevron_d_simple(t_pars *pars, int i)
 	fd = open(pars->args[i], O_CREAT | O_WRONLY | O_TRUNC, 0644);
 	if (fd == -1)
 	{
+		// ret("minishell: syntax error near unexpected token `newline'", 258, 0);
 		printf("minishell: syntax error near unexpected token `newline'\n");
 		return (0);
 	}
@@ -25,6 +26,7 @@ int	chevron_d_double(t_pars *pars, int i)
 	fd = open(pars->args[i], O_CREAT | O_WRONLY | O_APPEND, 0644);
 	if (fd == -1)
 	{
+		// ret("minishell: syntax error near unexpected token `newline'", 258, 0);
 		printf("minishell: syntax error near unexpected token `newline'\n");
 		return (0);
 	}
@@ -42,6 +44,7 @@ int	chevron_g_simple(t_pars *pars, int i)
 	fd = open(pars->args[i], O_RDONLY);
 	if (fd == -1)
 	{
+		// ret("minishell: syntax error near unexpected token `newline'", 258, 0);
 		printf("minishell: syntax error near unexpected token `newline'\n");
 		return (0);
 	}
@@ -58,7 +61,13 @@ int	chevron_g_double(t_pars *pars, int i)
 	char	*line;
 	char	*key;
 
-	error_pipe(fd);
+	if (pars->args[i] == NULL)
+	{
+		// ret("minishell: syntax error near unexpected token `newline'", 258, 0);
+		printf("minishell: syntax error near unexpected token `newline'\n");
+		return (0);
+	}
+	error_pipe_redir(fd);
 	key = pars->args[i];
 	line = NULL;
 	while (1)
@@ -81,10 +90,11 @@ int	chevron_g_double(t_pars *pars, int i)
 	return (0);
 }
 
-int	error_pipe(int fd[2])
+int	error_pipe_redir(int fd[2])
 {
 	if (pipe(fd) == -1)
 	{
+		// ret("minishell: syntax error near unexpected token `newline'", 258, 0);
 		printf("minishell: syntax error near unexpected token `newline'\n");
 		return (0);
 	}
