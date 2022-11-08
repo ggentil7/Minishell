@@ -12,9 +12,11 @@ void	free_tab(char **tab)
 		{
 			// ft_putendl_fd(tab[i], 2);
 			free(tab[i]);
+			tab[i] = NULL;
 			i++;
 		}
 		free(tab);
+		tab = NULL;
 	}
 }
 
@@ -66,12 +68,14 @@ void	free_lst_node(t_node *node)
 			while (i < ft_tablen(tmp->args) + 1)
 			{
 				free(tmp->args[i]);
+				tmp->args[i] = NULL;
 				i++;
 			}
 			// free_tab(tmp->args);
 			tmp = tmp->next;
 		}
 		// lstclear(node);
+		// node = NULL;
 		// else
 		// {
 		// 	free_tab(tmp->args);

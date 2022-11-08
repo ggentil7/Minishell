@@ -13,6 +13,7 @@ int	lst_to_tab(t_pars *pars, t_node *env)
 		temp = ft_split_pipe(tmp->p_data, ' ', tmp, env);
 		tmp->args = temp;
 		tmp = tmp->next;
+		free_tab(temp);
 	}
 	return (0);
 }

@@ -65,7 +65,6 @@ int	bultin_export(t_pars *pars, t_node *node)
 				if (ft_strchr(pars->args[i], '=') != NULL)
 				{
 					del_env(node, tmp);
-
 					add_to_export_lst(pars, env, pars->args[i]);
 				}
 			}
