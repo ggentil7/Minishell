@@ -1,5 +1,4 @@
 
-
 #include "../minishell.h"
 
 char	**env_sort(char **env)
@@ -74,28 +73,3 @@ t_node	*add_to_export_lst(t_pars *pars, t_node *node, char *args)
 	i++;
 	return (node);
 }
-
-// char	**tabjoin(char **tab, char **args)
-// {
-// 	int	i;
-// 	int	y;
-// 	char	**tmp;
-
-// 	i = 0;
-// 	y = 0;
-// 	tmp = ft_calloc(sizeof(char *), (ft_tablen(tab) + ft_tablen(args)) + 1);
-// 	while (tab[i])
-// 	{
-// 		tmp[i] = ft_strdup(tab[i]);
-// 		i++;
-// 	}
-// 	while (args[y])
-// 	{
-// 		tmp[i] = ft_strdup(args[y]);
-// 		i++;
-// 		y++;
-// 	}
-
-// 	printf("SALUT TEEEEEEST\n");
-// 	return (tmp);
-// }

@@ -45,7 +45,6 @@ int	exec_bultout_2(t_pars *pars, char **path_tab, char **env)
 			{
 				i++;
 				free(cmd_path);
-				printf("execve\n");
 				ret(NULL, 127, 2);
 			}
 		free (cmd_path);

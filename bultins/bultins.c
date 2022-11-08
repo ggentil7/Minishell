@@ -22,7 +22,7 @@ int	bultin_search(t_pars *pars, t_node *env, t_prompt *prompt)
 		|| ft_strcmp(pars->cmd, "ENV") == 0)
 		return (bultin_env(pars, env));
 	else if (ft_strcmp(pars->cmd, "exit") == 0)
-		return(exit_minishell(pars, env, prompt));
+		return (exit_minishell(pars, env, prompt));
 	return (-1);
 }
 
@@ -32,7 +32,7 @@ int	cmd(t_pars *pars, t_node *env, t_prompt *prompt)
 	signal(SIGQUIT, handle_sigquit);
 	init_cmd(pars);
 	redirection_tab(pars);
-	if(is_bultin(pars) != -1 && pars->next == NULL && pars->chevr == 0)
+	if (is_bultin(pars) != -1 && pars->next == NULL && pars->chevr == 0)
 		bultin_search(pars, env, prompt);
 	else
 		pipeline(pars, env, prompt);
