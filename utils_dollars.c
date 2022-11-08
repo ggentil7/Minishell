@@ -34,6 +34,7 @@ int	is_dollars_or_quote(char *line, int i)
 char	*join_dollars(t_node *env, char *line, char *tmp, int i)
 {
 	char	*tmp2;
+	char	*tmp3;
 	int		j;
 
 	j = 0;
@@ -42,7 +43,10 @@ char	*join_dollars(t_node *env, char *line, char *tmp, int i)
 		j = i;
 		i = is_dollars_or_quote(line, i);
 		if (i > j)
-			tmp = ft_strjoin_free(tmp, ft_substr(line, j, i - j));
+		{
+			tmp3 = ft_substr(line, j, i - j);
+			tmp = ft_strjoin_free(tmp, tmp3);
+		}
 		j = i;
 		while (line[i] && line[i + 1] && ft_isalpha_under_s(line[i + 1]) == 1)
 			i++;

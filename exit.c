@@ -17,7 +17,7 @@ int	exit_minishell(t_pars *pars, t_node *env, t_prompt *prompt)
 	{
 		ret("exit", 0, 0);
 		free_prompt(pars, prompt);
-		// free_lst_node(env);
+		free_lst_node(env);
 		exit (g_ret);
 	}
 	return (0);

@@ -8,7 +8,7 @@ void	free_tab(char **tab)
 	i = 0;
 	if (tab != NULL)
 	{
-		while (tab[i])
+		while (i < ft_tablen(tab) + 1)
 		{
 			// ft_putendl_fd(tab[i], 2);
 			free(tab[i]);
@@ -58,24 +58,25 @@ void	free_lst_node(t_node *node)
 	t_node	*tmp;
 
 	tmp = node;
+	int i = 0;
 	if (tmp != NULL)
 	{
-		if (tmp->next != NULL)
+		while (tmp != NULL)
 		{
-			while (tmp != NULL)
+			while (i < ft_tablen(tmp->args) + 1)
 			{
-				if (tmp->args != NULL)
-					free_tab(tmp->args);
-				tmp = tmp->next;
+				free(tmp->args[i]);
+				i++;
 			}
-			lstclear(node);
+			// free_tab(tmp->args);
+			tmp = tmp->next;
 		}
-		else
-		{
-			if (tmp->args != NULL)
-				free_tab(tmp->args);
-			lstclear(node);
-		}
+		// lstclear(node);
+		// else
+		// {
+		// 	free_tab(tmp->args);
+		// 	lstclear(node);
+		// }
 	}
 	else
 		return ;
