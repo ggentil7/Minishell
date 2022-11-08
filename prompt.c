@@ -27,8 +27,13 @@ char	*username(t_node *head)
 	{
 		user = search_env(head, "USER");
 		user1 = reste(user);
-		user = ft_strjoin("\033[1;34m", user1);
-		free (user1);
+		if (user1 != NULL)
+		{
+			user = ft_strjoin("\033[1;34m", user1);
+			free (user1);
+		}
+		else
+			user = ft_strjoin("\033[1;34m", "💩💩💩💩");
 	}
 	user1 = ft_strjoin(user, at);
 	free (user);

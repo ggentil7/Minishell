@@ -44,7 +44,7 @@ char	*join_dollars(t_node *env, char *line, char *tmp, int i)
 		if (i > j)
 			tmp = ft_strjoin_free(tmp, ft_substr(line, j, i - j));
 		j = i;
-		while (line[i + 1] && ft_isalpha_under_s(line[i + 1]) == 1)
+		while (line[i] && line[i + 1] && ft_isalpha_under_s(line[i + 1]) == 1)
 			i++;
 		if (i > j)
 		{

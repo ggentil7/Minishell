@@ -116,6 +116,6 @@ char	**split_to_remove(char **tab, t_pars *pars, t_node *env)
 		}
 		i++;
 	}
-	// free_tab(tab);
+	free_tab(tab);
 	return (tab2);
 }

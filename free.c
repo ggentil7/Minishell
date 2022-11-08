@@ -10,6 +10,7 @@ void	free_tab(char **tab)
 	{
 		while (tab[i])
 		{
+			// ft_putendl_fd(tab[i], 2);
 			free(tab[i]);
 			i++;
 		}

@@ -5,10 +5,10 @@ int	bultin_echo(t_pars *pars, int i, t_node *env)
 	(void)env;
 	while (pars->args[i])
 	{
-
-
-
-		ft_putstr_fd(pars->args[i], 1);
+		if (ft_strcmp(pars->args[i], "$?") == 0)
+			ft_putnbr_fd(g_ret, 1);
+		else
+			ft_putstr_fd(pars->args[i], 1);
 		if (pars->args[i + 1])
 			ft_putchar_fd(' ', 1);
 		i++;
@@ -25,9 +25,7 @@ int	bultin_echo_n(t_pars *pars, t_node *env)
 		write(1, "\n", 1);
 	else
 	{
-		if (ft_strcmp(pars->args[1], "$?") == 0)
-			printf("%d\n", g_ret);
-		else if (ft_strcmp(pars->args[1], "-n") == 0)
+		if (ft_strcmp(pars->args[1], "-n") == 0)
 		{
 			i = 2;
 			bultin_echo(pars, i, env);

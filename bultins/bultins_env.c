@@ -41,36 +41,48 @@ int	bultin_unset(t_pars *pars, t_node *env)
 
 int	bultin_export(t_pars *pars, t_node *node)
 {
-	t_node	*tmp;
+	t_node	*env;
 	char 	*tmp2;
-	char 	*tmp3;
-  int		i;
+  	int		i;
+	// FILE		*file;
   
 	i = 0;
-	tmp = node;
+	env = node;
+	// file = fopen(tmp2, "txt");
 	if (pars->args[1] == NULL)
 	{
-		tmp->args = env_to_tab(tmp);
-		tmp->args = env_sort(tmp->args);
-		print_export(tmp->args);
+		env->args = env_to_tab(env);
+		env->args = env_sort(env->args);
+		print_export(env->args);
 	}
 	else
 	{
 		i = 0;
 		while (pars->args[++i])
 		{
-			tmp2 = check_equal(pars->args[i]);
-			if (search_env(tmp, tmp2) != NULL )
+			tmp2 = check_equal_env(pars->args[i]);
+			// fprintf(file, "\033[0;31mexport tmp2 = [%s]  [%p]\033[0m\n", tmp2, tmp2);
+			// fprintf(file, "---------------------------------------------------------\n");
+			// fprintf(file, "tmp2 %s\n", tmp2);
+			if (search_env_var(node, tmp2) != NULL )
 			{
-				if(ft_strchr(pars->args[i], '=') != NULL)
+				// printf("TEEEEST\n");
+				if (ft_strchr(pars->args[i], '=') != NULL)
 				{
-					tmp3 = del_env(tmp, tmp2);
-					add_to_export_lst(pars, tmp, pars->args[i]);
+					del_env(node, tmp2);
+					// free (tmp2);
+					// fprintf(file, "export 2 tmp2 = [%s]  [%p], tmp3 = [%s]  [%p]\n", tmp2, tmp2, tmp3, tmp3);
+					// fprintf(file, "---------------------------------------------------------\n");
+					add_to_export_lst(pars, env, pars->args[i]);
 				}
 			}
 			else
-				add_to_export_lst(pars, tmp, pars->args[i]);
+				add_to_export_lst(pars, env, pars->args[i]);
+			free (tmp2);
 		}
+
 	}
+	// if (tmp2 != NULL)
+	// 	free (tmp2);
 	return (0);
 }

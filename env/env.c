@@ -17,15 +17,12 @@ char	*search_env_var(t_node *head, char *search)
 {
 	t_node	*tmp;
 	char	*sea;
-	int		i;
 
 	tmp = head;
 	sea = NULL;
-	i = 0;
 	while (tmp)
-	{	
-		i++;
-		if (ft_strncmp(tmp->data, search, ft_strlen(search)) == 0)
+	{
+		if (check_env(tmp->data, search) == 1)
 		{
 			sea = tmp->data;
 			return (sea);
@@ -46,7 +43,7 @@ char	*search_env(t_node *head, char *search)
 	{
 		if (check_env(tmp->data, search) == 1)
 		{
-			sea = ft_strdup(tmp->data);
+			sea = tmp->data;
 			return (sea);
 		}
 		tmp = tmp->next;
@@ -61,15 +58,15 @@ char	*del_env(t_node *head, char *search) /* trouver la bonne ligne dans envp */
 
 	tmp = head;
 	sea = NULL;
-	while (tmp)
+	while (tmp != NULL)
 	{
 		if (check_env(tmp->data, search) == 1)
 		{
-			sea = ft_strdup(tmp->data);
-			lstclear_cell(head, tmp->data);
-			return (sea);
+			lstclear_cell(head, search);
+			return (NULL);
 		}
-		tmp = tmp->next;
+		else
+			tmp = tmp->next;
 	}
 	return (NULL);
 }
@@ -77,16 +74,42 @@ char	*del_env(t_node *head, char *search) /* trouver la bonne ligne dans envp */
 int	check_env(char *env, char *vari)
 {
 	int	i;
+	char *tmp;
 
 	i = 0;
-	while (env[i] && vari[i] == env[i])
+	tmp = check_equal(env);
+	while (tmp[i] && vari[i] == env[i])
 	{
-		if (env[i + 1] == '=' || vari[i + 1] == '\0')
+		// printf("env = [%c] - %s, vari = [%c] - %s\n", env[i], env, vari[i], vari);
+		if (tmp[i + 1] == '\0' && vari[i + 1] == '\0')
 		{
+			free (tmp);
 			return (1);
 		}
 		i++;
 	}
+	free (tmp);
+	return (0);
+}
+
+int	check_env_var(char *env, char *vari)
+{
+	int	i;
+	char *tmp;
+
+	i = 0;
+	tmp = check_equal_env(env);
+	while (tmp[i] && vari[i] == env[i])
+	{
+		// printf("env = [%c] - %s, vari = [%c] - %s\n", env[i], env, vari[i], vari);
+		if (tmp[i + 1] == '\0' && vari[i + 1] == '\0')
+		{
+			free (tmp);
+			return (1);
+		}
+		i++;
+	}
+	free (tmp);
 	return (0);
 }
 
@@ -101,13 +124,15 @@ char	*reste(char *str)
 	res = NULL;
 	if (str == NULL)
 		return (NULL);
-	while (str[i] != '=' && str[i])
+	while (i < (int)ft_strlen(str) && str[i] != '=')
 		i++;
+	if (str[i] != '=')
+		return (NULL);
 	i++;
 	y = ft_strlen(str) - i;
 	res = ft_calloc(sizeof(char), y + 1);
 	y = 0;
-	while (str[i])
+	while (i < (int)ft_strlen(str))
 	{
 		res[y++] = str[i++];
 	}

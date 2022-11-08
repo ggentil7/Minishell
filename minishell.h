@@ -47,6 +47,9 @@ typedef struct s_prompt
 
 int		g_ret;
 
+char	*check_equal_env(char *str);
+int		check_env_var(char *env, char *vari);
+
 // Prompt
 int		prompt_(t_node *node, t_pars *pars, t_prompt *prompt);
 char	*path(void);								/* recupere le path */

@@ -3,12 +3,40 @@
 char	*check_equal(char *str)
 {
 	char	*tmp;
-	int i = -1;
+	char	*tmp2;
+	int 	i;
 
+	i = -1;
+	tmp2 = ft_strdup(str);
+	// printf("check equal tmp2 = [%p], str = [%p]\n", tmp2, str);
 	while (str[++i])
 		if (str[i] == '=')
-			return (tmp = ft_substr(str, 0, i));
-	return (ft_substr(str, 0, i));
+		{
+			tmp = ft_substr(str, 0, i);
+			free (tmp2);
+			// printf("\033[0;34mcheck equal tmp = [%s] [%p], str = [%s]  [%p]\033[0m\n",tmp, tmp, str, str);
+			return (tmp);
+		}
+		return (tmp2);
+}
+char	*check_equal_env(char *str)
+{
+	char	*tmp;
+	char	*tmp2;
+	int 	i;
+
+	i = -1;
+	tmp2 = ft_strdup(str);
+	// printf("check equal tmp2 = [%p], str = [%p]\n", tmp2, str);
+	while (str[++i])
+		if (str[i] == '=')
+		{
+			tmp = ft_substr(str, 0, i);
+			free (tmp2);
+			// printf("\033[0;34mcheck equal tmp = [%s] [%p], str = [%s]  [%p]\033[0m\n",tmp, tmp, str, str);
+			return (tmp);
+		}
+		return (tmp2);
 }
 
 int	check_chev(char *chevr)
