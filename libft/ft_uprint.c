@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_uprint.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: piow00 <piow00@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ggentil <ggentil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/29 14:19:12 by aboymond          #+#    #+#             */
-/*   Updated: 2022/10/18 21:00:25 by piow00           ###   ########.fr       */
+/*   Updated: 2022/11/09 19:34:04 by ggentil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static int	ft_intlen(unsigned int n)
 {
-	unsigned int			i;
+	unsigned int	i;
 	long int		nb;
 
 	nb = n;

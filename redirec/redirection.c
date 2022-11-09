@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   redirection.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ggentil <ggentil@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/11/09 19:24:18 by ggentil           #+#    #+#             */
+/*   Updated: 2022/11/09 19:24:21 by ggentil          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "../minishell.h"
 
@@ -13,7 +24,6 @@ int	redirection_tab(t_pars *pars)
 		i = 0;
 		while (tmp->args[i])
 		{
-			printf("tmp = %s\n", tmp->args[i]);
 			if (chevron_detect(tmp, tmp->args[i], i) == -1)
 				i++;
 			else

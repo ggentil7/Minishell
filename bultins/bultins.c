@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   bultins.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ggentil <ggentil@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/11/09 19:27:50 by ggentil           #+#    #+#             */
+/*   Updated: 2022/11/09 19:27:52 by ggentil          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "../minishell.h"
 
@@ -32,7 +43,7 @@ int	cmd(t_pars *pars, t_node *env, t_prompt *prompt)
 	signal(SIGQUIT, handle_sigquit);
 	redirection_tab(pars);
 	init_cmd(pars);
-	if(is_bultin(pars) != -1 && pars->next == NULL && pars->chevr == 0)
+	if (is_bultin(pars) != -1 && pars->next == NULL && pars->chevr == 0)
 		bultin_search(pars, env, prompt);
 	else
 		pipeline(pars, env, prompt);

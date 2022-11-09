@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   lst_clear.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ggentil <ggentil@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/11/09 19:20:37 by ggentil           #+#    #+#             */
+/*   Updated: 2022/11/09 19:21:12 by ggentil          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../minishell.h"
 
 void	p_lstclear(t_pars *lst)
@@ -44,7 +56,6 @@ t_node	*lstclear_cell(t_node *node, char *data)
 {
 	t_node	*supp;
 	t_node	*prec;
-	t_node	*tmp;
 	int		i;
 
 	i = 0;
@@ -54,25 +65,10 @@ t_node	*lstclear_cell(t_node *node, char *data)
 	i = (int)ft_strlen(data);
 	while (supp != NULL)
 	{
-		if (ft_strncmp(supp->data, data, i) == 0 && (supp->data[i] == '=' || supp->data[i] == '\0'))
+		if (ft_strncmp(supp->data, data, i) == 0
+			&& (supp->data[i] == '=' || supp->data[i] == '\0'))
 		{
-			if (ft_strcmp(node->data, search_env(node, data)) == 0)
-			{
-				tmp = supp->next->next;
-				free(supp->data);
-				supp->data = ft_strdup(supp->next->data);
-				free (supp->next->data);
-				free (supp->next);
-				supp->next = tmp;
-			}
-			else
-			{
-				prec->next = supp->next;
-				tmp = supp->next;
-				free(supp->data);
-				free (supp);
-				supp = tmp;
-			}
+			supp = lstclear_cell2(supp, node, prec, data);
 		}
 		else
 		{

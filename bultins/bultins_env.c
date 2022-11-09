@@ -5,11 +5,10 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ggentil <ggentil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/08 14:40:29 by ggentil           #+#    #+#             */
-/*   Updated: 2022/11/08 15:57:08 by ggentil          ###   ########.fr       */
+/*   Created: 2022/11/09 18:39:55 by ggentil           #+#    #+#             */
+/*   Updated: 2022/11/09 19:26:59 by ggentil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "../minishell.h"
 
@@ -54,9 +53,8 @@ int	bultin_unset(t_pars *pars, t_node *env)
 int	bultin_export(t_pars *pars, t_node *node)
 {
 	t_node	*env;
-	char 	*tmp;
-	char 	**tab;
-  	int		i;  
+	char	**tab;
+	int		i;
 
 	i = 0;
 	env = node;
@@ -68,22 +66,33 @@ int	bultin_export(t_pars *pars, t_node *node)
 	}
 	else
 	{
-		i = 0;
-		while (pars->args[++i])
+		bultin_export_la_suite(pars, node);
+	}
+	return (0);
+}
+
+int	bultin_export_la_suite(t_pars *pars, t_node *node)
+{
+	t_node	*env;
+	char	*tmp;
+	int		i;
+
+	i = 0;
+	env = node;
+	while (pars->args[++i])
+	{
+		tmp = check_equal_env(pars->args[i]);
+		if (search_env_var(node, tmp) != NULL )
 		{
-			tmp = check_equal_env(pars->args[i]);
-			if (search_env_var(node, tmp) != NULL )
+			if (ft_strchr(pars->args[i], '=') != NULL)
 			{
-				if (ft_strchr(pars->args[i], '=') != NULL)
-				{
-					del_env(node, tmp);
-					add_to_export_lst(pars, env, pars->args[i]);
-				}
-			}
-			else
+				del_env(node, tmp);
 				add_to_export_lst(pars, env, pars->args[i]);
-			free (tmp);
+			}
 		}
+		else
+			add_to_export_lst(pars, env, pars->args[i]);
+		free (tmp);
 	}
 	return (0);
 }

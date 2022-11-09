@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   chevrons.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ggentil <ggentil@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/11/09 19:23:55 by ggentil           #+#    #+#             */
+/*   Updated: 2022/11/09 19:23:58 by ggentil          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "../minishell.h"
 
@@ -58,20 +69,15 @@ int	chevron_g_double(t_pars *pars, int i)
 	char	*line;
 	char	*key;
 
+	if (pars->args[i] == NULL)
+	{
+		printf("minishell: syntax error near unexpected token `newline'\n");
+		return (0);
+	}
 	error_pipe(fd);
 	key = pars->args[i];
 	line = NULL;
-	while (1)
-	{
-		line = readline("> ");
-		if (!line)
-			break ;
-		if (ft_strcmp(line, key) != 0)
-			ft_putendl_fd(line, fd[1]);
-		else
-			break ;
-		free(line);
-	}
+	fd[1] = while_chevron(line, key, fd);
 	free (line);
 	close (fd[1]);
 	if (pars->fd_in > 2)

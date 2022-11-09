@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   bultout.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ggentil <ggentil@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/11/09 18:46:16 by ggentil           #+#    #+#             */
+/*   Updated: 2022/11/09 19:26:32 by ggentil          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "../minishell.h"
 
@@ -28,31 +39,25 @@ char	**conv_path(t_pars *pars, t_node *env)
 
 int	exec_bultout_2(t_pars *pars, char **path_tab, char **env)
 {
-	int		i;
 	int		y;
 	char	*cmd_path;
 	char	*start_cmd_path;
 
-	y = 0;
-	i = 0;
-	while (path_tab[y])
+	y = -1;
+	while (path_tab[++y])
 	{
 		start_cmd_path = ft_strjoin(path_tab[y], "/");
 		cmd_path = ft_strjoin(start_cmd_path, pars->cmd);
 		free (start_cmd_path);
 		if (!access(cmd_path, X_OK))
+		{
 			if (execve(cmd_path, pars->args, env) == -1)
 			{
-				i++;
 				free(cmd_path);
 				ret(NULL, 127, 2);
 			}
+		}
 		free (cmd_path);
-		y++;
-	}
-	if (i == 0)
-	{
-		return (-1);
 	}
 	return (0);
 }

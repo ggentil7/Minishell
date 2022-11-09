@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   minishell.h                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ggentil <ggentil@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/11/09 18:00:02 by ggentil           #+#    #+#             */
+/*   Updated: 2022/11/09 19:21:38 by ggentil          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #ifndef MINISHELL_H
 # define MINISHELL_H
@@ -50,8 +61,9 @@ int		g_ret;
 // Prompt
 int		prompt_(t_node *node, t_pars *pars, t_prompt *prompt);
 char	*path(void);
+void	exit_ctrld(t_prompt *prompt, t_pars *pars);
 char	*username(t_node *head);
-void	print_prompt(t_pars *pars);
+char	*username2(t_node *head, char *at, char *mini, char *dol);
 
 // Init
 int		init_cmd(t_pars *pars);
@@ -101,6 +113,9 @@ void	lstclear(t_node *lst);
 void	lstdelone(t_node *lst);
 t_node	*lstclear_cell(t_node *node, char *data);
 
+// Lst utils
+t_node	*lstclear_cell2(t_node *supp, t_node *node, t_node *prec, char *data);
+
 // Env
 void	env_cpy(t_node **node, char **envp);
 char	*search_env_var(t_node *head, char *search);
@@ -138,11 +153,14 @@ char	**split_to_remove(char **tab, t_pars *pars, t_node *node);
 char	*check_equal(char *str);
 char	*check_equal_env(char *str);
 int		check_chev(char *chevr);
+void	init_pipe_cmd(t_node *head, t_pars *pars, t_prompt *prompt);
+int		while_chevron(char *line, char *key, int fd[1]);
 
 // Utils Dollars
 char	*is_dollars(char *tab, t_node *node);
 int		is_dollars_or_quote(char *line, int i);
 char	*join_dollars(t_node *env, char *line, char *tmp, int i);
+char	*join_dollars_la_suite(char *line, char *tmp, int i, int j);
 
 // Free
 void	free_tab(char **tab);
@@ -170,6 +188,7 @@ int		bultin_export(t_pars *pars, t_node *node);
 int		cmd(t_pars *pars, t_node *env, t_prompt *prompt);
 void	execution(t_pars *pars, t_node *env);
 int		is_bultin(t_pars *pars);
+int		bultin_export_la_suite(t_pars *pars, t_node *node);
 
 // Bultouts
 char	**conv_path(t_pars *pars, t_node *env);

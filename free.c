@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   free.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ggentil <ggentil@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/11/09 19:23:35 by ggentil           #+#    #+#             */
+/*   Updated: 2022/11/09 19:23:38 by ggentil          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "minishell.h"
 
@@ -59,27 +70,13 @@ void	free_lst_node(t_node *node)
 	t_node	*tmp;
 
 	tmp = node;
-	// int i = 0;
 	if (tmp != NULL)
 	{
 		while (tmp != NULL)
 		{
-			// while (i < ft_tablen(tmp->args) + 1)
-			// {
-			// 	free(tmp->args[i]);
-			// 	tmp->args[i] = NULL;
-			// 	i++;
-			// }
 			free_tab(tmp->args);
 			tmp = tmp->next;
 		}
-		// lstclear(node);
-		// node = NULL;
-		// else
-		// {
-		// 	free_tab(tmp->args);
-		// 	lstclear(node);
-		// }
 	}
 	else
 		return ;
