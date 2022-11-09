@@ -32,7 +32,6 @@ void	free_lst_pars(t_pars *pars)
 		{
 			while (tmp != NULL)
 			{
-				//free(tmp->doll_flag);
 				free_tab(tmp->args);
 				tmp = tmp->next;
 			}
@@ -40,7 +39,6 @@ void	free_lst_pars(t_pars *pars)
 		}
 		else
 		{
-			//free(tmp->doll_flag);
 			free_tab(tmp->args);
 			p_lstclear(pars);
 		}

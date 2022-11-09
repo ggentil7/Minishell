@@ -22,7 +22,7 @@ int	bultin_search(t_pars *pars, t_node *env, t_prompt *prompt)
 		|| ft_strcmp(pars->cmd, "ENV") == 0)
 		return (bultin_env(pars, env));
 	else if (ft_strcmp(pars->cmd, "exit") == 0)
-		return(exit_minishell(pars, env, prompt));
+		return (exit_minishell(pars, env, prompt));
 	return (-1);
 }
 

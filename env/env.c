@@ -51,7 +51,7 @@ char	*search_env(t_node *head, char *search)
 	return (NULL);
 }
 
-char	*del_env(t_node *head, char *search) /* trouver la bonne ligne dans envp */
+char	*del_env(t_node *head, char *search)
 {
 	t_node	*tmp;
 	char	*sea;
@@ -73,14 +73,13 @@ char	*del_env(t_node *head, char *search) /* trouver la bonne ligne dans envp */
 
 int	check_env(char *env, char *vari)
 {
-	int	i;
-	char *tmp;
+	int		i;
+	char	*tmp;
 
 	i = 0;
 	tmp = check_equal(env);
 	while (tmp[i] && vari[i] == env[i])
 	{
-		// printf("env = [%c] - %s, vari = [%c] - %s\n", env[i], env, vari[i], vari);
 		if (tmp[i + 1] == '\0' && vari[i + 1] == '\0')
 		{
 			free (tmp);
@@ -90,51 +89,4 @@ int	check_env(char *env, char *vari)
 	}
 	free (tmp);
 	return (0);
-}
-
-int	check_env_var(char *env, char *vari)
-{
-	int	i;
-	char *tmp;
-
-	i = 0;
-	tmp = check_equal_env(env);
-	while (tmp[i] && vari[i] == env[i])
-	{
-		// printf("env = [%c] - %s, vari = [%c] - %s\n", env[i], env, vari[i], vari);
-		if (tmp[i + 1] == '\0' && vari[i + 1] == '\0')
-		{
-			free (tmp);
-			return (1);
-		}
-		i++;
-	}
-	free (tmp);
-	return (0);
-}
-
-char	*reste(char *str)
-{
-	char	*res;
-	int		i;
-	int		y;
-
-	i = 0;
-	y = 0;
-	res = NULL;
-	if (str == NULL)
-		return (NULL);
-	while (i < (int)ft_strlen(str) && str[i] != '=')
-		i++;
-	if (str[i] != '=')
-		return (NULL);
-	i++;
-	y = ft_strlen(str) - i;
-	res = ft_calloc(sizeof(char), y + 1);
-	y = 0;
-	while (i < (int)ft_strlen(str))
-	{
-		res[y++] = str[i++];
-	}
-	return (res);
 }

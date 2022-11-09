@@ -1,3 +1,4 @@
+
 #include "../minishell.h"
 
 int	chevron_d_simple(t_pars *pars, int i)
@@ -7,7 +8,7 @@ int	chevron_d_simple(t_pars *pars, int i)
 	fd = open(pars->args[i], O_CREAT | O_WRONLY | O_TRUNC, 0644);
 	if (fd == -1)
 	{
-		printf("Error FD >\n");
+		printf("minishell: syntax error near unexpected token `newline'\n");
 		return (0);
 	}
 	if (pars->fd_out > 2)
@@ -24,7 +25,7 @@ int	chevron_d_double(t_pars *pars, int i)
 	fd = open(pars->args[i], O_CREAT | O_WRONLY | O_APPEND, 0644);
 	if (fd == -1)
 	{
-		printf("Error FD >>\n");
+		printf("minishell: syntax error near unexpected token `newline'\n");
 		return (0);
 	}
 	if (pars->fd_out > 2)
@@ -41,7 +42,7 @@ int	chevron_g_simple(t_pars *pars, int i)
 	fd = open(pars->args[i], O_RDONLY);
 	if (fd == -1)
 	{
-		printf("Error FD <\n");
+		printf("minishell: syntax error near unexpected token `newline'\n");
 		return (0);
 	}
 	if (pars->fd_in > 2)
@@ -57,16 +58,12 @@ int	chevron_g_double(t_pars *pars, int i)
 	char	*line;
 	char	*key;
 
-	if (pipe(fd) == -1)
-	{
-		printf("Error pipe\n");
-		return (0);
-	}
+	error_pipe(fd);
 	key = pars->args[i];
 	line = NULL;
 	while (1)
 	{
-		line = readline("heredoc> ");
+		line = readline("> ");
 		if (!line)
 			break ;
 		if (ft_strcmp(line, key) != 0)
@@ -81,5 +78,15 @@ int	chevron_g_double(t_pars *pars, int i)
 		close (pars->fd_in);
 	pars->fd_in = fd[0];
 	del_chevron_more(pars, i);
+	return (0);
+}
+
+int	error_pipe(int fd[2])
+{
+	if (pipe(fd) == -1)
+	{
+		printf("minishell: syntax error near unexpected token `newline'\n");
+		return (0);
+	}
 	return (0);
 }

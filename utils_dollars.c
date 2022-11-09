@@ -50,7 +50,7 @@ char	*join_dollars(t_node *env, char *line, char *tmp, int i)
 			i++;
 		if (i > j)
 		{
-			tmp2 = ft_substr(line, j+1, i - j);
+			tmp2 = ft_substr(line, j + 1, i - j);
 			if (after_egal(env, tmp2) != NULL)
 				tmp = ft_strjoin_free(tmp, after_egal(env, tmp2));
 			free (tmp2);
