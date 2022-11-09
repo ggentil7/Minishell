@@ -6,7 +6,7 @@
 /*   By: ggentil <ggentil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 18:00:02 by ggentil           #+#    #+#             */
-/*   Updated: 2022/11/09 19:21:38 by ggentil          ###   ########.fr       */
+/*   Updated: 2022/11/09 19:53:02 by ggentil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -194,6 +194,7 @@ int		bultin_export_la_suite(t_pars *pars, t_node *node);
 char	**conv_path(t_pars *pars, t_node *env);
 int		exec_bultout_2(t_pars *pars, char **path_tab, char **env);
 int		if_path_not_exist(t_pars *pars, char **path_tab, char **env);
+int		return1(int i);
 
 // Pipe
 int		pipeline(t_pars *pars, t_node *env, t_prompt *prompt);

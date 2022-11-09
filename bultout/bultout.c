@@ -6,7 +6,7 @@
 /*   By: ggentil <ggentil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 18:46:16 by ggentil           #+#    #+#             */
-/*   Updated: 2022/11/09 19:26:32 by ggentil          ###   ########.fr       */
+/*   Updated: 2022/11/09 19:58:21 by ggentil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,10 +40,12 @@ char	**conv_path(t_pars *pars, t_node *env)
 int	exec_bultout_2(t_pars *pars, char **path_tab, char **env)
 {
 	int		y;
+	int		i;
 	char	*cmd_path;
 	char	*start_cmd_path;
 
 	y = -1;
+	i = 0;
 	while (path_tab[++y])
 	{
 		start_cmd_path = ft_strjoin(path_tab[y], "/");
@@ -53,13 +55,15 @@ int	exec_bultout_2(t_pars *pars, char **path_tab, char **env)
 		{
 			if (execve(cmd_path, pars->args, env) == -1)
 			{
+				i++;
 				free(cmd_path);
 				ret(NULL, 127, 2);
 			}
 		}
 		free (cmd_path);
 	}
-	return (0);
+	i = return1(i);
+	return (i);
 }
 
 int	if_path_not_exist(t_pars *pars, char **path_tab, char **env)
@@ -74,5 +78,12 @@ int	if_path_not_exist(t_pars *pars, char **path_tab, char **env)
 	{
 		return (-1);
 	}
+	return (0);
+}
+
+int	return1(int i)
+{
+	if (i == 0)
+		return (-1);
 	return (0);
 }
