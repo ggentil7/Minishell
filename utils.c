@@ -100,6 +100,7 @@ char	**split_to_remove(char **tab, t_pars *pars, t_node *env)
 {
 	int		i;
 	char	**tab2;
+	char	*tmp;
 
 	i = 0;
 	(void)pars;
@@ -112,7 +113,9 @@ char	**split_to_remove(char **tab, t_pars *pars, t_node *env)
 		}
 		else
 		{
-			tab2[i] = ft_strdup(remove_quote(is_dollars(tab[i], env)));
+			tmp = is_dollars(tab[i], env);
+			tab2[i] = remove_quote(tmp);
+			free (tmp);
 		}
 		i++;
 	}

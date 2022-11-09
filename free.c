@@ -4,16 +4,20 @@
 void	free_tab(char **tab)
 {
 	int	i;
+	int	j;
 
 	i = 0;
 	if (tab != NULL)
 	{
-		while (tab[i])
+		j = ft_tablen(tab) + 1;
+		while (i < j)
 		{
 			free(tab[i]);
+			tab[i] = NULL;
 			i++;
 		}
 		free(tab);
+		tab = NULL;
 	}
 }
 
@@ -55,24 +59,27 @@ void	free_lst_node(t_node *node)
 	t_node	*tmp;
 
 	tmp = node;
+	// int i = 0;
 	if (tmp != NULL)
 	{
-		if (tmp->next != NULL)
+		while (tmp != NULL)
 		{
-			while (tmp != NULL)
-			{
-				if (tmp->args != NULL)
-					free_tab(tmp->args);
-				tmp = tmp->next;
-			}
-			lstclear(node);
+			// while (i < ft_tablen(tmp->args) + 1)
+			// {
+			// 	free(tmp->args[i]);
+			// 	tmp->args[i] = NULL;
+			// 	i++;
+			// }
+			free_tab(tmp->args);
+			tmp = tmp->next;
 		}
-		else
-		{
-			if (tmp->args != NULL)
-				free_tab(tmp->args);
-			lstclear(node);
-		}
+		// lstclear(node);
+		// node = NULL;
+		// else
+		// {
+		// 	free_tab(tmp->args);
+		// 	lstclear(node);
+		// }
 	}
 	else
 		return ;
