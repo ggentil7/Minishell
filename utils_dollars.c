@@ -2,14 +2,12 @@
 
 char	*is_dollars(char *line, t_node *env)
 {
-	int		i;
 	char	*tmp;
 
-	i = 0;
-	tmp = ft_strdup("");
 	if (ft_strcmp(line, "$?") == 0 || ft_strcmp(line, "\"$?\"") == 0)
-		return (line);
-	tmp = join_dollars(env, line, tmp, i);
+		return (ft_strdup(line));
+	tmp = ft_strdup("");
+	tmp = join_dollars(env, line, tmp, 0);
 	return (tmp);
 }
 

@@ -59,19 +59,21 @@ char	**env_to_tab(t_node *node)
 
 t_node	*add_to_export_lst(t_pars *pars, t_node *node, char *args)
 {
-	t_node	*node_tmp;
-	int		i;
+	// t_node	*node_tmp;
+	// int		i;
 
-	i = 1;
+	// i = 1;
 	(void)pars;
-	node_tmp = node;
-	while (node_tmp != NULL)
-	{
-		node_tmp = node_tmp->next;
-	}
-	node_tmp = add_list(node, ft_strdup(args));
-	node_tmp = node_tmp->next;
-	i++;
+	printf("TEEEEESSSSTT\n");
+	add_list(node, ft_strdup(args));
+	// node_tmp = *node;
+	// while (node_tmp != NULL)
+	// {
+	// 	node_tmp = node_tmp->next;
+	// }
+	// node_tmp = add_list(*node, ft_strdup(args));
+	// node_tmp = node_tmp->next;
+	// i++;
 	return (node);
 }
 

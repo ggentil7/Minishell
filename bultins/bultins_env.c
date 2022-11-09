@@ -43,15 +43,16 @@ int	bultin_export(t_pars *pars, t_node *node)
 {
 	t_node	*env;
 	char 	*tmp;
+	char 	**tab;
   	int		i;
   
 	i = 0;
 	env = node;
 	if (pars->args[1] == NULL)
 	{
-		env->args = env_to_tab(env);
-		env->args = env_sort(env->args);
-		print_export(env->args);
+		tab = env_to_tab(env);
+		tab = env_sort(tab);
+		print_export(tab);
 	}
 	else
 	{

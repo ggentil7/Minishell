@@ -30,8 +30,8 @@ int	cmd(t_pars *pars, t_node *env, t_prompt *prompt)
 {
 	signal(SIGINT, handle_sigquit);
 	signal(SIGQUIT, handle_sigquit);
-	init_cmd(pars);
 	redirection_tab(pars);
+	init_cmd(pars);
 	if(is_bultin(pars) != -1 && pars->next == NULL && pars->chevr == 0)
 		bultin_search(pars, env, prompt);
 	else
